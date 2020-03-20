@@ -1,6 +1,10 @@
 import React from "react";
 import { fetchAsync } from "./reducers/videosReducer";
 import { useDispatch, useSelector } from "react-redux";
+import Header from "./components/header/header";
+import Sidebar from "./components/sidebar/sidebar";
+import VideosContainer from "./components/videos-container/videos-container";
+import * as Styled from "./App.styles";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,13 +22,15 @@ function App() {
   };
 
   return (
-    <div>
-      <button onClick={() => dispatch(fetchAsync())}>ugly button</button>
-      {renderVideos()}
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-    </div>
+    <Styled.App>
+      <Header />
+      <Styled.FlexWrapper>
+        <Sidebar />
+        <VideosContainer />
+      </Styled.FlexWrapper>
+      {/* <button onClick={() => dispatch(fetchAsync())}>ugly button</button>
+      {renderVideos()} */}
+    </Styled.App>
   );
 }
 
