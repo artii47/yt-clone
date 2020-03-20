@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { youtube } from "../api/youtube";
 
 export const videos = createSlice({
   name: "videos",
@@ -7,20 +8,19 @@ export const videos = createSlice({
     videos: []
   },
   reducers: {
-    fetchVideos: (state, action) => {
-      state.videos.push({ title: action.payload });
+    fetchSearchVideos: (state, action) => {
+      state.videos = action.payload;
     }
   }
 });
 
-console.log(videos.actions.fetchVideos());
-export const { fetchVideos } = videos.actions;
+export const { fetchSearchVideos } = videos.actions;
 
-export const fetchAsync = () => async dispatch => {
-  const response = await axios.get(
-    "https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=IN&maxResults=25&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY"
+export const fetchSearchVideosAsync = searchTerm => async dispatch => {
+  const response = await youtube.get(
+    `/search?part=snippet&maxResults=20&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
-  dispatch(fetchVideos(response.data.items));
+  dispatch(fetchSearchVideos(response.data.items));
 };
 
 export default videos.reducer;
