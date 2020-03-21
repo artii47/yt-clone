@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
 export const SearchBar = styled.form`
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  grid-column: 1/-1;
+  grid-row: 1/2;
   display: flex;
+  justify-content: center;
   align-items: center;
 `;
 

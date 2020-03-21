@@ -21,6 +21,7 @@ const VideosContainer = () => {
     if (!videos) {
       return <div>LOADING</div>;
     }
+
     return videos.map(video => {
       return (
         <VideoItem
@@ -31,11 +32,7 @@ const VideosContainer = () => {
     });
   };
 
-  return (
-    <Styled.VideosContainer>
-      <Styled.VideoList>{renderVideos()}</Styled.VideoList>
-    </Styled.VideosContainer>
-  );
+  return <Styled.VideosContainer>{renderVideos()}</Styled.VideosContainer>;
 };
 
 export default VideosContainer;

@@ -13,10 +13,8 @@ function App() {
       <Router>
         <Route exact path={["/", "/search_query=:searchTerm"]}>
           <Header />
-          <Styled.FlexWrapper>
-            <Sidebar />
-            <VideosContainer />
-          </Styled.FlexWrapper>
+          <Sidebar />
+          <VideosContainer />
         </Route>
       </Router>
       {/* <button onClick={() => dispatch(fetchAsync())}>ugly button</button>
