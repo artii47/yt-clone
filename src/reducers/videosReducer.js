@@ -10,6 +10,9 @@ export const videos = createSlice({
   reducers: {
     fetchSearchVideos: (state, action) => {
       state.videos = action.payload;
+    },
+    fetchPopularVideos: (state, action) => {
+      state.videos = action.payload;
     }
   }
 });
@@ -19,6 +22,13 @@ export const { fetchSearchVideos } = videos.actions;
 export const fetchSearchVideosAsync = searchTerm => async dispatch => {
   const response = await youtube.get(
     `/search?part=snippet&maxResults=20&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+  );
+  dispatch(fetchSearchVideos(response.data.items));
+};
+
+export const fetchPopularVideosAsync = () => async dispatch => {
+  const response = await youtube.get(
+    `/videos?part=snippet&chart=mostPopular&maxResults=20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchSearchVideos(response.data.items));
 };

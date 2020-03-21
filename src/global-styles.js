@@ -15,6 +15,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 62.5%;
   }
   body {
-    font-family: "Open Sans Condensed", sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f6f6f6;
   }
 `;

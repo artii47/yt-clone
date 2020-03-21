@@ -7,7 +7,7 @@ export const Header = styled.header`
   width: 100vw;
   display: flex;
   justify-content: center;
-  height: 10rem;
+  height: 5.6rem;
   background-color: #fff;
   z-index: 999;
 `;
