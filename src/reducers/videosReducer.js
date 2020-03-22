@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { youtube } from "../api/youtube";
+import { youtubeVideos } from "../api/youtube";
 
 export const videos = createSlice({
   name: "videos",
   initialState: {
-    videos: []
+    videos: [],
+    relatedToVideos: []
   },
   reducers: {
     fetchSearchVideos: (state, action) => {
@@ -13,24 +13,34 @@ export const videos = createSlice({
     },
     fetchPopularVideos: (state, action) => {
       state.videos = action.payload;
+    },
+    fetchRelatedToVideos: (state, action) => {
+      state.relatedToVideos = action.payload;
     }
   }
 });
 
-export const { fetchSearchVideos } = videos.actions;
+export const { fetchSearchVideos, fetchRelatedToVideos } = videos.actions;
 
 export const fetchSearchVideosAsync = searchTerm => async dispatch => {
-  const response = await youtube.get(
+  const response = await youtubeVideos.get(
     `/search?part=snippet&maxResults=20&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchSearchVideos(response.data.items));
 };
 
 export const fetchPopularVideosAsync = () => async dispatch => {
-  const response = await youtube.get(
+  const response = await youtubeVideos.get(
     `/videos?part=snippet&chart=mostPopular&maxResults=20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchSearchVideos(response.data.items));
+};
+
+export const fetchRelatedToVideosAsync = videoId => async dispatch => {
+  const response = await youtubeVideos.get(
+    `/search?part=snippet&relatedToVideoId=${videoId}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+  );
+  dispatch(fetchRelatedToVideos(response.data.items));
 };
 
 export default videos.reducer;

@@ -4,7 +4,11 @@ import * as Styled from "./video-item.styles";
 const VideoItem = props => {
   const renderVideoItem = () => {
     return (
-      <Styled.VideoItem isItemSearched={props.isItemSearched}>
+      <Styled.VideoItem
+        onClick={() => console.log("props", props)}
+        to={`/watch/${props.id.videoId ? props.id.videoId : props.id}`}
+        isItemSearched={props.isItemSearched}
+      >
         <Styled.VideoItemImg src={props.imgUrl} />
         <Styled.VideoItemDescription isItemSearched={props.isItemSearched}>
           <Styled.VideoItemTitle>{props.title}</Styled.VideoItemTitle>

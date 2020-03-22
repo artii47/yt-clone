@@ -1,10 +1,13 @@
 import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
-export const VideoItem = styled.div`
-  width: 35rem;
-  height: 30rem;
+export const VideoItem = styled(Link)`
+  width: 33rem;
+  height: 29rem;
   background-color: transparent;
-  margin: 1rem 2rem;
+  margin: 1rem 0;
+  cursor: pointer;
+  text-decoration: none;
   ${props =>
     props.isItemSearched &&
     css`
@@ -28,6 +31,7 @@ export const VideoItemDescription = styled.div`
 `;
 
 export const VideoItemTitle = styled.p`
+  color: #000;
   font-size: 1.9rem;
   font-weight: 500;
   line-height: 2.5rem;

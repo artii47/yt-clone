@@ -1,6 +1,10 @@
 import axios from "axios";
 
-export const youtube = axios.create({
+export const youtubeVideos = axios.create({
+  baseURL: "https://www.googleapis.com/youtube/v3"
+});
+
+export const youtubeVideo = axios.create({
   baseURL: "https://www.googleapis.com/youtube/v3"
 });
 
