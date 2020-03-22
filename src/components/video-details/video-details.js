@@ -12,7 +12,7 @@ const VideoDetails = () => {
   console.log("video", video);
   useEffect(() => {
     dispatch(fetchVideoAsync(params.videoId));
-  }, []);
+  }, [params]);
   return (
     <Styled.VideoDetails>
       <Styled.VideoDetailsIframe

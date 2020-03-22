@@ -10,4 +10,9 @@ export const VideosContainer = styled.div`
       flex-wrap: wrap;
       justify-content: center;
     `};
+  ${props =>
+    props.params.videoId &&
+    css`
+      grid-column: 1/-1;
+    `};
 `;

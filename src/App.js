@@ -1,6 +1,4 @@
 import React from "react";
-import { fetchAsync } from "./reducers/videosReducer";
-import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/header/header";
 import Sidebar from "./components/sidebar/sidebar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -8,21 +6,31 @@ import VideosContainer from "./components/videos-container/videos-container";
 import * as Styled from "./App.styles";
 import VideoDetails from "./components/video-details/video-details";
 import VideoList from "./components/video-list/video-list";
+import RelatedVideos from "./components/related-videos/related-videos";
 
 function App() {
   return (
     <Styled.App>
       <Router>
         <Header />
-        <Sidebar />
         <Route exact path={["/", "/search_query=:searchTerm"]}>
+          <Sidebar />
           <VideosContainer>
             <VideoList />
           </VideosContainer>
         </Route>
         <Route exact path={"/watch/:videoId"}>
           <VideosContainer>
-            <VideoDetails />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-evenly",
+                padding: "0 6rem"
+              }}
+            >
+              <VideoDetails />
+              <RelatedVideos />
+            </div>
           </VideosContainer>
         </Route>
       </Router>

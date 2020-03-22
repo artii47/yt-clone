@@ -38,7 +38,7 @@ export const fetchPopularVideosAsync = () => async dispatch => {
 
 export const fetchRelatedToVideosAsync = videoId => async dispatch => {
   const response = await youtubeVideos.get(
-    `/search?part=snippet&relatedToVideoId=${videoId}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/search?part=snippet&relatedToVideoId=${videoId}&maxResults=20&&type=video&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchRelatedToVideos(response.data.items));
 };
