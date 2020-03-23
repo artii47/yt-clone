@@ -5,7 +5,8 @@ export const videos = createSlice({
   name: "videos",
   initialState: {
     videos: [],
-    relatedToVideos: []
+    relatedToVideos: [],
+    relatedToVideosUpdated: []
   },
   reducers: {
     fetchSearchVideos: (state, action) => {
@@ -16,11 +17,18 @@ export const videos = createSlice({
     },
     fetchRelatedToVideos: (state, action) => {
       state.relatedToVideos = action.payload;
+    },
+    fetchRelatedToVideosStats: (state, action) => {
+      state.relatedToVideosUpdated = action.payload;
     }
   }
 });
 
-export const { fetchSearchVideos, fetchRelatedToVideos } = videos.actions;
+export const {
+  fetchSearchVideos,
+  fetchRelatedToVideos,
+  fetchRelatedToVideosStats
+} = videos.actions;
 
 export const fetchSearchVideosAsync = searchTerm => async dispatch => {
   const response = await youtubeVideos.get(
@@ -31,7 +39,7 @@ export const fetchSearchVideosAsync = searchTerm => async dispatch => {
 
 export const fetchPopularVideosAsync = () => async dispatch => {
   const response = await youtubeVideos.get(
-    `/videos?part=snippet&chart=mostPopular&maxResults=20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchSearchVideos(response.data.items));
 };
@@ -41,6 +49,13 @@ export const fetchRelatedToVideosAsync = videoId => async dispatch => {
     `/search?part=snippet&relatedToVideoId=${videoId}&maxResults=20&&type=video&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchRelatedToVideos(response.data.items));
+};
+
+export const fetchRelatedToVideosStatsAsync = videoIds => async dispatch => {
+  const response = await youtubeVideos.get(
+    `/videos?part=snippet,statistics&id=${videoIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+  );
+  dispatch(fetchRelatedToVideosStats(response.data.items));
 };
 
 export default videos.reducer;

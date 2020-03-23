@@ -5,7 +5,7 @@ export const VideoItem = styled(Link)`
   width: 33rem;
   height: 29rem;
   background-color: transparent;
-  margin: 1rem 0;
+  margin: 3rem 0;
   cursor: pointer;
   text-decoration: none;
 
@@ -16,6 +16,7 @@ export const VideoItem = styled(Link)`
       width: 60%;
       height: 20rem;
       cursor: pointer;
+      margin: 1rem 0;
       img {
         width: 60rem;
         height: 100%;
@@ -79,4 +80,11 @@ export const VideoItemChannelTitle = styled.p`
     css`
       font-size: 1.2rem;
     `}
+`;
+
+export const VideoItemViews = styled.p`
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #707070;
+  font-size: 1.8rem;
 `;

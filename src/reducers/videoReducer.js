@@ -17,9 +17,8 @@ const { fetchVideo } = currentVideo.actions;
 
 export const fetchVideoAsync = videoId => async dispatch => {
   const response = await youtubeVideo.get(
-    `/videos?part=snippet&id=${videoId}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&id=${videoId}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
-  console.log(response);
   dispatch(fetchVideo(response.data));
 };
 

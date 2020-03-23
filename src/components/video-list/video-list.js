@@ -32,6 +32,7 @@ const VideoList = () => {
           imgUrl={video.snippet.thumbnails.medium.url}
           channelTitle={video.snippet.channelTitle}
           id={video.id}
+          viewsCount={video.statistics ? video.statistics.viewCount : ""}
         />
       );
     });
