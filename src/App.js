@@ -26,8 +26,6 @@ function App() {
           </VideosContainer>
         </Route>
       </Router>
-      {/* <button onClick={() => dispatch(fetchAsync())}>ugly button</button>
-      {renderVideos()} */}
     </Styled.App>
   );
 }

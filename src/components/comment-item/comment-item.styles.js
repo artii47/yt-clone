@@ -6,7 +6,7 @@ export const CommentItem = styled.div`
   width: 100%;
   height: 10rem;
   display: flex;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 `;
 
 export const CommentItemDescription = styled.div`
