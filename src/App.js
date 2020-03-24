@@ -7,6 +7,7 @@ import * as Styled from "./App.styles";
 import VideoDetails from "./components/video-details/video-details";
 import VideoList from "./components/video-list/video-list";
 import RelatedVideos from "./components/related-videos/related-videos";
+import CommentList from "./components/comment-list/comment-list";
 
 function App() {
   return (
@@ -15,22 +16,13 @@ function App() {
         <Header />
         <Route exact path={["/", "/search_query=:searchTerm"]}>
           <Sidebar />
-          <VideosContainer>
-            <VideoList />
-          </VideosContainer>
+          <VideoList />
         </Route>
         <Route exact path={"/watch/:videoId"}>
           <VideosContainer>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-evenly",
-                padding: "0 6rem"
-              }}
-            >
-              <VideoDetails />
-              <RelatedVideos />
-            </div>
+            <VideoDetails />
+            <RelatedVideos />
+            <CommentList />
           </VideosContainer>
         </Route>
       </Router>

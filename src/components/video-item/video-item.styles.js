@@ -83,8 +83,13 @@ export const VideoItemChannelTitle = styled.p`
 `;
 
 export const VideoItemViews = styled.p`
-  font-size: 1.8rem;
   font-weight: 400;
   color: #707070;
   font-size: 1.8rem;
+  ${props =>
+    props.isRelated &&
+    css`
+      margin-top: 0.4rem;
+      font-size: 1.2rem;
+    `}
 `;

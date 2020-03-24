@@ -14,20 +14,24 @@ const RelatedVideos = () => {
   const videos = useSelector(state => state.videos.relatedToVideos);
   const params = useParams();
   const videoIds = getVideoIds(videos);
+  const videosUpdated = useSelector(
+    state => state.videos.relatedToVideosUpdated
+  );
   useEffect(() => {
     dispatch(fetchRelatedToVideosAsync(params.videoId));
     dispatch(fetchRelatedToVideosStatsAsync(videoIds));
   }, [params.videoId, videoIds]);
   return (
     <Styled.RelatedVideos>
-      {videos.map(video => {
+      {videosUpdated.map(video => {
         return (
           <VideoItem
+            isRelated
             id={video.id}
             title={video.snippet.title}
             imgUrl={video.snippet.thumbnails.medium.url}
             channelTitle={video.snippet.channelTitle}
-            isRelated
+            viewsCount={video.statistics.viewCount}
           />
         );
       })}

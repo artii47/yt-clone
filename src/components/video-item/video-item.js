@@ -26,7 +26,7 @@ const VideoItem = props => {
           <Styled.VideoItemChannelTitle isRelated={props.isRelated}>
             {props.channelTitle}
           </Styled.VideoItemChannelTitle>
-          <Styled.VideoItemViews>
+          <Styled.VideoItemViews isRelated={props.isRelated}>
             {props.viewsCount ? numConverter(props.viewsCount) + " views" : ""}
           </Styled.VideoItemViews>
         </Styled.VideoItemDescription>

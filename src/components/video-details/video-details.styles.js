@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 export const VideoDetails = styled.div`
-  width: 70%;
+  /* width: 70%;
   height: 100%;
-  margin: 4rem 2rem;
+  margin: 4rem 0; */
+  grid-column: 2/12;
+  width: 100%;
+  margin-top: 2.5rem;
 `;
 
 export const VideoDetailsIframe = styled.iframe`
