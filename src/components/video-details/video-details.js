@@ -3,6 +3,7 @@ import { fetchVideoAsync } from "../../reducers/videoReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as Styled from "./video-details.styles";
+import { numberWithCommas, numberConverter } from "../../helpers/numConverter";
 
 const VideoDetails = () => {
   const dispatch = useDispatch();
@@ -23,9 +24,26 @@ const VideoDetails = () => {
       <Styled.VideoDetailsTitle>
         {video ? video.items[0].snippet.title : ""}
       </Styled.VideoDetailsTitle>
-      <Styled.VideoDetailsPublishDate>
-        {video ? video.items[0].snippet.publishedAt.slice(0, 10) : ""}
-      </Styled.VideoDetailsPublishDate>
+      <Styled.VideoDetailsFlexWrapper>
+        <Styled.VideoDetailsPublishDate>
+          {video
+            ? numberWithCommas(video.items[0].statistics.viewCount) + " views "
+            : ""}
+          &bull; {video ? video.items[0].snippet.publishedAt.slice(0, 10) : ""}
+        </Styled.VideoDetailsPublishDate>
+        <Styled.VideoDetailsLikeBox>
+          <Styled.VideoDetailsLikeDislikeBox>
+            <Styled.VideoDetailsLike />
+            {video ? numberConverter(video.items[0].statistics.likeCount) : ""}
+          </Styled.VideoDetailsLikeDislikeBox>
+          <Styled.VideoDetailsLikeDislikeBox>
+            <Styled.VideoDetailsDislike />
+            {video
+              ? numberConverter(video.items[0].statistics.dislikeCount)
+              : ""}
+          </Styled.VideoDetailsLikeDislikeBox>
+        </Styled.VideoDetailsLikeBox>
+      </Styled.VideoDetailsFlexWrapper>
     </Styled.VideoDetails>
   );
 };

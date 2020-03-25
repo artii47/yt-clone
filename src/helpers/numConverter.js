@@ -1,4 +1,4 @@
-export default x => {
+export const numberConverter = x => {
   if (isNaN(x)) return x;
   if (x < 9999) {
     return x;
@@ -12,4 +12,8 @@ export default x => {
   if (x < 1000000000) {
     return Math.round(x / 1000000) + "M";
   }
+};
+
+export const numberWithCommas = x => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };

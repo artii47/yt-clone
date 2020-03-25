@@ -1,7 +1,7 @@
 import React from "react";
 import * as Styled from "./video-item.styles";
 import { useParams } from "react-router-dom";
-import numConverter from "../../helpers/numConverter";
+import { numberConverter } from "../../helpers/numConverter";
 
 const VideoItem = props => {
   const params = useParams();
@@ -27,7 +27,9 @@ const VideoItem = props => {
             {props.channelTitle}
           </Styled.VideoItemChannelTitle>
           <Styled.VideoItemViews isRelated={props.isRelated}>
-            {props.viewsCount ? numConverter(props.viewsCount) + " views" : ""}
+            {props.viewsCount
+              ? numberConverter(props.viewsCount) + " views"
+              : ""}
           </Styled.VideoItemViews>
         </Styled.VideoItemDescription>
       </Styled.VideoItem>
