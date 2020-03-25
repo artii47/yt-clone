@@ -17,7 +17,7 @@ export const VideoDetailsIframe = styled.iframe`
 `;
 
 export const VideoDetailsTitle = styled.p`
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #000;
   margin-top: 2rem;
 `;
@@ -68,7 +68,7 @@ export const VideoDetailsFlexWrapper = styled.div`
   margin-top: 1.5rem;
   align-items: center;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #e0e0e0;
 `;
 
 export const VideoDetailsDislike = styled(Dislike)`
@@ -79,7 +79,7 @@ export const VideoDetailsDislike = styled(Dislike)`
 `;
 
 export const VideoDetailsLikeDislikeBox = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 500;
   color: #707070;
   display: flex;

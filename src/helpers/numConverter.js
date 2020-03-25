@@ -1,6 +1,6 @@
 export const numberConverter = x => {
   if (isNaN(x)) return x;
-  if (x < 9999) {
+  if (x < 999) {
     return x;
   }
   if (x < 1000000) {

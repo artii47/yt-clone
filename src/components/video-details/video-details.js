@@ -1,18 +1,26 @@
 import React, { useEffect } from "react";
 import { fetchVideoAsync } from "../../reducers/videoReducer";
+import { fetchCurrentVideoChannelAsync } from "../../reducers/channelsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as Styled from "./video-details.styles";
 import { numberWithCommas, numberConverter } from "../../helpers/numConverter";
+import VideoDetailsDesc from "../video-details-desc/video-details-desc";
 
 const VideoDetails = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const url = `http://www.youtube.com/embed/${params.videoId}`;
   const video = useSelector(state => state.video.currentVideo);
+  const channel = useSelector(state => state.channels.currentVideoChannel);
   useEffect(() => {
+    // if (!video) {
     dispatch(fetchVideoAsync(params.videoId));
-  }, [params]);
+    // }
+    // if (video && !channel) {
+    //   dispatch(fetchCurrentVideoChannelAsync(video.items[0].snippet.channelId));
+    // }
+  }, [params.videoId]);
   return (
     <Styled.VideoDetails>
       <Styled.VideoDetailsIframe
@@ -44,6 +52,14 @@ const VideoDetails = () => {
           </Styled.VideoDetailsLikeDislikeBox>
         </Styled.VideoDetailsLikeBox>
       </Styled.VideoDetailsFlexWrapper>
+      {channel && video ? (
+        <VideoDetailsDesc
+          videoDesc={video.items[0].snippet.description}
+          channel={channel}
+        />
+      ) : (
+        ""
+      )}
     </Styled.VideoDetails>
   );
 };
