@@ -28,6 +28,7 @@ const VideoDetails = () => {
         type="text/html"
         src={url}
         frameBorder="0"
+        allowFullScreen
       />
       <Styled.VideoDetailsTitle>
         {video ? video.items[0].snippet.title : ""}

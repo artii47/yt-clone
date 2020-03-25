@@ -24,8 +24,14 @@ const SearchBar = () => {
   };
   return (
     <Styled.SearchBar onSubmit={onSubmit}>
-      <Styled.SearchBarInput onChange={onChange} value={searchTerm} />
-      <Styled.SearchBarButton>search</Styled.SearchBarButton>
+      <Styled.SearchBarInput
+        onChange={onChange}
+        value={searchTerm}
+        placeholder="Search"
+      />
+      <Styled.SearchBarButton>
+        <Styled.SearchBarSearchSVG />
+      </Styled.SearchBarButton>
     </Styled.SearchBar>
   );
 };

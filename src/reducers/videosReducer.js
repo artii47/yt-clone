@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { youtubeVideos } from "../api/youtube";
+import { youtube } from "../api/youtube";
 
 export const videos = createSlice({
   name: "videos",
@@ -31,28 +31,28 @@ export const {
 } = videos.actions;
 
 export const fetchSearchVideosAsync = searchTerm => async dispatch => {
-  const response = await youtubeVideos.get(
+  const response = await youtube.get(
     `/search?part=snippet&maxResults=20&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchSearchVideos(response.data.items));
 };
 
 export const fetchPopularVideosAsync = () => async dispatch => {
-  const response = await youtubeVideos.get(
+  const response = await youtube.get(
     `/videos?part=snippet,statistics&chart=mostPopular&maxResults=20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchSearchVideos(response.data.items));
 };
 
 export const fetchRelatedToVideosAsync = videoId => async dispatch => {
-  const response = await youtubeVideos.get(
+  const response = await youtube.get(
     `/search?part=snippet&relatedToVideoId=${videoId}&maxResults=20&&type=video&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchRelatedToVideos(response.data.items));
 };
 
 export const fetchRelatedToVideosStatsAsync = videoIds => async dispatch => {
-  const response = await youtubeVideos.get(
+  const response = await youtube.get(
     `/videos?part=snippet,statistics&id=${videoIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchRelatedToVideosStats(response.data.items));

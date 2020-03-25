@@ -14,10 +14,6 @@ const CommentList = () => {
   const comments = useSelector(state => state.comments.currentVideoComments);
   return (
     <Styled.CommentList>
-      {/* <CommentItem />
-      <CommentItem />
-      <CommentItem />
-      <CommentItem /> */}
       {comments.map(comment => {
         return (
           <CommentItem
