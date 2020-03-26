@@ -17,7 +17,7 @@ const { fetchComments } = comments.actions;
 
 export const fetchCommentsAsync = videoId => async dispatch => {
   const response = await youtube.get(
-    `/commentThreads?part=snippet&order=relevance&videoId=${videoId}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/commentThreads?part=snippet&order=relevance&videoId=${videoId}&maxResults=1&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchComments(response.data.items));
 };

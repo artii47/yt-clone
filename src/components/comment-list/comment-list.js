@@ -4,6 +4,7 @@ import CommentItem from "../comment-item/comment-item";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCommentsAsync } from "../../reducers/commentsReducer";
 import { useParams } from "react-router-dom";
+import { numberConverter } from "../../helpers/numConverter";
 
 const CommentList = () => {
   const dispatch = useDispatch();
@@ -12,8 +13,19 @@ const CommentList = () => {
     dispatch(fetchCommentsAsync(params.videoId));
   }, []);
   const comments = useSelector(state => state.comments.currentVideoComments);
+  const video = useSelector(state => state.video.currentVideo);
   return (
     <Styled.CommentList>
+      <Styled.CommentCountAndSortByWrapper>
+        <Styled.CommentCount>
+          {video
+            ? numberConverter(video.statistics.commentCount) + " Comments"
+            : ""}
+        </Styled.CommentCount>
+        <Styled.CommentSortBy>
+          <Styled.SortIcon /> SORT BY
+        </Styled.CommentSortBy>
+      </Styled.CommentCountAndSortByWrapper>
       {comments.map(comment => {
         return (
           <CommentItem

@@ -1,20 +1,25 @@
 import React from "react";
 import * as Styled from "./video-details-desc.styles";
 import { numberConverter } from "../../helpers/numConverter";
+import { useSelector } from "react-redux";
 
 const VideoDetailsDesc = props => {
+  const channel = useSelector(state => state.channels.currentVideoChannel);
+  if (!channel) {
+    return "";
+  }
   return (
     <Styled.VideoDetailsDesc>
       <Styled.VideoDetailsDescChannelBox>
         <Styled.VideoDetailsDescChannelImg
-          src={props.channel.snippet.thumbnails.medium.url}
+          src={channel.snippet.thumbnails.medium.url}
         />
         <Styled.VideoDetailsDescFlexWrapper>
           <Styled.VideoDetailsDescChannelTitle>
-            {props.channel.snippet.title}
+            {channel.snippet.title}
           </Styled.VideoDetailsDescChannelTitle>
           <Styled.VideoDetailsDescChannelSubs>
-            {numberConverter(props.channel.statistics.subscriberCount)}
+            {numberConverter(channel.statistics.subscriberCount)}
           </Styled.VideoDetailsDescChannelSubs>
         </Styled.VideoDetailsDescFlexWrapper>
       </Styled.VideoDetailsDescChannelBox>

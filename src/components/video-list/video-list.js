@@ -23,7 +23,6 @@ const VideoList = () => {
     if (!videos) {
       return <div>LOADING</div>;
     }
-
     return videos.map(video => {
       return (
         <VideoItem

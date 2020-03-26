@@ -8,7 +8,14 @@ import VideoDetails from "./components/video-details/video-details";
 import VideoList from "./components/video-list/video-list";
 import RelatedVideos from "./components/related-videos/related-videos";
 import CommentList from "./components/comment-list/comment-list";
-
+/*
+TODO
+sorting comments
+proper fetching - DONE
+fix fetching needed data only once - DONE
+fetch comments and related video on scroll
+possibility to show more/show less video details description
+*/
 function App() {
   return (
     <Styled.App>
@@ -20,8 +27,8 @@ function App() {
         </Route>
         <Route exact path={"/watch/:videoId"}>
           <VideosContainer>
-            <VideoDetails />
-            <RelatedVideos />
+            {/* <VideoDetails /> */}
+            {/* <RelatedVideos /> */}
             <CommentList />
           </VideosContainer>
         </Route>

@@ -19,8 +19,13 @@ const RelatedVideos = () => {
   );
   useEffect(() => {
     dispatch(fetchRelatedToVideosAsync(params.videoId));
-    dispatch(fetchRelatedToVideosStatsAsync(videoIds));
-  }, [params.videoId, videoIds]);
+    // dispatch(fetchRelatedToVideosStatsAsync(videoIds));
+  }, [params.videoId]);
+  useEffect(() => {
+    if (videoIds) {
+      dispatch(fetchRelatedToVideosStatsAsync(videoIds));
+    }
+  }, [videoIds]);
   return (
     <Styled.RelatedVideos>
       {videosUpdated.map(video => {

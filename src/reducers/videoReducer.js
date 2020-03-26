@@ -19,7 +19,7 @@ export const fetchVideoAsync = videoId => async dispatch => {
   const response = await youtube.get(
     `/videos?part=snippet,statistics&id=${videoId}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
-  dispatch(fetchVideo(response.data));
+  dispatch(fetchVideo(response.data.items[0]));
 };
 
 export default currentVideo.reducer;

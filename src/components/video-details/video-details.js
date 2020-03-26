@@ -14,13 +14,22 @@ const VideoDetails = () => {
   const video = useSelector(state => state.video.currentVideo);
   const channel = useSelector(state => state.channels.currentVideoChannel);
   useEffect(() => {
-    // if (!video) {
     dispatch(fetchVideoAsync(params.videoId));
-    // }
     // if (video && !channel) {
     //   dispatch(fetchCurrentVideoChannelAsync(video.items[0].snippet.channelId));
     // }
   }, [params.videoId]);
+  useEffect(() => {
+    // if (!video) {
+    // dispatch(fetchVideoAsync(params.videoId));
+    // }
+    if (video) {
+      dispatch(fetchCurrentVideoChannelAsync(video.snippet.channelId));
+    }
+  }, [video]);
+  if (!video) {
+    return "";
+  }
   return (
     <Styled.VideoDetails>
       <Styled.VideoDetailsIframe
@@ -30,37 +39,24 @@ const VideoDetails = () => {
         frameBorder="0"
         allowFullScreen
       />
-      <Styled.VideoDetailsTitle>
-        {video ? video.items[0].snippet.title : ""}
-      </Styled.VideoDetailsTitle>
+      <Styled.VideoDetailsTitle>{video.snippet.title}</Styled.VideoDetailsTitle>
       <Styled.VideoDetailsFlexWrapper>
         <Styled.VideoDetailsPublishDate>
-          {video
-            ? numberWithCommas(video.items[0].statistics.viewCount) + " views "
-            : ""}
-          &bull; {video ? video.items[0].snippet.publishedAt.slice(0, 10) : ""}
+          {numberWithCommas(video.statistics.viewCount) + " views "}
+          &bull; {video.snippet.publishedAt.slice(0, 10)}
         </Styled.VideoDetailsPublishDate>
         <Styled.VideoDetailsLikeBox>
           <Styled.VideoDetailsLikeDislikeBox>
             <Styled.VideoDetailsLike />
-            {video ? numberConverter(video.items[0].statistics.likeCount) : ""}
+            {numberConverter(video.statistics.likeCount)}
           </Styled.VideoDetailsLikeDislikeBox>
           <Styled.VideoDetailsLikeDislikeBox>
             <Styled.VideoDetailsDislike />
-            {video
-              ? numberConverter(video.items[0].statistics.dislikeCount)
-              : ""}
+            {numberConverter(video.statistics.dislikeCount)}
           </Styled.VideoDetailsLikeDislikeBox>
         </Styled.VideoDetailsLikeBox>
       </Styled.VideoDetailsFlexWrapper>
-      {channel && video ? (
-        <VideoDetailsDesc
-          videoDesc={video.items[0].snippet.description}
-          channel={channel}
-        />
-      ) : (
-        ""
-      )}
+      {<VideoDetailsDesc videoDesc={video.snippet.description} />}
     </Styled.VideoDetails>
   );
 };
