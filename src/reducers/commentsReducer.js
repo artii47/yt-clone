@@ -15,9 +15,9 @@ export const comments = createSlice({
 
 const { fetchComments } = comments.actions;
 
-export const fetchCommentsAsync = videoId => async dispatch => {
+export const fetchCommentsAsync = (videoId, sortBy) => async dispatch => {
   const response = await youtube.get(
-    `/commentThreads?part=snippet&order=relevance&videoId=${videoId}&maxResults=1&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/commentThreads?part=snippet&order=${sortBy}&videoId=${videoId}&maxResults=1&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchComments(response.data.items));
 };

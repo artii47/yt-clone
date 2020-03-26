@@ -8,6 +8,7 @@ import VideoDetails from "./components/video-details/video-details";
 import VideoList from "./components/video-list/video-list";
 import RelatedVideos from "./components/related-videos/related-videos";
 import CommentList from "./components/comment-list/comment-list";
+import Comments from "./components/comments/comments";
 /*
 TODO
 sorting comments
@@ -27,9 +28,9 @@ function App() {
         </Route>
         <Route exact path={"/watch/:videoId"}>
           <VideosContainer>
-            {/* <VideoDetails /> */}
-            {/* <RelatedVideos /> */}
-            <CommentList />
+            {/* <VideoDetails />
+            <RelatedVideos /> */}
+            <Comments />
           </VideosContainer>
         </Route>
       </Router>
