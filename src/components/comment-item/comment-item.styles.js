@@ -39,14 +39,14 @@ export const CommentItemLikeCount = styled.p`
 `;
 
 export const CommentItemLike = styled(Like)`
-  height: 1.6rem;
-  width: 1.6rem;
-  fill: #707070;
+  height: 1.4rem;
+  width: 1.4rem;
+  fill: #909090;
 `;
 export const CommentItemDislike = styled(Dislike)`
-  height: 1.6rem;
-  width: 1.6rem;
-  fill: #707070;
+  height: 1.4rem;
+  width: 1.4rem;
+  fill: #909090;
 `;
 
 export const CommentItemFlexWrapper = styled.div`

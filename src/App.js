@@ -11,7 +11,7 @@ import CommentList from "./components/comment-list/comment-list";
 import Comments from "./components/comments/comments";
 /*
 TODO
-sorting comments
+sorting comments - DONE
 proper fetching - DONE
 fix fetching needed data only once - DONE
 fetch comments and related video on scroll
@@ -28,8 +28,8 @@ function App() {
         </Route>
         <Route exact path={"/watch/:videoId"}>
           <VideosContainer>
-            {/* <VideoDetails />
-            <RelatedVideos /> */}
+            <VideoDetails />
+            <RelatedVideos />
             <Comments />
           </VideosContainer>
         </Route>

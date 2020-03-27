@@ -21,6 +21,7 @@ export const VideoDetailsDescChannelImg = styled.img`
 export const VideoDetailsDescChannelTitle = styled.p`
   font-size: 1.5rem;
   font-weight: 500;
+  width: 15rem;
 `;
 
 export const VideoDetailsDescChannelSubs = styled.p`

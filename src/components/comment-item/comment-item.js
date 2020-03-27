@@ -4,7 +4,10 @@ import * as Styled from "./comment-item.styles";
 const CommentItem = props => {
   return (
     <Styled.CommentItem>
-      <Styled.CommentItemImg src={props.authorChannelImage} />
+      <Styled.CommentItemImg
+        referrerPolicy="no-referrer"
+        src={props.authorChannelImage}
+      />
       <Styled.CommentItemDescription>
         <Styled.CommentItemFlexWrapper>
           <Styled.CommentItemChannelTitle>
@@ -18,7 +21,7 @@ const CommentItem = props => {
         <Styled.CommentItemFlexWrapper>
           <Styled.CommentItemLike />
           <Styled.CommentItemLikeCount>
-            {props.likeCount}
+            {props.likeCount === 0 ? "" : props.likeCount}
           </Styled.CommentItemLikeCount>
           <Styled.CommentItemDislike />
         </Styled.CommentItemFlexWrapper>

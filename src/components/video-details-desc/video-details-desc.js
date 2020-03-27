@@ -19,7 +19,8 @@ const VideoDetailsDesc = props => {
             {channel.snippet.title}
           </Styled.VideoDetailsDescChannelTitle>
           <Styled.VideoDetailsDescChannelSubs>
-            {numberConverter(channel.statistics.subscriberCount)}
+            {numberConverter(channel.statistics.subscriberCount) +
+              " subscribers"}
           </Styled.VideoDetailsDescChannelSubs>
         </Styled.VideoDetailsDescFlexWrapper>
       </Styled.VideoDetailsDescChannelBox>

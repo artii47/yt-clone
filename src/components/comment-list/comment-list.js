@@ -1,20 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import * as Styled from "./comment-list.styles";
 import CommentItem from "../comment-item/comment-item";
-import { useDispatch, useSelector } from "react-redux";
-
-import { useParams } from "react-router-dom";
-import { numberConverter } from "../../helpers/numConverter";
+import { useSelector } from "react-redux";
+import Spinner from "../spinner/spinner";
 
 const CommentList = () => {
-  const dispatch = useDispatch();
-  const params = useParams();
-
   const comments = useSelector(state => state.comments.currentVideoComments);
+  const isLoading = useSelector(state => state.comments.isLoading);
 
   return (
     <Styled.CommentList>
-      {comments.map(comment => {
+      {comments.items.map(comment => {
         return (
           <CommentItem
             id={comment.id}
@@ -29,6 +25,7 @@ const CommentList = () => {
           />
         );
       })}
+      {isLoading ? <Spinner /> : ""}
     </Styled.CommentList>
   );
 };
