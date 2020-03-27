@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { youtube } from "../api/youtube";
+import { getVideoIds } from "../helpers/getVideoIds";
 
 export const videos = createSlice({
   name: "videos",
@@ -32,9 +33,13 @@ export const {
 
 export const fetchSearchVideosAsync = searchTerm => async dispatch => {
   const response = await youtube.get(
-    `/search?part=snippet&maxResults=5&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/search?part=snippet&maxResults=2&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
-  dispatch(fetchSearchVideos(response.data.items));
+  const videoIds = getVideoIds(response.data.items);
+  const responseWithStats = await youtube.get(
+    `/videos?part=snippet,statistics&id=${videoIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+  );
+  dispatch(fetchSearchVideos(responseWithStats.data.items));
 };
 
 export const fetchPopularVideosAsync = () => async dispatch => {

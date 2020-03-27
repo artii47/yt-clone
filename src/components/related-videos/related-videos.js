@@ -37,6 +37,7 @@ const RelatedVideos = () => {
             imgUrl={video.snippet.thumbnails.medium.url}
             channelTitle={video.snippet.channelTitle}
             viewsCount={video.statistics.viewCount}
+            publishDate={video.snippet.publishedAt}
           />
         );
       })}

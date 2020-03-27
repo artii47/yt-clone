@@ -9,6 +9,8 @@ export const VideosContainer = styled.div`
   ${props =>
     props.isItemSearched &&
     css`
+      grid-row: 2/-1;
+      grid-column: 7 / span 2;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;

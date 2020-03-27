@@ -17,9 +17,11 @@ export const VideoList = styled.div`
   ${props =>
     props.isItemSearched &&
     css`
+      grid-row: 2/-1;
+      grid-column: 3/10;
       display: flex;
-      flex-wrap: wrap;
-      margin: 3rem 4rem;
+      flex-direction: column;
+      margin: 3rem -7rem;
       justify-content: flex-start;
     `}
 `;

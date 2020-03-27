@@ -12,6 +12,7 @@ const VideoDetailsDesc = props => {
     <Styled.VideoDetailsDesc>
       <Styled.VideoDetailsDescChannelBox>
         <Styled.VideoDetailsDescChannelImg
+          referrerPolicy="no-referrer"
           src={channel.snippet.thumbnails.medium.url}
         />
         <Styled.VideoDetailsDescFlexWrapper>

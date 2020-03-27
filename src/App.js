@@ -7,15 +7,15 @@ import * as Styled from "./App.styles";
 import VideoDetails from "./components/video-details/video-details";
 import VideoList from "./components/video-list/video-list";
 import RelatedVideos from "./components/related-videos/related-videos";
-import CommentList from "./components/comment-list/comment-list";
 import Comments from "./components/comments/comments";
 /*
 TODO
 sorting comments - DONE
 proper fetching - DONE
 fix fetching needed data only once - DONE
-fetch comments and related video on scroll
+fetch comments and related video on scroll - not done yet
 possibility to show more/show less video details description
+add statistics for searched videos
 */
 function App() {
   return (

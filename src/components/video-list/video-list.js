@@ -7,6 +7,7 @@ import {
   fetchSearchVideosAsync
 } from "../../reducers/videosReducer";
 import * as Styled from "./video-list.styles";
+import VideoSearchItem from "../video-search-item/video-search-item";
 
 const VideoList = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,21 @@ const VideoList = () => {
     if (!videos) {
       return <div>LOADING</div>;
     }
+
     return videos.map(video => {
+      if (params.searchTerm) {
+        return (
+          <VideoSearchItem
+            isItemSearched={!!params.searchTerm}
+            title={video.snippet.title}
+            imgUrl={video.snippet.thumbnails.medium.url}
+            channelTitle={video.snippet.channelTitle}
+            id={video.id}
+            viewsCount={video.statistics ? video.statistics.viewCount : ""}
+            publishDate={video.snippet.publishedAt}
+          />
+        );
+      }
       return (
         <VideoItem
           isItemSearched={!!params.searchTerm}
@@ -32,6 +47,7 @@ const VideoList = () => {
           channelTitle={video.snippet.channelTitle}
           id={video.id}
           viewsCount={video.statistics ? video.statistics.viewCount : ""}
+          publishDate={video.snippet.publishedAt}
         />
       );
     });

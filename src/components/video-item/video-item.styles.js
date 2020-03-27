@@ -14,11 +14,11 @@ export const VideoItem = styled(Link)`
     css`
       display: flex;
       width: 60%;
-      height: 20rem;
+      height: 14rem;
       cursor: pointer;
       margin: 1rem 0;
       img {
-        width: 60rem;
+        width: 25rem;
         height: 100%;
       }
     `}
@@ -69,6 +69,12 @@ export const VideoItemTitle = styled.p`
     css`
       font-size: 1.5rem;
       line-height: 1.5rem;
+    `};
+
+  ${props =>
+    props.isItemSearched &&
+    css`
+      font-weight: 400;
     `}
 `;
 export const VideoItemChannelTitle = styled.p`

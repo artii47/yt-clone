@@ -17,19 +17,24 @@ const VideoItem = props => {
           isRelated={props.isRelated}
           isItemSearched={props.isItemSearched}
         >
-          <Styled.VideoItemTitle isRelated={props.isRelated}>
-            {params.videoId
-              ? props.title.slice(0, 50) + "..."
-              : props.title.slice(0, 55) + "..."}
+          <Styled.VideoItemTitle
+            isItemSearched={props.isItemSearched}
+            isRelated={props.isRelated}
+          >
+            {params.videoId ? props.title.slice(0, 50) + "..." : props.title}
           </Styled.VideoItemTitle>
           <br />
-          <Styled.VideoItemChannelTitle isRelated={props.isRelated}>
+          <Styled.VideoItemChannelTitle
+            isItemSearched={props.isItemSearched}
+            isRelated={props.isRelated}
+          >
             {props.channelTitle}
           </Styled.VideoItemChannelTitle>
           <Styled.VideoItemViews isRelated={props.isRelated}>
             {props.viewsCount
               ? numberConverter(props.viewsCount) + " views"
-              : ""}
+              : ""}{" "}
+            &bull; {props.publishDate ? props.publishDate.slice(0, 10) : ""}
           </Styled.VideoItemViews>
         </Styled.VideoItemDescription>
       </Styled.VideoItem>
