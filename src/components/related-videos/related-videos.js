@@ -3,32 +3,18 @@ import * as Styled from "./related-videos.styles";
 import VideoItem from "../video-item/video-item";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchRelatedToVideosAsync,
-  fetchRelatedToVideosStatsAsync
-} from "../../reducers/videosReducer";
-import { getVideoIds } from "../../helpers/getVideoIds";
+import { fetchRelatedToVideosAsync } from "../../reducers/videosReducer";
 
 const RelatedVideos = () => {
   const dispatch = useDispatch();
   const videos = useSelector(state => state.videos.relatedToVideos);
   const params = useParams();
-  const videoIds = getVideoIds(videos);
-  const videosUpdated = useSelector(
-    state => state.videos.relatedToVideosUpdated
-  );
   useEffect(() => {
     dispatch(fetchRelatedToVideosAsync(params.videoId));
-    // dispatch(fetchRelatedToVideosStatsAsync(videoIds));
-  }, [params.videoId]);
-  useEffect(() => {
-    if (videoIds) {
-      dispatch(fetchRelatedToVideosStatsAsync(videoIds));
-    }
-  }, [videoIds]);
+  }, [params.videoId, dispatch]);
   return (
     <Styled.RelatedVideos>
-      {videosUpdated.map(video => {
+      {videos.map(video => {
         return (
           <VideoItem
             isRelated

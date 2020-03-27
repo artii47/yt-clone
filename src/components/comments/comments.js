@@ -4,13 +4,8 @@ import CommentList from "../comment-list/comment-list";
 import { useSelector, useDispatch } from "react-redux";
 import { numberWithCommas } from "../../helpers/numConverter";
 import SortOptions from "../sort-options/sort-options";
-import {
-  fetchCommentsAsync,
-  fetchCommentsNextPageAsync
-} from "../../reducers/commentsReducer";
+import { fetchCommentsAsync } from "../../reducers/commentsReducer";
 import { useParams } from "react-router-dom";
-import scrollEvent from "../../helpers/scrollEvent";
-import { throttle } from "lodash";
 import Spinner from "../spinner/spinner";
 
 const Comments = () => {
@@ -21,26 +16,13 @@ const Comments = () => {
   const [sortBy, setSortBy] = useState("relevance");
   useEffect(() => {
     dispatch(fetchCommentsAsync(params.videoId, sortBy));
-  }, [sortBy, params.videoId]);
+  }, [sortBy, params.videoId, dispatch]);
   const renderComments = () => {
     if (!comments) {
       return <Spinner />;
     }
     return (
       <>
-        {/* <button
-          onClick={() =>
-            dispatch(
-              fetchCommentsNextPageAsync(
-                params.videoId,
-                comments.nextPageToken,
-                sortBy
-              )
-            )
-          }
-        >
-          fetch new comments
-        </button> */}
         <Styled.CommentsFlexWrapper>
           <Styled.CommentsCount>
             {video

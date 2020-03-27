@@ -6,8 +6,7 @@ export const videos = createSlice({
   name: "videos",
   initialState: {
     videos: [],
-    relatedToVideos: [],
-    relatedToVideosUpdated: []
+    relatedToVideos: []
   },
   reducers: {
     fetchSearchVideos: (state, action) => {
@@ -18,9 +17,6 @@ export const videos = createSlice({
     },
     fetchRelatedToVideos: (state, action) => {
       state.relatedToVideos = action.payload;
-    },
-    fetchRelatedToVideosStats: (state, action) => {
-      state.relatedToVideosUpdated = action.payload;
     }
   }
 });
@@ -53,14 +49,18 @@ export const fetchRelatedToVideosAsync = videoId => async dispatch => {
   const response = await youtube.get(
     `/search?part=snippet&relatedToVideoId=${videoId}&maxResults=20&&type=video&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
-  dispatch(fetchRelatedToVideos(response.data.items));
-};
-
-export const fetchRelatedToVideosStatsAsync = videoIds => async dispatch => {
-  const response = await youtube.get(
+  const videoIds = getVideoIds(response.data.items);
+  const responseWithStats = await youtube.get(
     `/videos?part=snippet,statistics&id=${videoIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
-  dispatch(fetchRelatedToVideosStats(response.data.items));
+  dispatch(fetchRelatedToVideos(responseWithStats.data.items));
 };
+
+// export const fetchRelatedToVideosStatsAsync = videoIds => async dispatch => {
+//   const response = await youtube.get(
+//     `/videos?part=snippet,statistics&id=${videoIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+//   );
+//   dispatch(fetchRelatedToVideosStats(response.data.items));
+// };
 
 export default videos.reducer;

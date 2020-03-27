@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { ReactComponent as SortSvg } from "../../assets/icons/sort.svg";
 import { SpinnerInner } from "../spinner/spinner.styles";
 
 export const Comments = styled.div`

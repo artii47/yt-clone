@@ -33,7 +33,7 @@ const VideoItem = props => {
           <Styled.VideoItemViews isRelated={props.isRelated}>
             {props.viewsCount
               ? numberConverter(props.viewsCount) + " views"
-              : ""}{" "}
+              : ""}
             &bull; {props.publishDate ? props.publishDate.slice(0, 10) : ""}
           </Styled.VideoItemViews>
         </Styled.VideoItemDescription>

@@ -19,12 +19,11 @@ const VideoList = () => {
       return;
     }
     dispatch(fetchPopularVideosAsync());
-  }, [params.searchTerm]);
+  }, [params.searchTerm, dispatch]);
   const renderVideos = () => {
     if (!videos) {
       return <div>LOADING</div>;
     }
-
     return videos.map(video => {
       if (params.searchTerm) {
         return (

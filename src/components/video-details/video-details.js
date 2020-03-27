@@ -12,21 +12,14 @@ const VideoDetails = () => {
   const params = useParams();
   const url = `http://www.youtube.com/embed/${params.videoId}`;
   const video = useSelector(state => state.video.currentVideo);
-  const channel = useSelector(state => state.channels.currentVideoChannel);
   useEffect(() => {
     dispatch(fetchVideoAsync(params.videoId));
-    // if (video && !channel) {
-    //   dispatch(fetchCurrentVideoChannelAsync(video.items[0].snippet.channelId));
-    // }
-  }, [params.videoId]);
+  }, [params.videoId, dispatch]);
   useEffect(() => {
-    // if (!video) {
-    // dispatch(fetchVideoAsync(params.videoId));
-    // }
     if (video) {
       dispatch(fetchCurrentVideoChannelAsync(video.snippet.channelId));
     }
-  }, [video]);
+  }, [video, dispatch]);
   if (!video) {
     return "";
   }

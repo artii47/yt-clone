@@ -11,17 +11,14 @@ const CommentList = () => {
   return (
     <Styled.CommentList>
       {comments.items.map(comment => {
+        const comm = comment.snippet.topLevelComment.snippet;
         return (
           <CommentItem
             id={comment.id}
-            authorName={
-              comment.snippet.topLevelComment.snippet.authorDisplayName
-            }
-            authorChannelImage={
-              comment.snippet.topLevelComment.snippet.authorProfileImageUrl
-            }
-            text={comment.snippet.topLevelComment.snippet.textOriginal}
-            likeCount={comment.snippet.topLevelComment.snippet.likeCount}
+            authorName={comm.authorDisplayName}
+            authorChannelImage={comm.authorProfileImageUrl}
+            text={comm.textOriginal}
+            likeCount={comm.likeCount}
           />
         );
       })}

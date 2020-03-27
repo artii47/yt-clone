@@ -3,9 +3,6 @@ import { ReactComponent as Like } from "../../assets/icons/like.svg";
 import { ReactComponent as Dislike } from "../../assets/icons/dislike.svg";
 
 export const VideoDetails = styled.div`
-  /* width: 70%;
-  height: 100%;
-  margin: 4rem 0; */
   grid-column: 2/12;
   width: 100%;
   margin-top: 2.5rem;
@@ -58,7 +55,6 @@ export const VideoDetailsLike = styled(Like)`
   height: 1.8rem;
   width: 1.8rem;
   fill: #909090;
-
   margin-right: 1rem;
 `;
 
