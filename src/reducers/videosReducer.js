@@ -17,6 +17,9 @@ export const videos = createSlice({
     },
     fetchRelatedToVideos: (state, action) => {
       state.relatedToVideos = action.payload;
+    },
+    resetRelatedVideos: state => {
+      state.relatedToVideos = [];
     }
   }
 });
@@ -24,12 +27,13 @@ export const videos = createSlice({
 export const {
   fetchSearchVideos,
   fetchRelatedToVideos,
-  fetchRelatedToVideosStats
+  fetchRelatedToVideosStats,
+  resetRelatedVideos
 } = videos.actions;
 
 export const fetchSearchVideosAsync = searchTerm => async dispatch => {
   const response = await youtube.get(
-    `/search?part=snippet&maxResults=2&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/search?part=snippet&maxResults=16&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const videoIds = getVideoIds(response.data.items);
   const responseWithStats = await youtube.get(
@@ -40,14 +44,14 @@ export const fetchSearchVideosAsync = searchTerm => async dispatch => {
 
 export const fetchPopularVideosAsync = () => async dispatch => {
   const response = await youtube.get(
-    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=5&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=16&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchSearchVideos(response.data.items));
 };
 
 export const fetchRelatedToVideosAsync = videoId => async dispatch => {
   const response = await youtube.get(
-    `/search?part=snippet&relatedToVideoId=${videoId}&maxResults=20&&type=video&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/search?part=snippet&relatedToVideoId=${videoId}&maxResults=16&&type=video&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const videoIds = getVideoIds(response.data.items);
   const responseWithStats = await youtube.get(
@@ -56,11 +60,8 @@ export const fetchRelatedToVideosAsync = videoId => async dispatch => {
   dispatch(fetchRelatedToVideos(responseWithStats.data.items));
 };
 
-// export const fetchRelatedToVideosStatsAsync = videoIds => async dispatch => {
-//   const response = await youtube.get(
-//     `/videos?part=snippet,statistics&id=${videoIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
-//   );
-//   dispatch(fetchRelatedToVideosStats(response.data.items));
-// };
+export const resetRelatedVideosAsync = () => dispatch => {
+  dispatch(resetRelatedVideos());
+};
 
 export default videos.reducer;

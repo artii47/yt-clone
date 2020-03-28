@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as Styled from "./comment-list.styles";
 import CommentItem from "../comment-item/comment-item";
 import { useSelector } from "react-redux";

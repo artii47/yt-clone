@@ -3,7 +3,10 @@ import * as Styled from "./related-videos.styles";
 import VideoItem from "../video-item/video-item";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchRelatedToVideosAsync } from "../../reducers/videosReducer";
+import {
+  fetchRelatedToVideosAsync,
+  resetRelatedVideosAsync
+} from "../../reducers/videosReducer";
 
 const RelatedVideos = () => {
   const dispatch = useDispatch();
@@ -11,6 +14,9 @@ const RelatedVideos = () => {
   const params = useParams();
   useEffect(() => {
     dispatch(fetchRelatedToVideosAsync(params.videoId));
+    return () => {
+      dispatch(resetRelatedVideosAsync());
+    };
   }, [params.videoId, dispatch]);
   return (
     <Styled.RelatedVideos>

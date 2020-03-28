@@ -14,7 +14,11 @@ const VideoItem = props => {
         <Styled.VideoItemImg src={props.imgUrl} />
         <Styled.VideoItemDescription isRelated={props.isRelated}>
           <Styled.VideoItemTitle isRelated={props.isRelated}>
-            {params.videoId ? props.title.slice(0, 50) + "..." : props.title}
+            {params.videoId
+              ? props.title.length > 50
+                ? props.title.slice(0, 50) + "..."
+                : props.title
+              : props.title}
           </Styled.VideoItemTitle>
           <br />
           <Styled.VideoItemChannelTitle isRelated={props.isRelated}>
