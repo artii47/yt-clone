@@ -35,6 +35,7 @@ const VideoList = () => {
             id={video.id}
             viewsCount={video.statistics ? video.statistics.viewCount : ""}
             publishDate={video.snippet.publishedAt}
+            description={video.snippet.description}
           />
         );
       }

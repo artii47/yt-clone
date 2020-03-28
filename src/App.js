@@ -28,8 +28,8 @@ function App() {
         </Route>
         <Route exact path={"/watch/:videoId"}>
           <VideosContainer>
-            <VideoDetails />
-            <RelatedVideos />
+            {/* <VideoDetails /> */}
+            {/* <RelatedVideos /> */}
             <Comments />
           </VideosContainer>
         </Route>

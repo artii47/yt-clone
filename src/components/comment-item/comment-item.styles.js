@@ -15,8 +15,8 @@ export const CommentItemDescription = styled.div`
 `;
 
 export const CommentItemImg = styled.img`
-  width: 4.5rem;
-  height: 4.5rem;
+  min-width: 4rem;
+  height: 4rem;
   border-radius: 50%;
 `;
 

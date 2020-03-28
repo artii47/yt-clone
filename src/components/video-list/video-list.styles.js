@@ -3,15 +3,14 @@ import styled, { css } from "styled-components";
 export const VideoList = styled.div`
   grid-row: 2/-1;
   grid-column: 2/-1;
-  margin: 5rem 10rem;
+  margin: 5rem 6rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30rem, min-content));
+  grid-template-columns: repeat(auto-fill, minmax(35rem, min-content));
   grid-auto-flow: column;
   grid-auto-flow: row;
   ${props =>
     !props.isItemSearched &&
     css`
-      margin: 8rem 10rem;
       justify-content: space-evenly;
     `}
   ${props =>

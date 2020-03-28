@@ -3,34 +3,40 @@ import * as Styled from "./video-search-item.styles";
 import { numberConverter } from "../../helpers/numConverter";
 import { useParams } from "react-router-dom";
 
-const VideoSearchItem = props => {
+const VideoSearchItem = ({
+  id,
+  title,
+  imgUrl,
+  channelTitle,
+  viewsCount,
+  publishDate,
+  description
+}) => {
   const params = useParams();
   return (
-    <Styled.VideoSearchItem
-      to={`/watch/${props.id.videoId ? props.id.videoId : props.id}`}
-    >
-      <Styled.VideoSearchItemImg src={props.imgUrl} />
+    <Styled.VideoSearchItem to={`/watch/${id.videoId ? id.videoId : id}`}>
+      <Styled.VideoSearchItemImg src={imgUrl} />
       <Styled.VideoSearchItemDescription>
         <Styled.VideoSearchItemTitle>
-          {params.videoId ? props.title.slice(0, 50) + "..." : props.title}
+          {params.videoId ? title.slice(0, 50) + "..." : title}
         </Styled.VideoSearchItemTitle>
         <br />
         <Styled.VideoSearchItemFlexWrapper>
           <Styled.VideoSearchItemChannelTitle>
-            {props.channelTitle} &nbsp; &bull; &nbsp;
+            {channelTitle} &nbsp; &bull; &nbsp;
           </Styled.VideoSearchItemChannelTitle>
           <Styled.VideoSearchItemViews>
-            {props.viewsCount
-              ? numberConverter(props.viewsCount) + " views"
-              : ""}
+            {viewsCount ? numberConverter(viewsCount) + " views" : ""}
             &nbsp; &bull; &nbsp;
           </Styled.VideoSearchItemViews>
           <Styled.VideoSearchItemPublishDate>
-            {props.publishDate ? props.publishDate.slice(0, 10) : ""}
+            {publishDate ? publishDate.slice(0, 10) : ""}
           </Styled.VideoSearchItemPublishDate>
         </Styled.VideoSearchItemFlexWrapper>
         <Styled.VideoSearchItemDescriptionContent>
-          some description
+          {description.length > 120
+            ? description.slice(0, 120) + " ..."
+            : description}
         </Styled.VideoSearchItemDescriptionContent>
       </Styled.VideoSearchItemDescription>
     </Styled.VideoSearchItem>

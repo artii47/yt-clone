@@ -13,8 +13,8 @@ export const VideoDetailsDescFlexWrapper = styled.div`
 `;
 
 export const VideoDetailsDescChannelImg = styled.img`
-  width: 5rem;
-  height: 5rem;
+  min-width: 4.8rem;
+  height: 4.8rem;
   border-radius: 50%;
 `;
 
