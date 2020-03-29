@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchRelatedToVideosAsync,
-  resetRelatedVideosAsync
+  resetCurrentRelatedVideos
 } from "../../reducers/videosReducer";
 
 const RelatedVideos = () => {
@@ -15,7 +15,7 @@ const RelatedVideos = () => {
   useEffect(() => {
     dispatch(fetchRelatedToVideosAsync(params.videoId));
     return () => {
-      dispatch(resetRelatedVideosAsync());
+      dispatch(resetCurrentRelatedVideos());
     };
   }, [params.videoId, dispatch]);
   return (

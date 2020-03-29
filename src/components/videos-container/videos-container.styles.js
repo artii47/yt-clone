@@ -5,7 +5,7 @@ export const VideosContainer = styled.div`
   grid-column: 2/-1;
   display: grid;
   grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(8, 15rem);
+  grid-template-rows: repeat(7, min-content) min-content;
   ${props =>
     props.isItemSearched &&
     css`

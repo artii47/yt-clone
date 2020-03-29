@@ -13,9 +13,9 @@ TODO
 sorting comments - DONE
 proper fetching - DONE
 fix fetching needed data only once - DONE
-fetch comments and related video on scroll - not done yet
+fetch comments and related video on scroll - not optimized
 possibility to show more/show less video details description
-add statistics for searched videos
+add statistics for searched videos - DONE
 */
 function App() {
   return (

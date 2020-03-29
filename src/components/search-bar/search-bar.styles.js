@@ -13,21 +13,28 @@ export const SearchBar = styled.form`
 `;
 
 export const SearchBarInput = styled.input`
-  width: 57rem;
+  width: 56.2rem;
   height: 3.2rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0rem 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
   font-size: 1.7rem;
   padding-left: 1rem;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
+  overflow: hidden;
+  outline: none;
+  :focus {
+    box-shadow: inset 0rem 0.1rem 0.3rem rgba(0, 0, 0, 0.25);
+    border: 1px solid #1c62b9;
+  }
 `;
 
 export const SearchBarButton = styled.button`
   height: 3.2rem;
   width: 6.5rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  background-color: #f5f5f5;
+  border-left: none;
+  background-color: #f8f8f8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,5 +45,5 @@ export const SearchBarButton = styled.button`
 export const SearchBarSearchSVG = styled(SearchSVG)`
   width: 1.5rem;
   height: 1.5rem;
-  fill: #707070;
+  fill: #888888;
 `;

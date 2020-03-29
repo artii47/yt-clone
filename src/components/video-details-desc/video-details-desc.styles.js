@@ -38,7 +38,13 @@ export const VideoDetailsDescChannelBox = styled.div`
 `;
 
 export const VideoDetailsDescContent = styled.div`
+  width: 50%;
   font-size: 1.5rem;
   margin-left: 6.5rem;
   line-height: 2rem;
+  margin-bottom: 2rem;
+`;
+
+export const VideoDetailsDescButton = styled.button`
+  border: none;
 `;
