@@ -1,3 +1,3 @@
-#youtube clone
-My youtube clone
+# youtube clone
+My simple youtube clone
 In progress
