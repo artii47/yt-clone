@@ -18,8 +18,12 @@ const RelatedVideos = () => {
       dispatch(resetCurrentRelatedVideos());
     };
   }, [params.videoId, dispatch]);
+  if (!videos) {
+    return "";
+  }
   return (
     <Styled.RelatedVideos>
+      <Styled.RelatedVideosText>Related videos</Styled.RelatedVideosText>
       {videos.map(video => {
         return (
           <VideoItem

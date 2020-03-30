@@ -3,9 +3,10 @@ import { ReactComponent as Like } from "../../assets/icons/like.svg";
 import { ReactComponent as Dislike } from "../../assets/icons/dislike.svg";
 
 export const VideoDetails = styled.div`
-  grid-column: 2/12;
+  grid-column: 1/13;
+  grid-row: 1/2;
   width: 100%;
-  margin-top: 2.5rem;
+  padding: 2.4rem 2.4rem 0 2.4rem;
 `;
 
 export const VideoDetailsIframe = styled.iframe`

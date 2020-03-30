@@ -3,10 +3,10 @@ import VideoItem from "../video-item/video-item";
 
 export const RelatedVideos = styled.div`
   height: 100%;
-  grid-column: 12/16;
-  margin-top: 2.5rem;
-  margin-left: 2rem;
-  margin-right: 5rem;
+  grid-column: 13/17;
+  grid-row: 1 /-1;
+  padding-right: 2.5rem;
+  padding-top: 2.4rem;
 `;
 
 export const RelatedVideosList = styled.div`
@@ -15,4 +15,8 @@ export const RelatedVideosList = styled.div`
 
 export const RelatedVideosItem = styled(VideoItem)`
   display: none;
+`;
+
+export const RelatedVideosText = styled.p`
+  font-size: 1.8rem;
 `;

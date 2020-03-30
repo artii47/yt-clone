@@ -33,7 +33,7 @@ export const {
 
 export const fetchSearchVideosAsync = searchTerm => async dispatch => {
   const response = await youtube.get(
-    `/search?part=snippet&maxResults=2&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/search?part=snippet&maxResults=10&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const videoIds = getVideoIds(response.data.items);
   const responseWithStats = await youtube.get(
@@ -44,14 +44,14 @@ export const fetchSearchVideosAsync = searchTerm => async dispatch => {
 
 export const fetchPopularVideosAsync = () => async dispatch => {
   const response = await youtube.get(
-    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=2&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=10&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchSearchVideos(response.data.items));
 };
 
 export const fetchRelatedToVideosAsync = videoId => async dispatch => {
   const response = await youtube.get(
-    `/search?part=snippet&relatedToVideoId=${videoId}&maxResults=8&&type=video&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/search?part=snippet&relatedToVideoId=${videoId}&maxResults=15&&type=video&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const videoIds = getVideoIds(response.data.items);
   const responseWithStats = await youtube.get(

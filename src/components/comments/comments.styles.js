@@ -2,11 +2,10 @@ import styled from "styled-components";
 import { SpinnerInner } from "../spinner/spinner.styles";
 
 export const Comments = styled.div`
-  grid-column: 2/12;
-  grid-row: 9/-1;
-  width: 100%;
+  grid-column: 1/13;
+  grid-row: 2/3;
   height: 100%;
-  border-top: 1px solid #e0e0e0;
+  padding: 0 2.4rem;
 `;
 
 export const CommentsFlexWrapper = styled.div`

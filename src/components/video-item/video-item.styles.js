@@ -18,8 +18,8 @@ export const VideoItem = styled(Link)`
       width: 100%;
       cursor: pointer;
       img {
-        width: 50%;
-        height: 100%;
+        min-width: 16.8rem;
+        height: 9.4rem;
       }
     `}
 `;
@@ -35,6 +35,7 @@ export const VideoItemDescription = styled.div`
     props.isRelated &&
     css`
       margin: 0 1rem;
+      padding-right: 2.4rem;
     `}
 `;
 

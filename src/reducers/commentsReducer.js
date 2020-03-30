@@ -43,7 +43,7 @@ const {
 export const fetchCommentsAsync = (videoId, sortBy) => async dispatch => {
   dispatch(fetchCommentsStart());
   const response = await youtube.get(
-    `/commentThreads?part=snippet&order=${sortBy}&videoId=${videoId}&maxResults=2&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/commentThreads?part=snippet&order=${sortBy}&videoId=${videoId}&maxResults=10&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchCommentsSuccess(response.data));
 };

@@ -4,6 +4,7 @@ export const VideoDetailsDesc = styled.div`
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid #e0e0e0;
 `;
 
 export const VideoDetailsDescFlexWrapper = styled.div`
@@ -25,8 +26,9 @@ export const VideoDetailsDescChannelTitle = styled.p`
 `;
 
 export const VideoDetailsDescChannelSubs = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 400;
+  color: #606060;
 `;
 
 export const VideoDetailsDescChannelBox = styled.div`
@@ -46,5 +48,12 @@ export const VideoDetailsDescContent = styled.div`
 `;
 
 export const VideoDetailsDescButton = styled.button`
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  color: #606060;
+  font-weight: 600;
   border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
 `;

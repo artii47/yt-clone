@@ -11,11 +11,22 @@ const VideoDetailsDesc = props => {
   }
   const renderVideoDetailsDescContent = desc => {
     const wordsArr = desc.split(" ");
-    if (wordsArr.length < 50) {
+    if (wordsArr.length < 40) {
       return desc;
     } else {
-      return wordsArr.slice(0, 50).join(" ");
+      return wordsArr.slice(0, 40).join(" ");
     }
+  };
+
+  const renderButton = () => {
+    if (props.videoDesc.split(" ").length > 40) {
+      return (
+        <Styled.VideoDetailsDescButton onClick={() => setShowMore(!showMore)}>
+          {!showMore ? "SHOW MORE" : "SHOW LESS"}
+        </Styled.VideoDetailsDescButton>
+      );
+    }
+    return "";
   };
   return (
     <Styled.VideoDetailsDesc>
@@ -39,9 +50,7 @@ const VideoDetailsDesc = props => {
           ? renderVideoDetailsDescContent(props.videoDesc)
           : props.videoDesc}
         <br />
-        <Styled.VideoDetailsDescButton onClick={() => setShowMore(!showMore)}>
-          {!showMore ? "SHOW MORE" : "SHOW LESS"}
-        </Styled.VideoDetailsDescButton>
+        {renderButton()}
       </Styled.VideoDetailsDescContent>
     </Styled.VideoDetailsDesc>
   );
