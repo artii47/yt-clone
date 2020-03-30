@@ -23,6 +23,11 @@ const VideoDetails = () => {
   if (!video) {
     return "";
   }
+  const ratingsSum =
+    Number(video.statistics.likeCount) + Number(video.statistics.dislikeCount);
+  const likePercentage = Math.floor(
+    (video.statistics.likeCount / ratingsSum) * 100
+  );
   return (
     <Styled.VideoDetails>
       <Styled.VideoDetailsIframe
@@ -38,7 +43,7 @@ const VideoDetails = () => {
           {numberWithCommas(video.statistics.viewCount) + " views "}
           &bull; {video.snippet.publishedAt.slice(0, 10)}
         </Styled.VideoDetailsPublishDate>
-        <Styled.VideoDetailsLikeBox>
+        <Styled.VideoDetailsLikeBox likePercentage={likePercentage}>
           <Styled.VideoDetailsLikeDislikeBox>
             <Styled.VideoDetailsLike />
             {numberConverter(video.statistics.likeCount)}

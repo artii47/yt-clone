@@ -13,9 +13,13 @@ TODO
 sorting comments - DONE
 proper fetching - DONE
 fix fetching needed data only once - DONE
-fetch comments and related video on scroll - not optimized
-possibility to show more/show less video details description
+possibility to show more/show less video details description - DONE
 add statistics for searched videos - DONE
+fix fetching data when going back (previous page)
+showing some kind of spinner when elements loading
+add dynamic like/dislike bar
+fetching comments on scroll only once
+fetching more related videos on scroll only once
 */
 function App() {
   return (
@@ -29,8 +33,8 @@ function App() {
         <Route exact path={"/watch/:videoId"}>
           <VideosContainer>
             <VideoDetails />
-            <RelatedVideos />
-            <Comments />
+            {/* <RelatedVideos />
+            <Comments /> */}
           </VideosContainer>
         </Route>
       </Router>

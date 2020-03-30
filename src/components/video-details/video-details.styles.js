@@ -36,7 +36,7 @@ export const VideoDetailsLikeBox = styled.div`
     bottom: -1.5rem;
     height: 2px;
     text-align: center;
-    width: 90%;
+    width: ${props => (props.likePercentage ? props.likePercentage : "")}%;
     display: inline-block;
     background-color: #909090;
   }
