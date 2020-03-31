@@ -6,8 +6,9 @@ export const VideoList = styled.div`
   margin: 5rem 6rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(35rem, min-content));
-  grid-auto-flow: column;
+  grid-template-rows: min-content;
   grid-auto-flow: row;
+  grid-gap: 1rem;
   ${props =>
     !props.isItemSearched &&
     css`

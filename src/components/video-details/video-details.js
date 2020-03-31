@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchVideoAsync } from "../../reducers/videoReducer";
 import { fetchCurrentVideoChannelAsync } from "../../reducers/channelsReducer";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,7 @@ const VideoDetails = () => {
   const params = useParams();
   const url = `http://www.youtube.com/embed/${params.videoId}`;
   const video = useSelector(state => state.video.currentVideo);
+  const [isIframeLoaded, setIsIframeLoaded] = useState(false);
   useEffect(() => {
     dispatch(fetchVideoAsync(params.videoId));
   }, [params.videoId, dispatch]);
@@ -21,7 +22,7 @@ const VideoDetails = () => {
     }
   }, [video, dispatch]);
   if (!video) {
-    return "";
+    return <Styled.VideoDetails />;
   }
   const ratingsSum =
     Number(video.statistics.likeCount) + Number(video.statistics.dislikeCount);
@@ -36,6 +37,7 @@ const VideoDetails = () => {
         src={url}
         frameBorder="0"
         allowFullScreen
+        isIframeLoaded={isIframeLoaded}
       />
       <Styled.VideoDetailsTitle>{video.snippet.title}</Styled.VideoDetailsTitle>
       <Styled.VideoDetailsFlexWrapper>

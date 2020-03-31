@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const VideoMainItem = styled(Link)`
   width: 36rem;
-  height: 29rem;
+  height: 100%;
   background-color: transparent;
   margin: 3rem 0;
   cursor: pointer;
@@ -12,7 +12,7 @@ export const VideoMainItem = styled(Link)`
 
 export const VideoMainItemImg = styled.img`
   width: 100%;
-  height: 70%;
+  height: 20rem;
   background-color: ${props =>
     !props.isLoaded ? "rgba(0,0,0,0.1)" : "transparent"};
 `;

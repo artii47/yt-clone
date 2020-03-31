@@ -4,7 +4,6 @@ import { SpinnerInner } from "../spinner/spinner.styles";
 export const Comments = styled.div`
   grid-column: 1/13;
   grid-row: 2/3;
-  height: 100%;
   padding: 0 2.4rem;
 `;
 

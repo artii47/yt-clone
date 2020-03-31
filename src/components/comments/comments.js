@@ -47,9 +47,10 @@ const Comments = () => {
   //     }
   //   }, 500)
   // );
+
   const renderComments = () => {
     if (!comments) {
-      return <Spinner />;
+      return "";
     }
     return (
       <>

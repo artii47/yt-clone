@@ -18,7 +18,6 @@ export const SpinnerOuter = styled.div`
 
 export const SpinnerInner = styled.div`
   box-sizing: border-box;
-  position: absolute;
   width: 3rem;
   height: 3rem;
   margin: 8px;

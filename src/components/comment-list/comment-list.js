@@ -7,7 +7,6 @@ import Spinner from "../spinner/spinner";
 const CommentList = () => {
   const comments = useSelector(state => state.comments.currentVideoComments);
   const isLoading = useSelector(state => state.comments.isLoading);
-
   return (
     <Styled.CommentList>
       {comments.items.map(comment => {

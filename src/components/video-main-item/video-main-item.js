@@ -17,7 +17,10 @@ const VideoMainItem = props => {
           src={props.imgUrl}
         />
         <Styled.VideoMainItemFlexWrapper>
-          <Styled.VideoMainItemChannelImg src={props.channelImgUrl} />
+          <Styled.VideoMainItemChannelImg
+            referrerPolicy="no-referrer"
+            src={props.channelImgUrl}
+          />
           <Styled.VideoMainItemDescription>
             <Styled.VideoMainItemTitle>
               {params.videoId

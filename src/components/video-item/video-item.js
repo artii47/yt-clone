@@ -14,6 +14,7 @@ const VideoItem = props => {
       >
         <Styled.VideoItemImg
           onLoad={() => setIsLoaded(true)}
+          referrerPolicy="no-referrer"
           isLoaded={isLoaded}
           src={props.imgUrl}
         />

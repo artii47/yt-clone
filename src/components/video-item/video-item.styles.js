@@ -2,10 +2,7 @@ import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
 export const VideoItem = styled(Link)`
-  width: 36rem;
-  height: 29rem;
   background-color: transparent;
-  margin: 3rem 0;
   cursor: pointer;
   text-decoration: none;
   ${props =>
