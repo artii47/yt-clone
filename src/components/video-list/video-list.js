@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   fetchPopularVideosAsync,
-  fetchSearchVideosAsync
+  fetchSearchVideosAsync,
+  resetVideos
 } from "../../reducers/videosReducer";
 import * as Styled from "./video-list.styles";
 import VideoSearchItem from "../video-search-item/video-search-item";
+import VideoMainItem from "../video-main-item/video-main-item";
 
 const VideoList = () => {
   const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const VideoList = () => {
       return;
     }
     dispatch(fetchPopularVideosAsync());
+    return () => dispatch(resetVideos());
   }, [params.searchTerm, dispatch]);
   const renderVideos = () => {
     if (!videos) {
@@ -40,7 +43,7 @@ const VideoList = () => {
         );
       }
       return (
-        <VideoItem
+        <VideoMainItem
           isItemSearched={!!params.searchTerm}
           title={video.snippet.title}
           imgUrl={video.snippet.thumbnails.medium.url}
@@ -48,6 +51,7 @@ const VideoList = () => {
           id={video.id}
           viewsCount={video.statistics ? video.statistics.viewCount : ""}
           publishDate={video.snippet.publishedAt}
+          channelImgUrl={video.channelImgUrl}
         />
       );
     });

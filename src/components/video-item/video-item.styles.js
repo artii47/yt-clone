@@ -27,6 +27,8 @@ export const VideoItem = styled(Link)`
 export const VideoItemImg = styled.img`
   width: 100%;
   height: 70%;
+  background-color: ${props =>
+    props.isLoaded ? "rgba(0,0,0,0.1)" : "transparent"};
 `;
 
 export const VideoItemDescription = styled.div`

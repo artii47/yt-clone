@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Styled from "./video-item.styles";
 import { useParams } from "react-router-dom";
 import { numberConverter } from "../../helpers/numConverter";
 
 const VideoItem = props => {
   const params = useParams();
+  const [isLoaded, setIsLoaded] = useState(false);
   const renderVideoItem = () => {
     return (
       <Styled.VideoItem
         to={`/watch/${props.id.videoId ? props.id.videoId : props.id}`}
         isRelated={props.isRelated}
       >
-        <Styled.VideoItemImg src={props.imgUrl} />
+        <Styled.VideoItemImg
+          onLoad={() => setIsLoaded(true)}
+          isLoaded={isLoaded}
+          src={props.imgUrl}
+        />
         <Styled.VideoItemDescription isRelated={props.isRelated}>
           <Styled.VideoItemTitle isRelated={props.isRelated}>
             {params.videoId

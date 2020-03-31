@@ -43,7 +43,7 @@ const {
 export const fetchCommentsAsync = (videoId, sortBy) => async dispatch => {
   dispatch(fetchCommentsStart());
   const response = await youtube.get(
-    `/commentThreads?part=snippet&order=${sortBy}&videoId=${videoId}&maxResults=10&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/commentThreads?part=snippet&order=${sortBy}&videoId=${videoId}&maxResults=4&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchCommentsSuccess(response.data));
 };
@@ -55,7 +55,7 @@ export const fetchCommentsNextPageAsync = (
 ) => async dispatch => {
   dispatch(fetchCommentsNextPageStart());
   const response = await youtube.get(
-    `/commentThreads?part=snippet&order=${sortBy}&pageToken=${pageToken}&videoId=${videoId}&maxResults=10&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/commentThreads?part=snippet&order=${sortBy}&pageToken=${pageToken}&videoId=${videoId}&maxResults=4&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   dispatch(fetchCommentsNextPageSuccess(response.data));
 };
