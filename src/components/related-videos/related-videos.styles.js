@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import VideoItem from "../video-item/video-item";
+import VideoItem from "../video-related-item/video-related-item";
 
 export const RelatedVideos = styled.div`
   height: 100%;

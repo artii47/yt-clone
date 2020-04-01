@@ -38,6 +38,7 @@ const VideoDetails = () => {
         frameBorder="0"
         allowFullScreen
         isIframeLoaded={isIframeLoaded}
+        onLoad={() => setIsIframeLoaded(true)}
       />
       <Styled.VideoDetailsTitle>{video.snippet.title}</Styled.VideoDetailsTitle>
       <Styled.VideoDetailsFlexWrapper>

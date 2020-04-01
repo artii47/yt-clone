@@ -17,7 +17,7 @@ possibility to show more/show less video details description - DONE
 add statistics for searched videos - DONE
 fix fetching data when going back (previous page)
 showing some kind of spinner when elements loading
-add dynamic like/dislike bar
+add dynamic like/dislike bar - DONE
 fetching comments on scroll only once
 fetching more related videos on scroll only once
 */

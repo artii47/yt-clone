@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const VideoMainItem = styled(Link)`
@@ -10,9 +10,6 @@ export const VideoMainItem = styled(Link)`
   margin-right: 0.8rem;
   margin-left: 0.8rem;
   margin-bottom: 4rem;
-  :last-child {
-    margin-right: auto;
-  }
 `;
 
 export const VideoMainItemImg = styled.img`

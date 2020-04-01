@@ -24,13 +24,12 @@ const VideoList = () => {
   }, [params.searchTerm, dispatch]);
   const renderVideos = () => {
     if (!videos) {
-      return <div>LOADING</div>;
+      return "";
     }
     return videos.map(video => {
       if (params.searchTerm) {
         return (
           <VideoSearchItem
-            isItemSearched={!!params.searchTerm}
             title={video.snippet.title}
             imgUrl={video.snippet.thumbnails.medium.url}
             channelTitle={video.snippet.channelTitle}
@@ -43,7 +42,6 @@ const VideoList = () => {
       }
       return (
         <VideoMainItem
-          isItemSearched={!!params.searchTerm}
           title={video.snippet.title}
           imgUrl={video.snippet.thumbnails.medium.url}
           channelTitle={video.snippet.channelTitle}

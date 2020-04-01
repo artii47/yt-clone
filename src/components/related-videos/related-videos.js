@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import * as Styled from "./related-videos.styles";
-import VideoItem from "../video-item/video-item";
+import VideoRelatedItem from "../video-related-item/video-related-item";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -26,7 +26,7 @@ const RelatedVideos = () => {
       <Styled.RelatedVideosText>Related videos</Styled.RelatedVideosText>
       {videos.map(video => {
         return (
-          <VideoItem
+          <VideoRelatedItem
             isRelated
             id={video.id}
             title={video.snippet.title}

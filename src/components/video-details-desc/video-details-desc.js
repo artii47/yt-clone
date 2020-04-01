@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import * as Styled from "./video-details-desc.styles";
 import { numberConverter } from "../../helpers/numConverter";
 import { useSelector } from "react-redux";
+import { renderVideoDetailsDescContent } from "./renderVideoDetailsDescription";
+import { renderButton } from "./renderButton";
 
 const VideoDetailsDesc = props => {
   const [showMore, setShowMore] = useState(false);
@@ -9,25 +11,7 @@ const VideoDetailsDesc = props => {
   if (!channel) {
     return "";
   }
-  const renderVideoDetailsDescContent = desc => {
-    const wordsArr = desc.split(" ");
-    if (wordsArr.length < 40) {
-      return desc;
-    } else {
-      return wordsArr.slice(0, 40).join(" ");
-    }
-  };
 
-  const renderButton = () => {
-    if (props.videoDesc.split(" ").length > 40) {
-      return (
-        <Styled.VideoDetailsDescButton onClick={() => setShowMore(!showMore)}>
-          {!showMore ? "SHOW MORE" : "SHOW LESS"}
-        </Styled.VideoDetailsDescButton>
-      );
-    }
-    return "";
-  };
   return (
     <Styled.VideoDetailsDesc>
       <Styled.VideoDetailsDescChannelBox>
@@ -50,7 +34,7 @@ const VideoDetailsDesc = props => {
           ? renderVideoDetailsDescContent(props.videoDesc)
           : props.videoDesc}
         <br />
-        {renderButton()}
+        {renderButton(props.videoDesc, showMore, setShowMore)}
       </Styled.VideoDetailsDescContent>
     </Styled.VideoDetailsDesc>
   );
