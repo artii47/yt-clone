@@ -22,7 +22,7 @@ const VideoDetails = () => {
     }
   }, [video, dispatch]);
   if (!video) {
-    return <Styled.VideoDetails />;
+    return "";
   }
   const ratingsSum =
     Number(video.statistics.likeCount) + Number(video.statistics.dislikeCount);

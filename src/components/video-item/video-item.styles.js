@@ -9,21 +9,21 @@ export const VideoItem = styled(Link)`
     props.isRelated &&
     css`
       display: flex;
-      height: 10rem;
+      height: 9.4rem;
       margin: 0;
-      margin: 1.5rem 0;
-      width: 100%;
+      margin: 0.8rem 0;
+      width: 40rem;
       cursor: pointer;
       img {
         min-width: 16.8rem;
-        height: 9.4rem;
+        height: 100%;
       }
     `}
 `;
 
 export const VideoItemImg = styled.img`
-  width: 100%;
-  height: 70%;
+  width: 16.4rem;
+  height: 100%;
   background-color: ${props =>
     props.isLoaded ? "rgba(0,0,0,0.1)" : "transparent"};
 `;

@@ -5,9 +5,14 @@ export const VideoMainItem = styled(Link)`
   width: 36rem;
   height: 100%;
   background-color: transparent;
-  margin: 3rem 0;
   cursor: pointer;
   text-decoration: none;
+  margin-right: 0.8rem;
+  margin-left: 0.8rem;
+  margin-bottom: 4rem;
+  :last-child {
+    margin-right: auto;
+  }
 `;
 
 export const VideoMainItemImg = styled.img`

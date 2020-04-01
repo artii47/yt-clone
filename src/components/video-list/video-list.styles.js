@@ -4,15 +4,12 @@ export const VideoList = styled.div`
   grid-row: 2/-1;
   grid-column: 2/-1;
   margin: 5rem 6rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(35rem, min-content));
-  grid-template-rows: min-content;
-  grid-auto-flow: row;
-  grid-gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
   ${props =>
     !props.isItemSearched &&
     css`
-      justify-content: space-evenly;
+      justify-content: center;
     `}
   ${props =>
     props.isItemSearched &&

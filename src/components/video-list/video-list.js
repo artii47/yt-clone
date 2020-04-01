@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import VideoItem from "../video-item/video-item";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {

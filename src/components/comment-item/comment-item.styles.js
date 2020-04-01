@@ -33,7 +33,7 @@ export const CommentItemText = styled.p`
 `;
 
 export const CommentItemLikeCount = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #707070;
   margin: 0 1.3rem;
 `;

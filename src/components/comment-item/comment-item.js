@@ -1,5 +1,6 @@
 import React from "react";
 import * as Styled from "./comment-item.styles";
+import { numberConverter } from "../../helpers/numConverter";
 
 const CommentItem = props => {
   return (
@@ -21,7 +22,7 @@ const CommentItem = props => {
         <Styled.CommentItemFlexWrapper>
           <Styled.CommentItemLike />
           <Styled.CommentItemLikeCount>
-            {props.likeCount === 0 ? "" : props.likeCount}
+            {props.likeCount === 0 ? "" : numberConverter(props.likeCount)}
           </Styled.CommentItemLikeCount>
           <Styled.CommentItemDislike />
         </Styled.CommentItemFlexWrapper>

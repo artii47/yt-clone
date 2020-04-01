@@ -2,9 +2,8 @@ import styled from "styled-components";
 import { SpinnerInner } from "../spinner/spinner.styles";
 
 export const Comments = styled.div`
-  grid-column: 1/13;
-  grid-row: 2/3;
   padding: 0 2.4rem;
+  width: 42.5rem;
 `;
 
 export const CommentsFlexWrapper = styled.div`

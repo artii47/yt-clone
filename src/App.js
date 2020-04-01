@@ -32,9 +32,20 @@ function App() {
         </Route>
         <Route exact path={"/watch/:videoId"}>
           <VideosContainer>
-            <VideoDetails />
-            <RelatedVideos />
-            <Comments />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div
+                style={{
+                  width: "130rem",
+                  paddingRight: "2.4rem",
+                  paddingTop: "2.4rem",
+                  marginLeft: "2rem"
+                }}
+              >
+                <VideoDetails />
+                <Comments />
+              </div>
+              <RelatedVideos />
+            </div>
           </VideosContainer>
         </Route>
       </Router>

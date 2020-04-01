@@ -2,17 +2,11 @@ import styled from "styled-components";
 import { ReactComponent as Like } from "../../assets/icons/like.svg";
 import { ReactComponent as Dislike } from "../../assets/icons/dislike.svg";
 
-export const VideoDetails = styled.div`
-  grid-column: 1/13;
-  grid-row: 1/2;
-  width: 100%;
-  height: 100%;
-  padding: 2.4rem 2.4rem 0 2.4rem;
-`;
+export const VideoDetails = styled.div``;
 
 export const VideoDetailsIframe = styled.iframe`
   width: 100%;
-  height: 70rem;
+  height: 72rem;
   background-color: ${props => (!props.isIframeLoaded ? "black" : "")};
 `;
 
