@@ -26,6 +26,7 @@ const VideoList = () => {
     if (!videos) {
       return "";
     }
+
     return videos.map(video => {
       if (params.searchTerm) {
         return (
@@ -41,15 +42,17 @@ const VideoList = () => {
         );
       }
       return (
-        <VideoMainItem
-          title={video.snippet.title}
-          imgUrl={video.snippet.thumbnails.medium.url}
-          channelTitle={video.snippet.channelTitle}
-          id={video.id}
-          viewsCount={video.statistics ? video.statistics.viewCount : ""}
-          publishDate={video.snippet.publishedAt}
-          channelImgUrl={video.channelImgUrl}
-        />
+        <>
+          <VideoMainItem
+            title={video.snippet.title}
+            imgUrl={video.snippet.thumbnails.medium.url}
+            channelTitle={video.snippet.channelTitle}
+            id={video.id}
+            viewsCount={video.statistics ? video.statistics.viewCount : ""}
+            publishDate={video.snippet.publishedAt}
+            channelImgUrl={video.channelImgUrl}
+          />
+        </>
       );
     });
   };

@@ -8,6 +8,7 @@ import VideoDetails from "./components/video-details/video-details";
 import VideoList from "./components/video-list/video-list";
 import RelatedVideos from "./components/related-videos/related-videos";
 import Comments from "./components/comments/comments";
+import CommentsContainer from "./components/comments/commentsContainer";
 /*
 TODO
 sorting comments - DONE
@@ -18,7 +19,7 @@ add statistics for searched videos - DONE
 fix fetching data when going back (previous page)
 showing some kind of spinner when elements loading
 add dynamic like/dislike bar - DONE
-fetching comments on scroll only once
+fetching comments on scroll only once - DONE
 fetching more related videos on scroll only once
 */
 function App() {
@@ -42,7 +43,7 @@ function App() {
                 }}
               >
                 <VideoDetails />
-                <Comments />
+                <CommentsContainer />
               </div>
               <RelatedVideos />
             </div>

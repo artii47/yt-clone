@@ -38,7 +38,7 @@ export const {
 
 export const fetchSearchVideosAsync = searchTerm => async dispatch => {
   const response = await youtube.get(
-    `/search?part=snippet&maxResults=4&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/search?part=snippet&maxResults=8&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const videoIds = getVideoIds(response.data.items);
   const responseWithStats = await youtube.get(
@@ -49,7 +49,7 @@ export const fetchSearchVideosAsync = searchTerm => async dispatch => {
 
 export const fetchPopularVideosAsync = () => async dispatch => {
   const response = await youtube.get(
-    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=10&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const channelIds = getChannelIds(response.data.items);
 

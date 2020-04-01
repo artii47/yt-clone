@@ -21,7 +21,8 @@ const CommentList = () => {
           />
         );
       })}
-      {isLoading ? <Spinner /> : ""}
+      {isLoading && comments.nextPageToken ? <Spinner /> : ""}
+      {!comments.nextPageToken ? "" : ""}
     </Styled.CommentList>
   );
 };

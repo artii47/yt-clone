@@ -1,32 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import * as Styled from "./comments.styles";
 import CommentList from "../comment-list/comment-list";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { numberWithCommas } from "../../helpers/numConverter";
 import SortOptions from "../sort-options/sort-options";
-import {
-  fetchCommentsAsync,
-  resetCurrentComments
-} from "../../reducers/commentsReducer";
-import { useParams } from "react-router-dom";
 
-const Comments = () => {
-  const video = useSelector(state => state.video.currentVideo);
-  const comments = useSelector(state => state.comments.currentVideoComments);
-  const dispatch = useDispatch();
-  const params = useParams();
-  const [sortBy, setSortBy] = useState("relevance");
-  useEffect(() => {
-    dispatch(fetchCommentsAsync(params.videoId, sortBy));
-    return () => {
-      dispatch(resetCurrentComments());
-    };
-  }, [sortBy, params.videoId, dispatch]);
-
+const Comments = ({ sortBy, setSortBy, video }) => {
   const renderComments = () => {
-    if (!comments) {
-      return "";
-    }
     return (
       <>
         <Styled.CommentsFlexWrapper>
@@ -41,7 +21,7 @@ const Comments = () => {
       </>
     );
   };
-  return <Styled.Comments>{renderComments()}</Styled.Comments>;
+  return <Styled.Comments id="comments">{renderComments()}</Styled.Comments>;
 };
 
 export default Comments;
