@@ -22,12 +22,13 @@ const VideoList = () => {
     dispatch(fetchPopularVideosAsync());
     return () => dispatch(resetVideos());
   }, [params.searchTerm, dispatch]);
+  //useScrollEvent(videos, "video-list", isLoading);
   const renderVideos = () => {
-    if (!videos) {
+    if (!videos.items) {
       return "";
     }
 
-    return videos.map(video => {
+    return videos.items.map(video => {
       if (params.searchTerm) {
         return (
           <VideoSearchItem
@@ -57,7 +58,7 @@ const VideoList = () => {
     });
   };
   return (
-    <Styled.VideoList isItemSearched={!!params.searchTerm}>
+    <Styled.VideoList id="video-list" isItemSearched={!!params.searchTerm}>
       {renderVideos()}
     </Styled.VideoList>
   );

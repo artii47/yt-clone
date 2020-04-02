@@ -49,8 +49,8 @@ export const fetchCommentsAsync = (videoId, sortBy) => async dispatch => {
 };
 
 export const fetchCommentsNextPageAsync = (
-  videoId,
   pageToken,
+  videoId,
   sortBy
 ) => async dispatch => {
   dispatch(fetchCommentsNextPageStart());

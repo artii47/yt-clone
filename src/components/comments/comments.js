@@ -1,7 +1,6 @@
 import React from "react";
 import * as Styled from "./comments.styles";
 import CommentList from "../comment-list/comment-list";
-import { useSelector } from "react-redux";
 import { numberWithCommas } from "../../helpers/numConverter";
 import SortOptions from "../sort-options/sort-options";
 

@@ -7,7 +7,6 @@ import * as Styled from "./App.styles";
 import VideoDetails from "./components/video-details/video-details";
 import VideoList from "./components/video-list/video-list";
 import RelatedVideos from "./components/related-videos/related-videos";
-import Comments from "./components/comments/comments";
 import CommentsContainer from "./components/comments/commentsContainer";
 /*
 TODO
@@ -33,20 +32,13 @@ function App() {
         </Route>
         <Route exact path={"/watch/:videoId"}>
           <VideosContainer>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <div
-                style={{
-                  width: "130rem",
-                  paddingRight: "2.4rem",
-                  paddingTop: "2.4rem",
-                  marginLeft: "2rem"
-                }}
-              >
+            <Styled.FlexWrapper>
+              <Styled.VideoDetailsAndCommentsWrapper>
                 <VideoDetails />
                 <CommentsContainer />
-              </div>
+              </Styled.VideoDetailsAndCommentsWrapper>
               <RelatedVideos />
-            </div>
+            </Styled.FlexWrapper>
           </VideosContainer>
         </Route>
       </Router>
