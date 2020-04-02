@@ -11,6 +11,11 @@ export const FlexWrapper = styled.div`
   justify-content: center;
 `;
 
+export const Container = styled.div`
+  grid-row: 2/-1;
+  grid-column: 1/-1;
+`;
+
 export const VideoDetailsAndCommentsWrapper = styled.div`
   width: 130rem;
   padding-right: 2.4rem;

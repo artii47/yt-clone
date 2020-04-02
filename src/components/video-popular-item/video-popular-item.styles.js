@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const VideoMainItem = styled(Link)`
+export const VideoPopularItem = styled(Link)`
   width: 36rem;
   height: 100%;
   background-color: transparent;
@@ -12,42 +12,42 @@ export const VideoMainItem = styled(Link)`
   margin-bottom: 4rem;
 `;
 
-export const VideoMainItemImg = styled.img`
+export const VideoPopularItemImg = styled.img`
   width: 100%;
   height: 20rem;
   background-color: ${props =>
     !props.isLoaded ? "rgba(0,0,0,0.1)" : "transparent"};
 `;
 
-export const VideoMainItemDescription = styled.div`
+export const VideoPopularItemDescription = styled.div`
   width: 100%;
   padding-right: 1.5rem;
 `;
 
-export const VideoMainItemTitle = styled.p`
+export const VideoPopularItemTitle = styled.p`
   color: #000;
   font-size: 1.7rem;
   font-weight: 500;
   line-height: 2.2rem;
   margin-top: 1.3rem;
 `;
-export const VideoMainItemChannelTitle = styled.p`
+export const VideoPopularItemChannelTitle = styled.p`
   font-weight: 400;
   color: #707070;
   font-size: 1.5rem;
 `;
 
-export const VideoMainItemViews = styled.p`
+export const VideoPopularItemViews = styled.p`
   font-weight: 400;
   color: #707070;
   font-size: 1.5rem;
 `;
 
-export const VideoMainItemFlexWrapper = styled.div`
+export const VideoPopularItemFlexWrapper = styled.div`
   display: flex;
 `;
 
-export const VideoMainItemChannelImg = styled.img`
+export const VideoPopularItemChannelImg = styled.img`
   min-width: 3.6rem;
   height: 3.6rem;
   margin-top: 1.5rem;

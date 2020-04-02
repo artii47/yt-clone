@@ -2,13 +2,12 @@ import React from "react";
 import Header from "./components/header/header";
 import Sidebar from "./components/sidebar/sidebar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import VideosContainer from "./components/videos-container/videos-container";
 import * as Styled from "./App.styles";
 import VideoDetails from "./components/video-details/video-details";
-import RelatedVideos from "./components/related-videos/related-videos";
 import CommentsContainer from "./components/comments/commentsContainer";
 import VideosPopularList from "./components/videos-popular-list/videos-popular-list";
 import VideosSearchList from "./components/videos-search-list/videos-search-list";
+import VideosRelatedList from "./components/videos-related-list/videos-related-list";
 /*
 TODO
 sorting comments - DONE
@@ -36,15 +35,15 @@ function App() {
           <VideosSearchList />
         </Route>
         <Route exact path={"/watch/:videoId"}>
-          <VideosContainer>
+          <Styled.Container>
             <Styled.FlexWrapper>
               <Styled.VideoDetailsAndCommentsWrapper>
                 <VideoDetails />
                 <CommentsContainer />
               </Styled.VideoDetailsAndCommentsWrapper>
-              <RelatedVideos />
+              <VideosRelatedList />
             </Styled.FlexWrapper>
-          </VideosContainer>
+          </Styled.Container>
         </Route>
       </Router>
     </Styled.App>

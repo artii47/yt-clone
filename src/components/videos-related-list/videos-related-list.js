@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import * as Styled from "./related-videos.styles";
+import * as Styled from "./vidoes-related-list.styles";
 import VideoRelatedItem from "../video-related-item/video-related-item";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,7 +8,7 @@ import {
   resetCurrentRelatedVideos
 } from "../../reducers/videosReducer";
 
-const RelatedVideos = () => {
+const VideosRelatedList = () => {
   const dispatch = useDispatch();
   const videos = useSelector(state => state.videos.relatedToVideos);
   const params = useParams();
@@ -22,8 +22,8 @@ const RelatedVideos = () => {
     return "";
   }
   return (
-    <Styled.RelatedVideos>
-      <Styled.RelatedVideosText>Related videos</Styled.RelatedVideosText>
+    <Styled.VideosRelated>
+      <Styled.VideosRelatedText>Related videos</Styled.VideosRelatedText>
       {videos.map(video => {
         return (
           <VideoRelatedItem
@@ -37,8 +37,8 @@ const RelatedVideos = () => {
           />
         );
       })}
-    </Styled.RelatedVideos>
+    </Styled.VideosRelated>
   );
 };
 
-export default RelatedVideos;
+export default VideosRelatedList;

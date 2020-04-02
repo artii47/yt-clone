@@ -6,7 +6,7 @@ import {
   fetchPopularVideosNextPageAsync
 } from "../../reducers/videosReducer";
 import * as Styled from "./videos-popular-list.styles";
-import VideoMainItem from "../video-main-item/video-main-item";
+import VideoPopularItem from "../video-popular-item/video-popular-item";
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
 
@@ -31,7 +31,7 @@ const VideosPopularList = () => {
     return videos.items.map(video => {
       return (
         <>
-          <VideoMainItem
+          <VideoPopularItem
             title={video.snippet.title}
             imgUrl={video.snippet.thumbnails.medium.url}
             channelTitle={video.snippet.channelTitle}
