@@ -5,9 +5,10 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import VideosContainer from "./components/videos-container/videos-container";
 import * as Styled from "./App.styles";
 import VideoDetails from "./components/video-details/video-details";
-import VideoList from "./components/video-list/video-list";
 import RelatedVideos from "./components/related-videos/related-videos";
 import CommentsContainer from "./components/comments/commentsContainer";
+import VideosPopularList from "./components/videos-popular-list/videos-popular-list";
+import VideosSearchList from "./components/videos-search-list/videos-search-list";
 /*
 TODO
 sorting comments - DONE
@@ -26,9 +27,13 @@ function App() {
     <Styled.App>
       <Router>
         <Header />
-        <Route exact path={["/", "/search_query=:searchTerm"]}>
+        <Route exact path={["/"]}>
           <Sidebar />
-          <VideoList />
+          <VideosPopularList />
+        </Route>
+        <Route exact path={["/search_query=:searchTerm"]}>
+          <Sidebar />
+          <VideosSearchList />
         </Route>
         <Route exact path={"/watch/:videoId"}>
           <VideosContainer>

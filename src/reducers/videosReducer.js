@@ -25,6 +25,8 @@ export const videos = createSlice({
       state.isLoading = true;
     },
     fetchPopularVideosNextPageSuccess: (state, action) => {
+      state.videos.nextPageToken = action.payload.nextPageToken;
+      state.videos.items = [...state.videos.items, ...action.payload.items];
       state.isLoading = false;
     },
     fetchRelatedToVideos: (state, action) => {
@@ -46,7 +48,9 @@ export const {
   resetRelatedVideos,
   resetVideos,
   fetchPopularVideosSuccess,
-  fetchPopularVideosStart
+  fetchPopularVideosStart,
+  fetchPopularVideosNextPageStart,
+  fetchPopularVideosNextPageSuccess
 } = videos.actions;
 
 export const fetchSearchVideosAsync = searchTerm => async dispatch => {
@@ -67,13 +71,12 @@ export const fetchSearchVideosAsync = searchTerm => async dispatch => {
 export const fetchPopularVideosAsync = () => async dispatch => {
   dispatch(fetchPopularVideosStart());
   const response = await youtube.get(
-    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=5&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const channelIds = getChannelIds(response.data.items);
   const reponseWithChannels = await youtube.get(
     `/channels?part=snippet&id=${channelIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
-  console.log(reponseWithChannels.data);
   const result = response.data.items.map((item, index) => {
     return {
       ...item,
@@ -86,6 +89,31 @@ export const fetchPopularVideosAsync = () => async dispatch => {
     items: result
   };
   dispatch(fetchPopularVideosSuccess(resultFinal));
+};
+
+export const fetchPopularVideosNextPageAsync = nextPageToken => async dispatch => {
+  dispatch(fetchPopularVideosNextPageStart());
+  console.log("nextPageToken", nextPageToken);
+  const response = await youtube.get(
+    `/videos?part=snippet,statistics&chart=mostPopular&pageToken=${nextPageToken}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+  );
+  const channelIds = getChannelIds(response.data.items);
+  const reponseWithChannels = await youtube.get(
+    `/channels?part=snippet&id=${channelIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+  );
+  const result = response.data.items.map((item, index) => {
+    return {
+      ...item,
+      channelImgUrl:
+        reponseWithChannels.data.items[index].snippet.thumbnails.medium.url
+    };
+  });
+  console.log("response.data", response.data);
+  const resultFinal = {
+    nextPageToken: response.data.nextPageToken,
+    items: result
+  };
+  dispatch(fetchPopularVideosNextPageSuccess(resultFinal));
 };
 
 export const fetchRelatedToVideosAsync = videoId => async dispatch => {

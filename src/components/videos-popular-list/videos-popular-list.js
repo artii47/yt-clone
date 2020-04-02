@@ -3,45 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   fetchPopularVideosAsync,
-  fetchSearchVideosAsync,
-  resetVideos
+  resetVideos,
+  fetchPopularVideosNextPageAsync
 } from "../../reducers/videosReducer";
-import * as Styled from "./video-list.styles";
-import VideoSearchItem from "../video-search-item/video-search-item";
+import * as Styled from "./videos-popular-list.styles";
 import VideoMainItem from "../video-main-item/video-main-item";
+import useScrollEvent from "../../hooks/useScrollEvent";
 
-const VideoList = () => {
+const VideosPopularList = () => {
   const dispatch = useDispatch();
   const videos = useSelector(state => state.videos.videos);
   const params = useParams();
   useEffect(() => {
-    if (params.searchTerm) {
-      dispatch(fetchSearchVideosAsync(params.searchTerm));
-      return;
-    }
     dispatch(fetchPopularVideosAsync());
     return () => dispatch(resetVideos());
-  }, [params.searchTerm, dispatch]);
-  //useScrollEvent(videos, "video-list", isLoading);
+  }, [dispatch]);
   const renderVideos = () => {
     if (!videos.items) {
       return "";
     }
-
     return videos.items.map(video => {
-      if (params.searchTerm) {
-        return (
-          <VideoSearchItem
-            title={video.snippet.title}
-            imgUrl={video.snippet.thumbnails.medium.url}
-            channelTitle={video.snippet.channelTitle}
-            id={video.id}
-            viewsCount={video.statistics ? video.statistics.viewCount : ""}
-            publishDate={video.snippet.publishedAt}
-            description={video.snippet.description}
-          />
-        );
-      }
       return (
         <>
           <VideoMainItem
@@ -58,10 +39,20 @@ const VideoList = () => {
     });
   };
   return (
-    <Styled.VideoList id="video-list" isItemSearched={!!params.searchTerm}>
+    <Styled.VideosPopularList
+      id="video-list"
+      isItemSearched={!!params.searchTerm}
+    >
       {renderVideos()}
-    </Styled.VideoList>
+      {/* <button
+        onClick={() =>
+          dispatch(fetchPopularVideosNextPageAsync(videos.nextPageToken))
+        }
+      >
+        render more videos
+      </button> */}
+    </Styled.VideosPopularList>
   );
 };
 
-export default VideoList;
+export default VideosPopularList;

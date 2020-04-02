@@ -1,17 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { throttle } from "lodash";
 
 const useScrollEvent = (data, domElement, action, ...args) => {
   const dispatch = useDispatch();
+  const [element, setElement] = useState(null);
   useEffect(() => {
+    setElement(document.getElementById(domElement));
     document.addEventListener("scroll", throttledFunction);
     return () => {
       document.removeEventListener("scroll", throttledFunction);
     };
-  }, [data]);
+  }, [data, domElement, element]);
   const trackScrolling = () => {
-    const element = document.getElementById(domElement);
     if (isBottom(element)) {
       if (data.nextPageToken) {
         dispatch(action(data.nextPageToken, ...args));
