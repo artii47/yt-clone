@@ -9,15 +9,22 @@ import {
 import * as Styled from "./videos-popular-list.styles";
 import VideoMainItem from "../video-main-item/video-main-item";
 import useScrollEvent from "../../hooks/useScrollEvent";
+import Spinner from "../spinner/spinner";
 
 const VideosPopularList = () => {
   const dispatch = useDispatch();
   const videos = useSelector(state => state.videos.videos);
-  const params = useParams();
+  const isLoading = useSelector(state => state.videos.isLoading);
   useEffect(() => {
     dispatch(fetchPopularVideosAsync());
     return () => dispatch(resetVideos());
   }, [dispatch]);
+  useScrollEvent(
+    videos,
+    "videos-popular-list",
+    fetchPopularVideosNextPageAsync,
+    videos.nextPageToken
+  );
   const renderVideos = () => {
     if (!videos.items) {
       return "";
@@ -39,19 +46,12 @@ const VideosPopularList = () => {
     });
   };
   return (
-    <Styled.VideosPopularList
-      id="video-list"
-      isItemSearched={!!params.searchTerm}
-    >
-      {renderVideos()}
-      {/* <button
-        onClick={() =>
-          dispatch(fetchPopularVideosNextPageAsync(videos.nextPageToken))
-        }
-      >
-        render more videos
-      </button> */}
-    </Styled.VideosPopularList>
+    <Styled.VideosPopularListWrapper>
+      <Styled.VideosPopularList id="videos-popular-list">
+        {renderVideos()}
+      </Styled.VideosPopularList>
+      {isLoading ? <Spinner /> : ""}
+    </Styled.VideosPopularListWrapper>
   );
 };
 

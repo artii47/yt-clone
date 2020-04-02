@@ -71,7 +71,7 @@ export const fetchSearchVideosAsync = searchTerm => async dispatch => {
 export const fetchPopularVideosAsync = () => async dispatch => {
   dispatch(fetchPopularVideosStart());
   const response = await youtube.get(
-    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=5&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=10&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const channelIds = getChannelIds(response.data.items);
   const reponseWithChannels = await youtube.get(
@@ -95,7 +95,7 @@ export const fetchPopularVideosNextPageAsync = nextPageToken => async dispatch =
   dispatch(fetchPopularVideosNextPageStart());
   console.log("nextPageToken", nextPageToken);
   const response = await youtube.get(
-    `/videos?part=snippet,statistics&chart=mostPopular&pageToken=${nextPageToken}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=8&pageToken=${nextPageToken}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const channelIds = getChannelIds(response.data.items);
   const reponseWithChannels = await youtube.get(
