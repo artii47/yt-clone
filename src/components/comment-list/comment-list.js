@@ -19,6 +19,7 @@ const CommentList = () => {
             authorChannelImage={comm.authorProfileImageUrl}
             text={comm.textOriginal}
             likeCount={comm.likeCount}
+            publishedAt={comm.publishedAt}
           />
         );
       })}

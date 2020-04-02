@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as Styled from "./video-related-item.styles";
 import { useParams } from "react-router-dom";
 import { numberConverter } from "../../helpers/numConverter";
+import { dateConverter } from "../../helpers/dateConverter";
 
 const VideoRelatedItem = props => {
   const params = useParams();
@@ -34,7 +35,7 @@ const VideoRelatedItem = props => {
             {props.viewsCount
               ? numberConverter(props.viewsCount) + " views "
               : ""}
-            &bull; {props.publishDate ? props.publishDate.slice(0, 10) : ""}
+            &bull; {props.publishDate ? dateConverter(props.publishDate) : ""}
           </Styled.VideoRelatedItemViews>
         </Styled.VideoRelatedItemDescription>
       </Styled.VideoRelatedItem>

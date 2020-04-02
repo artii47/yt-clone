@@ -1,6 +1,7 @@
 import React from "react";
 import * as Styled from "./comment-item.styles";
 import { numberConverter } from "../../helpers/numConverter";
+import { dateConverter } from "../../helpers/dateConverter";
 
 const CommentItem = props => {
   return (
@@ -15,7 +16,7 @@ const CommentItem = props => {
             {props.authorName} &nbsp;
           </Styled.CommentItemChannelTitle>
           <Styled.CommentItemPublishDate>
-            1 year ago
+            {dateConverter(props.publishedAt)}
           </Styled.CommentItemPublishDate>
         </Styled.CommentItemFlexWrapper>
         <Styled.CommentItemText>{props.text}</Styled.CommentItemText>
