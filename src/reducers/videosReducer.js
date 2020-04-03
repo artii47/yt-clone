@@ -14,6 +14,14 @@ export const videos = createSlice({
     fetchSearchVideos: (state, action) => {
       state.videos = action.payload;
     },
+    fetchSearchVideosNextPageStart: state => {
+      state.isLoading = true;
+    },
+    fetchSearchVideosNextPageSuccess: (state, action) => {
+      state.videos.nextPageToken = action.payload.nextPageToken;
+      state.videos.items = [...state.videos.items, ...action.payload.items];
+      state.isLoading = false;
+    },
     fetchPopularVideosStart: state => {
       state.isLoading = true;
     },
@@ -43,6 +51,8 @@ export const videos = createSlice({
 
 export const {
   fetchSearchVideos,
+  fetchSearchVideosNextPageStart,
+  fetchSearchVideosNextPageSuccess,
   fetchRelatedToVideos,
   fetchRelatedToVideosStats,
   resetRelatedVideos,
@@ -66,6 +76,25 @@ export const fetchSearchVideosAsync = searchTerm => async dispatch => {
     items: responseWithStats.data.items
   };
   dispatch(fetchSearchVideos(result));
+};
+
+export const fetchSearchVideosNextPageAsync = (
+  nextPageToken,
+  searchTerm
+) => async dispatch => {
+  dispatch(fetchSearchVideosNextPageStart());
+  const response = await youtube.get(
+    `/search?part=snippet&pageToken=${nextPageToken}&maxResults=8&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+  );
+  const videoIds = getVideoIds(response.data.items);
+  const responseWithStats = await youtube.get(
+    `/videos?part=snippet,statistics&id=${videoIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+  );
+  const result = {
+    nextPageToken: response.data.nextPageToken,
+    items: responseWithStats.data.items
+  };
+  dispatch(fetchSearchVideosNextPageSuccess(result));
 };
 
 export const fetchPopularVideosAsync = () => async dispatch => {

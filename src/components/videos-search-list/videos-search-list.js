@@ -3,19 +3,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   fetchSearchVideosAsync,
-  resetVideos
+  resetVideos,
+  fetchSearchVideosNextPageAsync
 } from "../../reducers/videosReducer";
 import * as Styled from "./videos-search-list.styles";
 import VideoSearchItem from "../video-search-item/video-search-item";
+import useScrollEvent from "../../hooks/useScrollEvent";
+import Spinner from "../spinner/spinner";
 
 const VideosSearchList = () => {
   const dispatch = useDispatch();
   const videos = useSelector(state => state.videos.videos);
+  const isLoading = useSelector(state => state.videos.isLoading);
   const params = useParams();
+
   useEffect(() => {
     dispatch(fetchSearchVideosAsync(params.searchTerm));
     return () => dispatch(resetVideos());
   }, [params.searchTerm, dispatch]);
+  useScrollEvent(
+    videos,
+    "video-list",
+    fetchSearchVideosNextPageAsync,
+    params.searchTerm
+  );
   const renderVideos = () => {
     if (!videos.items) {
       return "";
@@ -36,16 +47,12 @@ const VideosSearchList = () => {
     });
   };
   return (
-    <Styled.VideosSearchList id="video-list">
-      {renderVideos()}
-      {/* <button
-        onClick={() =>
-          dispatch(fetchPopularVideosNextPageAsync(videos.nextPageToken))
-        }
-      >
-        render more videos
-      </button> */}
-    </Styled.VideosSearchList>
+    <>
+      <Styled.VideosSearchList id="video-list">
+        {renderVideos()}
+        {isLoading ? <Spinner /> : ""}
+      </Styled.VideosSearchList>
+    </>
   );
 };
 
