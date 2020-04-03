@@ -71,17 +71,23 @@ export const fetchSearchVideosAsync = searchTerm => async dispatch => {
 export const fetchPopularVideosAsync = () => async dispatch => {
   dispatch(fetchPopularVideosStart());
   const response = await youtube.get(
-    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=10&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const channelIds = getChannelIds(response.data.items);
   const reponseWithChannels = await youtube.get(
     `/channels?part=snippet&id=${channelIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
-  const result = response.data.items.map((item, index) => {
+
+  const result = response.data.items.map(item => {
+    let channelImgUrl = "";
+    for (let channelItem of reponseWithChannels.data.items) {
+      if (channelItem.id === item.snippet.channelId) {
+        channelImgUrl = channelItem.snippet.thumbnails.medium.url;
+      }
+    }
     return {
       ...item,
-      channelImgUrl:
-        reponseWithChannels.data.items[index].snippet.thumbnails.medium.url
+      channelImgUrl: channelImgUrl
     };
   });
   const resultFinal = {
@@ -93,7 +99,6 @@ export const fetchPopularVideosAsync = () => async dispatch => {
 
 export const fetchPopularVideosNextPageAsync = nextPageToken => async dispatch => {
   dispatch(fetchPopularVideosNextPageStart());
-  console.log("nextPageToken", nextPageToken);
   const response = await youtube.get(
     `/videos?part=snippet,statistics&chart=mostPopular&maxResults=8&pageToken=${nextPageToken}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
@@ -102,13 +107,17 @@ export const fetchPopularVideosNextPageAsync = nextPageToken => async dispatch =
     `/channels?part=snippet&id=${channelIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const result = response.data.items.map((item, index) => {
+    let channelImgUrl = "";
+    for (let channelItem of reponseWithChannels.data.items) {
+      if (channelItem.id === item.snippet.channelId) {
+        channelImgUrl = channelItem.snippet.thumbnails.medium.url;
+      }
+    }
     return {
       ...item,
-      channelImgUrl:
-        reponseWithChannels.data.items[index].snippet.thumbnails.medium.url
+      channelImgUrl: channelImgUrl
     };
   });
-  console.log("response.data", response.data);
   const resultFinal = {
     nextPageToken: response.data.nextPageToken,
     items: result
