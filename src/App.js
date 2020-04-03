@@ -28,7 +28,7 @@ function App() {
         <Header />
         <Route exact path={["/"]}>
           <Sidebar />
-          <VideosPopularList />
+          {/* <VideosPopularList /> */}
         </Route>
         <Route exact path={["/search_query=:searchTerm"]}>
           <Sidebar />

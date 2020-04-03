@@ -1,14 +1,15 @@
 import React from "react";
 import * as Styled from "./sidebar.styles";
-import SidebarItem from "../sidebar-item/sidebar-item";
-import sidebarItems from "./sidebar.data";
+import SidebarMainItems from "../sidebar-items/sidebar-main-items/sidebar-main-items";
+import SidebarBestOfYtItems from "../sidebar-items/sidebar-best-of-yt-items/sidebar-best-of-yt-items";
+import SidebarMoreFromYt from "../sidebar-items/sidebar-more-from-yt-items/sidebar-more-from-yt-items";
 
 const Sidebar = () => {
   return (
     <Styled.Sidebar>
-      {sidebarItems.map(item => {
-        return <SidebarItem item={item} />;
-      })}
+      <SidebarMainItems />
+      <SidebarBestOfYtItems />
+      <SidebarMoreFromYt />
     </Styled.Sidebar>
   );
 };

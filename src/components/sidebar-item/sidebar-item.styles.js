@@ -4,9 +4,12 @@ export const SidebarItem = styled.div`
   display: flex;
   align-items: center;
   height: 4rem;
-  background-color: #e5e5e5;
   padding: 0 2.4rem;
-  margin-top: 1.2rem;
+  background-color: ${props => (props.active ? "#e5e5e5" : "transparent")};
+
+  svg {
+    fill: ${props => (props.active ? "red" : "#606060")};
+  }
   :hover {
     background-color: rgba(0, 0, 0, 0.15);
   }
@@ -20,4 +23,11 @@ export const SidebarItemSvg = styled.div`
   width: 3rem;
   height: 3rem;
   fill: red;
+`;
+
+export const SidebarItemImg = styled.img`
+  height: 2.4rem;
+  width: 2.4rem;
+  border-radius: 50%;
+  margin-right: 2.4rem;
 `;

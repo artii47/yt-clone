@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 export const Sidebar = styled.div`
   position: fixed;
+  left: 0;
   top: 5.6rem;
   width: 24rem;
-  height: 100%;
-  grid-row: 1/-1;
-  grid-column: 1/2;
+  height: calc(100% - 5.6rem);
+  grid-row: 2/-1;
   background-color: #fff;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;

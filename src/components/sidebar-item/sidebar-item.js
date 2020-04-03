@@ -2,17 +2,16 @@ import React from "react";
 import * as Styled from "./sidebar-item.styles";
 import styled from "styled-components";
 
-const SidebarItem = ({ item }) => {
-  const { Svg } = item;
-  const SvgIcon = styled(Svg)`
-    width: 1.9rem;
-    height: 1.9rem;
+const SidebarItem = ({ item, active }) => {
+  const { img } = item;
+  const SvgIcon = styled(item.Svg)`
+    width: 2.4rem !important;
+    height: 100% !important;
     margin-right: 2.4rem;
-    fill: red;
   `;
   return (
-    <Styled.SidebarItem>
-      <SvgIcon />
+    <Styled.SidebarItem active={active}>
+      {img ? <Styled.SidebarItemImg src={img} /> : <SvgIcon />}
       <Styled.SidebarItemName>{item.name}</Styled.SidebarItemName>
     </Styled.SidebarItem>
   );
