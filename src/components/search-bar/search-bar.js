@@ -12,14 +12,14 @@ const SearchBar = () => {
       return;
     }
   }, []);
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (!searchTerm) {
       return;
     }
     history.push(`/search_query=${searchTerm}`);
   };
-  const onChange = e => {
+  const onChange = (e) => {
     setSearchTerm(e.target.value);
   };
   return (

@@ -8,13 +8,13 @@ export const videos = createSlice({
   initialState: {
     isLoading: false,
     videos: [],
-    relatedToVideos: []
+    relatedToVideos: [],
   },
   reducers: {
     fetchSearchVideos: (state, action) => {
       state.videos = action.payload;
     },
-    fetchSearchVideosNextPageStart: state => {
+    fetchSearchVideosNextPageStart: (state) => {
       state.isLoading = true;
     },
     fetchSearchVideosNextPageSuccess: (state, action) => {
@@ -22,14 +22,14 @@ export const videos = createSlice({
       state.videos.items = [...state.videos.items, ...action.payload.items];
       state.isLoading = false;
     },
-    fetchPopularVideosStart: state => {
+    fetchPopularVideosStart: (state) => {
       state.isLoading = true;
     },
     fetchPopularVideosSuccess: (state, action) => {
       state.videos = action.payload;
       state.isLoading = false;
     },
-    fetchPopularVideosNextPageStart: state => {
+    fetchPopularVideosNextPageStart: (state) => {
       state.isLoading = true;
     },
     fetchPopularVideosNextPageSuccess: (state, action) => {
@@ -37,16 +37,27 @@ export const videos = createSlice({
       state.videos.items = [...state.videos.items, ...action.payload.items];
       state.isLoading = false;
     },
+    fetchRelatedToVideosNextPageStart: (state) => {
+      state.isLoading = true;
+    },
+    fetchRelatedToVideosNextPageSuccess: (state, action) => {
+      state.relatedToVideos.nextPageToken = action.payload.nextPageToken;
+      state.relatedToVideos.items = [
+        ...state.relatedToVideos.items,
+        ...action.payload.items,
+      ];
+      state.isLoading = false;
+    },
     fetchRelatedToVideos: (state, action) => {
       state.relatedToVideos = action.payload;
     },
-    resetRelatedVideos: state => {
+    resetRelatedVideos: (state) => {
       state.relatedToVideos = [];
     },
-    resetVideos: state => {
+    resetVideos: (state) => {
       state.videos = [];
-    }
-  }
+    },
+  },
 });
 
 export const {
@@ -55,15 +66,17 @@ export const {
   fetchSearchVideosNextPageSuccess,
   fetchRelatedToVideos,
   fetchRelatedToVideosStats,
+  fetchRelatedToVideosNextPageStart,
+  fetchRelatedToVideosNextPageSuccess,
   resetRelatedVideos,
   resetVideos,
   fetchPopularVideosSuccess,
   fetchPopularVideosStart,
   fetchPopularVideosNextPageStart,
-  fetchPopularVideosNextPageSuccess
+  fetchPopularVideosNextPageSuccess,
 } = videos.actions;
 
-export const fetchSearchVideosAsync = searchTerm => async dispatch => {
+export const fetchSearchVideosAsync = (searchTerm) => async (dispatch) => {
   const response = await youtube.get(
     `/search?part=snippet&maxResults=8&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
@@ -73,7 +86,7 @@ export const fetchSearchVideosAsync = searchTerm => async dispatch => {
   );
   const result = {
     nextPageToken: response.data.nextPageToken,
-    items: responseWithStats.data.items
+    items: responseWithStats.data.items,
   };
   dispatch(fetchSearchVideos(result));
 };
@@ -81,7 +94,7 @@ export const fetchSearchVideosAsync = searchTerm => async dispatch => {
 export const fetchSearchVideosNextPageAsync = (
   nextPageToken,
   searchTerm
-) => async dispatch => {
+) => async (dispatch) => {
   dispatch(fetchSearchVideosNextPageStart());
   const response = await youtube.get(
     `/search?part=snippet&pageToken=${nextPageToken}&maxResults=8&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
@@ -92,12 +105,12 @@ export const fetchSearchVideosNextPageAsync = (
   );
   const result = {
     nextPageToken: response.data.nextPageToken,
-    items: responseWithStats.data.items
+    items: responseWithStats.data.items,
   };
   dispatch(fetchSearchVideosNextPageSuccess(result));
 };
 
-export const fetchPopularVideosAsync = () => async dispatch => {
+export const fetchPopularVideosAsync = () => async (dispatch) => {
   dispatch(fetchPopularVideosStart());
   const response = await youtube.get(
     `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
@@ -107,7 +120,7 @@ export const fetchPopularVideosAsync = () => async dispatch => {
     `/channels?part=snippet&id=${channelIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
 
-  const result = response.data.items.map(item => {
+  const result = response.data.items.map((item) => {
     let channelImgUrl = "";
     for (let channelItem of reponseWithChannels.data.items) {
       if (channelItem.id === item.snippet.channelId) {
@@ -116,17 +129,19 @@ export const fetchPopularVideosAsync = () => async dispatch => {
     }
     return {
       ...item,
-      channelImgUrl: channelImgUrl
+      channelImgUrl: channelImgUrl,
     };
   });
   const resultFinal = {
     nextPageToken: response.data.nextPageToken,
-    items: result
+    items: result,
   };
   dispatch(fetchPopularVideosSuccess(resultFinal));
 };
 
-export const fetchPopularVideosNextPageAsync = nextPageToken => async dispatch => {
+export const fetchPopularVideosNextPageAsync = (nextPageToken) => async (
+  dispatch
+) => {
   dispatch(fetchPopularVideosNextPageStart());
   const response = await youtube.get(
     `/videos?part=snippet,statistics&chart=mostPopular&maxResults=8&pageToken=${nextPageToken}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
@@ -144,17 +159,17 @@ export const fetchPopularVideosNextPageAsync = nextPageToken => async dispatch =
     }
     return {
       ...item,
-      channelImgUrl: channelImgUrl
+      channelImgUrl: channelImgUrl,
     };
   });
   const resultFinal = {
     nextPageToken: response.data.nextPageToken,
-    items: result
+    items: result,
   };
   dispatch(fetchPopularVideosNextPageSuccess(resultFinal));
 };
 
-export const fetchRelatedToVideosAsync = videoId => async dispatch => {
+export const fetchRelatedToVideosAsync = (videoId) => async (dispatch) => {
   const response = await youtube.get(
     `/search?part=snippet&relatedToVideoId=${videoId}&maxResults=12&&type=video&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
@@ -162,7 +177,30 @@ export const fetchRelatedToVideosAsync = videoId => async dispatch => {
   const responseWithStats = await youtube.get(
     `/videos?part=snippet,statistics&id=${videoIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
-  dispatch(fetchRelatedToVideos(responseWithStats.data.items));
+  const result = {
+    nextPageToken: response.data.nextPageToken,
+    items: responseWithStats.data.items,
+  };
+  dispatch(fetchRelatedToVideos(result));
+};
+
+export const fetchRelatedToVideosNextPageAsync = (
+  nextPageToken,
+  videoId
+) => async (dispatch) => {
+  dispatch(fetchRelatedToVideosNextPageStart());
+  const response = await youtube.get(
+    `/search?part=snippet&pageToken=${nextPageToken}&relatedToVideoId=${videoId}&maxResults=12&&type=video&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+  );
+  const videoIds = getVideoIds(response.data.items);
+  const responseWithStats = await youtube.get(
+    `/videos?part=snippet,statistics&id=${videoIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+  );
+  const result = {
+    nextPageToken: response.data.nextPageToken,
+    items: responseWithStats.data.items,
+  };
+  dispatch(fetchRelatedToVideosNextPageSuccess(result));
 };
 
 export const resetCurrentRelatedVideos = () => {

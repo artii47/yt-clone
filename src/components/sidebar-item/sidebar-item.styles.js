@@ -5,10 +5,10 @@ export const SidebarItem = styled.div`
   align-items: center;
   height: 4rem;
   padding: 0 2.4rem;
-  background-color: ${props => (props.active ? "#e5e5e5" : "transparent")};
-
+  background-color: ${(props) => (props.active ? "#e5e5e5" : "transparent")};
+  cursor: pointer;
   svg {
-    fill: ${props => (props.active ? "red" : "#606060")};
+    fill: ${(props) => (props.active ? "red" : "#606060")};
   }
   :hover {
     background-color: rgba(0, 0, 0, 0.15);

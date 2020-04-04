@@ -5,12 +5,14 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchRelatedToVideosAsync,
-  resetCurrentRelatedVideos
+  resetCurrentRelatedVideos,
+  fetchRelatedToVideosNextPageAsync,
 } from "../../reducers/videosReducer";
+import useScrollEvent from "../../hooks/useScrollEvent";
 
 const VideosRelatedList = () => {
   const dispatch = useDispatch();
-  const videos = useSelector(state => state.videos.relatedToVideos);
+  const videos = useSelector((state) => state.videos.relatedToVideos);
   const params = useParams();
   useEffect(() => {
     dispatch(fetchRelatedToVideosAsync(params.videoId));
@@ -18,13 +20,19 @@ const VideosRelatedList = () => {
       dispatch(resetCurrentRelatedVideos());
     };
   }, [params.videoId, dispatch]);
-  if (!videos) {
+  useScrollEvent(
+    videos,
+    "videos-realted",
+    fetchRelatedToVideosNextPageAsync,
+    params.videoId
+  );
+  if (!videos.items) {
     return "";
   }
   return (
-    <Styled.VideosRelated>
+    <Styled.VideosRelated id="videos-realted">
       <Styled.VideosRelatedText>Related videos</Styled.VideosRelatedText>
-      {videos.map(video => {
+      {videos.items.map((video) => {
         return (
           <VideoRelatedItem
             isRelated
