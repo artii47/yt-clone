@@ -9,10 +9,12 @@ import {
   fetchRelatedToVideosNextPageAsync,
 } from "../../reducers/videosReducer";
 import useScrollEvent from "../../hooks/useScrollEvent";
+import Spinner from "../spinner/spinner";
 
 const VideosRelatedList = () => {
   const dispatch = useDispatch();
   const videos = useSelector((state) => state.videos.relatedToVideos);
+  const isLoading = useSelector((state) => state.videos.isLoading);
   const params = useParams();
   useEffect(() => {
     dispatch(fetchRelatedToVideosAsync(params.videoId));
@@ -45,6 +47,7 @@ const VideosRelatedList = () => {
           />
         );
       })}
+      {isLoading ? <Spinner /> : ""}
     </Styled.VideosRelated>
   );
 };
