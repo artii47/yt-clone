@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SidebarItem = styled.div`
+export const SidebarItemNormal = styled.div`
   display: flex;
   align-items: center;
   height: 4rem;
@@ -15,17 +15,17 @@ export const SidebarItem = styled.div`
   }
 `;
 
-export const SidebarItemName = styled.p`
+export const SidebarItemNormalName = styled.p`
   font-size: 1.5rem;
 `;
 
-export const SidebarItemSvg = styled.div`
+export const SidebarItemNormalSvg = styled.div`
   width: 3rem;
   height: 3rem;
   fill: red;
 `;
 
-export const SidebarItemImg = styled.img`
+export const SidebarItemNormalImg = styled.img`
   height: 2.4rem;
   width: 2.4rem;
   border-radius: 50%;

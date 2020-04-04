@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SidebarSmallItem = styled.div`
+export const SidebarItemSmall = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +9,6 @@ export const SidebarSmallItem = styled.div`
   color: ${(props) => (props.active ? "red" : "#646064")};
 `;
 
-export const SidebarSmallItemText = styled.p`
+export const SidebarItemSmallText = styled.p`
   font-size: 1.1rem;
 `;

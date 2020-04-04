@@ -1,7 +1,7 @@
 import React from "react";
 import * as Styled from "../sidebar-items.styles";
 import { primaryItems } from "./sidebar-small-items.data";
-import SidebarSmallItem from "../../sidebar-item/sidebar-small-item";
+import SidebarSmallItem from "../../sidebar-item/sidebar-item-small/sidebar-item-small";
 import { useLocation } from "react-router-dom";
 
 const SidebarSmallItems = () => {
