@@ -113,7 +113,7 @@ export const fetchSearchVideosNextPageAsync = (
 export const fetchPopularVideosAsync = () => async (dispatch) => {
   dispatch(fetchPopularVideosStart());
   const response = await youtube.get(
-    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=13&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
   );
   const channelIds = getChannelIds(response.data.items);
   const reponseWithChannels = await youtube.get(

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export const VideoPopularItem = styled(Link)`
   width: 36rem;
-  height: 100%;
   background-color: transparent;
   cursor: pointer;
   text-decoration: none;
@@ -15,7 +14,7 @@ export const VideoPopularItem = styled(Link)`
 export const VideoPopularItemImg = styled.img`
   width: 100%;
   height: 20rem;
-  background-color: ${props =>
+  background-color: ${(props) =>
     !props.isLoaded ? "rgba(0,0,0,0.1)" : "transparent"};
 `;
 

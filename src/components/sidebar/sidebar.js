@@ -8,7 +8,7 @@ import SidebarSmall from "./sidebar-small";
 
 const Sidebar = () => {
   const isSmallerSize = useMediaQuery({
-    query: "(min-device-width: 1200px)",
+    query: "(min-device-width: 1201px)",
   });
   const isBiggerSize = useMediaQuery({
     query: "(max-device-width: 1200px)",

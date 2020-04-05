@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import {
   fetchSearchVideosAsync,
   resetVideos,
-  fetchSearchVideosNextPageAsync
+  fetchSearchVideosNextPageAsync,
 } from "../../reducers/videosReducer";
 import * as Styled from "./videos-search-list.styles";
 import VideoSearchItem from "../video-search-item/video-search-item";
@@ -13,8 +13,8 @@ import Spinner from "../spinner/spinner";
 
 const VideosSearchList = () => {
   const dispatch = useDispatch();
-  const videos = useSelector(state => state.videos.videos);
-  const isLoading = useSelector(state => state.videos.isLoading);
+  const videos = useSelector((state) => state.videos.videos);
+  const isLoading = useSelector((state) => state.videos.isLoading);
   const params = useParams();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const VideosSearchList = () => {
       return "";
     }
 
-    return videos.items.map(video => {
+    return videos.items.map((video) => {
       return (
         <VideoSearchItem
           title={video.snippet.title}
@@ -49,8 +49,10 @@ const VideosSearchList = () => {
   return (
     <>
       <Styled.VideosSearchList id="video-list">
-        {renderVideos()}
-        {isLoading ? <Spinner /> : ""}
+        <Styled.Container>
+          {renderVideos()}
+          {isLoading ? <Spinner /> : ""}
+        </Styled.Container>
       </Styled.VideosSearchList>
     </>
   );

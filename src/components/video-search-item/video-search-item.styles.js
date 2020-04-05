@@ -6,9 +6,12 @@ export const VideoSearchItem = styled(Link)`
   height: 14rem;
   cursor: pointer;
   margin: 1rem 1rem;
-  width: 70%;
+  max-width: 86rem;
   height: 100%;
   text-decoration: none;
+  @media only screen and (max-width: 75em) {
+    margin: 1rem 0;
+  }
 `;
 
 export const VideoSearchItemImg = styled.img`

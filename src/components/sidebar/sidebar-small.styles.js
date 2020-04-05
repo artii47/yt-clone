@@ -10,4 +10,15 @@ export const SidebarSmall = styled.div`
   background-color: #fff;
   overflow-y: scroll;
   overflow-x: hidden;
+  @media only screen and (max-width: 50em) {
+    position: fixed;
+    top: unset;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    grid-row: unset;
+    justify-content: space-around;
+    height: 5.6rem;
+  }
 `;
