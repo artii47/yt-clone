@@ -12,6 +12,9 @@ export const VideosSearchList = styled.div`
   @media only screen and (max-width: 62.5em) {
     margin-top: 5.6rem;
   }
+  @media only screen and (max-width: 50em) {
+    margin: 0 0;
+  }
 `;
 
 export const Container = styled.div`
