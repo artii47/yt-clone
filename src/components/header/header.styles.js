@@ -6,8 +6,12 @@ export const Header = styled.header`
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   height: 5.6rem;
+  padding: 0 1.6rem;
   background-color: #fff;
   z-index: 999;
+  @media only screen and (max-width: 50em) {
+    justify-content: space-between;
+  }
 `;

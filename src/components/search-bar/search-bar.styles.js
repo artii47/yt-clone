@@ -10,6 +10,9 @@ export const SearchBar = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 75em) {
+    width: 70%;
+  }
 `;
 
 export const SearchBarInput = styled.input`
@@ -46,4 +49,7 @@ export const SearchBarSearchSVG = styled(SearchSVG)`
   width: 1.5rem;
   height: 1.5rem;
   fill: #888888;
+  @media only screen and (max-width: 50em) {
+    width: 10rem;
+  }
 `;
