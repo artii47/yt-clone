@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Comments = styled.div`
-  padding: 0 2.4rem;
   width: 100%;
 `;
 

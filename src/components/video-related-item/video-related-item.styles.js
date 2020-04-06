@@ -11,6 +11,9 @@ export const VideoRelatedItem = styled(Link)`
   margin: 0.8rem 0;
   width: 40rem;
   cursor: pointer;
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 export const VideoRelatedItemImg = styled.img`
@@ -18,7 +21,7 @@ export const VideoRelatedItemImg = styled.img`
   height: 100%;
   min-width: 16.8rem;
   height: 100%;
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.isLoaded ? "rgba(0,0,0,0.1)" : "transparent"};
 `;
 

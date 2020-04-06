@@ -45,6 +45,9 @@ export const VideoDetailsDescContent = styled.div`
   margin-left: 6.5rem;
   line-height: 2rem;
   margin-bottom: 2rem;
+  @media only screen and (max-width: 50em) {
+    width: 80%;
+  }
 `;
 
 export const VideoDetailsDescButton = styled.button`

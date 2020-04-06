@@ -2,15 +2,17 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { throttle } from "lodash";
 
-const useScrollEvent = (data, domElement, action, ...args) => {
+const useScrollEvent = (enableScrolling, data, domElement, action, ...args) => {
   const dispatch = useDispatch();
   const [element, setElement] = useState(null);
   useEffect(() => {
-    setElement(document.getElementById(domElement));
-    document.addEventListener("scroll", throttledFunction);
-    return () => {
-      document.removeEventListener("scroll", throttledFunction);
-    };
+    if (enableScrolling) {
+      setElement(document.getElementById(domElement));
+      document.addEventListener("scroll", throttledFunction);
+      return () => {
+        document.removeEventListener("scroll", throttledFunction);
+      };
+    }
   }, [data, domElement, element]);
   const trackScrolling = () => {
     if (isBottom(element)) {
@@ -24,7 +26,7 @@ const useScrollEvent = (data, domElement, action, ...args) => {
   };
   const throttledFunction = throttle(trackScrolling, 100);
 
-  const isBottom = el => {
+  const isBottom = (el) => {
     if (data) {
       return el.getBoundingClientRect().bottom <= window.innerHeight + 100;
     }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchPopularVideosAsync,
   resetVideos,
-  fetchPopularVideosNextPageAsync
+  fetchPopularVideosNextPageAsync,
 } from "../../reducers/videosReducer";
 import * as Styled from "./videos-popular-list.styles";
 import VideoPopularItem from "../video-popular-item/video-popular-item";
@@ -12,13 +12,14 @@ import Spinner from "../spinner/spinner";
 
 const VideosPopularList = () => {
   const dispatch = useDispatch();
-  const videos = useSelector(state => state.videos.videos);
-  const isLoading = useSelector(state => state.videos.isLoading);
+  const videos = useSelector((state) => state.videos.videos);
+  const isLoading = useSelector((state) => state.videos.isLoading);
   useEffect(() => {
     dispatch(fetchPopularVideosAsync());
     return () => dispatch(resetVideos());
   }, [dispatch]);
   useScrollEvent(
+    true,
     videos,
     "videos-popular-list",
     fetchPopularVideosNextPageAsync,
@@ -28,7 +29,7 @@ const VideosPopularList = () => {
     if (!videos.items) {
       return "";
     }
-    return videos.items.map(video => {
+    return videos.items.map((video) => {
       return (
         <>
           <VideoPopularItem

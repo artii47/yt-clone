@@ -11,7 +11,7 @@ import {
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
 
-const VideosRelatedList = () => {
+const VideosRelatedList = (props) => {
   const dispatch = useDispatch();
   const videos = useSelector((state) => state.videos.relatedToVideos);
   const isLoading = useSelector((state) => state.videos.isLoading);
@@ -23,6 +23,7 @@ const VideosRelatedList = () => {
     };
   }, [params.videoId, dispatch]);
   useScrollEvent(
+    props.enableScrollEvent,
     videos,
     "videos-realted",
     fetchRelatedToVideosNextPageAsync,
@@ -47,6 +48,7 @@ const VideosRelatedList = () => {
           />
         );
       })}
+
       {isLoading ? <Spinner /> : ""}
     </Styled.VideosRelated>
   );

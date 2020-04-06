@@ -8,6 +8,7 @@ import CommentsContainer from "./components/comments/commentsContainer";
 import VideosPopularList from "./components/videos-popular-list/videos-popular-list";
 import VideosSearchList from "./components/videos-search-list/videos-search-list";
 import VideosRelatedList from "./components/videos-related-list/videos-related-list";
+import { useMediaQuery } from "react-responsive";
 /*
 TODO
 sorting comments - DONE
@@ -22,6 +23,7 @@ fetching comments on scroll only once - DONE
 fetching more related videos on scroll only once
 */
 function App() {
+  const isMediumSize = useMediaQuery({ query: `(max-device-width: 1000px)` });
   return (
     <Styled.App>
       <Router>
@@ -39,9 +41,12 @@ function App() {
             <Styled.FlexWrapper>
               <Styled.VideoDetailsAndCommentsWrapper>
                 <VideoDetails />
+                {isMediumSize && (
+                  <VideosRelatedList enableScrollEvent={false} />
+                )}
                 <CommentsContainer />
               </Styled.VideoDetailsAndCommentsWrapper>
-              <VideosRelatedList />
+              {!isMediumSize ? <VideosRelatedList /> : ""}
             </Styled.FlexWrapper>
           </Styled.Container>
         </Route>

@@ -5,12 +5,12 @@ import { useSelector } from "react-redux";
 import Spinner from "../spinner/spinner";
 
 const CommentList = () => {
-  const comments = useSelector(state => state.comments.currentVideoComments);
-  const isLoading = useSelector(state => state.comments.isLoading);
+  const comments = useSelector((state) => state.comments.currentVideoComments);
+  const isLoading = useSelector((state) => state.comments.isLoading);
 
   return (
     <Styled.CommentList>
-      {comments.items.map(comment => {
+      {comments.items.map((comment) => {
         const comm = comment.snippet.topLevelComment.snippet;
         return (
           <CommentItem
@@ -23,6 +23,7 @@ const CommentList = () => {
           />
         );
       })}
+
       {isLoading && comments.nextPageToken ? <Spinner /> : ""}
       {!comments.nextPageToken ? "" : ""}
     </Styled.CommentList>

@@ -22,6 +22,7 @@ const VideosSearchList = () => {
     return () => dispatch(resetVideos());
   }, [params.searchTerm, dispatch]);
   useScrollEvent(
+    true,
     videos,
     "video-list",
     fetchSearchVideosNextPageAsync,

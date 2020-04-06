@@ -11,7 +11,7 @@ const VideoDetails = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const url = `http://www.youtube.com/embed/${params.videoId}`;
-  const video = useSelector(state => state.video.currentVideo);
+  const video = useSelector((state) => state.video.currentVideo);
   const [isIframeLoaded, setIsIframeLoaded] = useState(false);
   useEffect(() => {
     dispatch(fetchVideoAsync(params.videoId));

@@ -6,8 +6,12 @@ export const VideoDetails = styled.div``;
 
 export const VideoDetailsIframe = styled.iframe`
   width: 100%;
-  height: 72rem;
-  background-color: ${props => (!props.isIframeLoaded ? "black" : "")};
+  height: 35vw;
+  max-height: 72rem;
+  background-color: ${(props) => (!props.isIframeLoaded ? "black" : "")};
+  @media only screen and (max-width: 1000px) {
+    height: 50vw;
+  }
 `;
 
 export const VideoDetailsTitle = styled.p`
@@ -32,7 +36,7 @@ export const VideoDetailsLikeBox = styled.div`
     bottom: -1.5rem;
     height: 2px;
     text-align: center;
-    width: ${props => (props.likePercentage ? props.likePercentage : "")}%;
+    width: ${(props) => (props.likePercentage ? props.likePercentage : "")}%;
     display: inline-block;
     background-color: #909090;
   }
