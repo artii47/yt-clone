@@ -10,6 +10,7 @@ import {
 } from "../../reducers/videosReducer";
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
+import CustomButton from "../custom-button/custom-button";
 
 const VideosRelatedList = (props) => {
   const dispatch = useDispatch();
@@ -48,6 +49,23 @@ const VideosRelatedList = (props) => {
           />
         );
       })}
+      {!props.enableScrollEvent ? (
+        <CustomButton
+          onClick={() =>
+            dispatch(
+              fetchRelatedToVideosNextPageAsync(
+                videos.nextPageToken,
+                params.videoId
+              )
+            )
+          }
+          wideButton
+        >
+          SHOW MORE VIDEOS
+        </CustomButton>
+      ) : (
+        ""
+      )}
 
       {isLoading ? <Spinner /> : ""}
     </Styled.VideosRelated>

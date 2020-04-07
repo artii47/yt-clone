@@ -9,6 +9,7 @@ import VideosPopularList from "./components/videos-popular-list/videos-popular-l
 import VideosSearchList from "./components/videos-search-list/videos-search-list";
 import VideosRelatedList from "./components/videos-related-list/videos-related-list";
 import { useMediaQuery } from "react-responsive";
+import CustomButton from "./components/custom-button/custom-button";
 /*
 TODO
 sorting comments - DONE
