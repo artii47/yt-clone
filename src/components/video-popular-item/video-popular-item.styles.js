@@ -9,6 +9,9 @@ export const VideoPopularItem = styled(Link)`
   margin-right: 0.8rem;
   margin-left: 0.8rem;
   margin-bottom: 4rem;
+  @media only screen and (max-width: 34.375em) {
+    flex-grow: 1;
+  }
 `;
 
 export const VideoPopularItemImg = styled.img`
@@ -16,6 +19,9 @@ export const VideoPopularItemImg = styled.img`
   height: 20rem;
   background-color: ${(props) =>
     !props.isLoaded ? "rgba(0,0,0,0.1)" : "transparent"};
+  @media only screen and (max-width: 34.375em) {
+    height: 30rem;
+  }
 `;
 
 export const VideoPopularItemDescription = styled.div`

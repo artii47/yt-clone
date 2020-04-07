@@ -16,6 +16,9 @@ export const GlobalStyles = createGlobalStyle`
     @media only screen and (max-width: 75em) {
     font-size: 55%;
   }
+  @media only screen and (max-width: 62.5em) {
+    font-size: 50%;
+  }
   }
   body {
     font-family: 'Roboto', sans-serif;

@@ -9,8 +9,11 @@ export const VideoDetailsIframe = styled.iframe`
   height: 35vw;
   max-height: 72rem;
   background-color: ${(props) => (!props.isIframeLoaded ? "black" : "")};
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 62.5em) {
     height: 50vw;
+  }
+  @media only screen and (max-width: 50em) {
+    height: 55vw;
   }
 `;
 

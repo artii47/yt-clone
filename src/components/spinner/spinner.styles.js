@@ -15,6 +15,7 @@ export const SpinnerOuter = styled.div`
   height: 6rem;
   margin: 0 auto;
   z-index: 10;
+  padding-bottom: 10rem;
 `;
 
 export const SpinnerInner = styled.div`

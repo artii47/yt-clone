@@ -46,7 +46,7 @@ function App() {
                 )}
                 <CommentsContainer />
               </Styled.VideoDetailsAndCommentsWrapper>
-              {!isMediumSize ? <VideosRelatedList /> : ""}
+              {!isMediumSize ? <VideosRelatedList enableScrollEvent /> : ""}
             </Styled.FlexWrapper>
           </Styled.Container>
         </Route>

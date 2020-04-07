@@ -27,4 +27,9 @@ export const VideoDetailsAndCommentsWrapper = styled.div`
   padding-right: 2.4rem;
   padding-top: 2.4rem;
   margin-left: 2rem;
+  @media only screen and (max-width: 34.375em) {
+    padding-right: 2rem;
+    padding-top: 2rem;
+    margin-left: 2rem;
+  }
 `;

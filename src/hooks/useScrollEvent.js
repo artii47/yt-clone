@@ -27,7 +27,7 @@ const useScrollEvent = (enableScrolling, data, domElement, action, ...args) => {
   const throttledFunction = throttle(trackScrolling, 100);
 
   const isBottom = (el) => {
-    if (data) {
+    if (data && el) {
       return el.getBoundingClientRect().bottom <= window.innerHeight + 100;
     }
   };
