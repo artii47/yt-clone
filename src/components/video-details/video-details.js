@@ -10,7 +10,7 @@ import VideoDetailsDesc from "../video-details-desc/video-details-desc";
 const VideoDetails = () => {
   const dispatch = useDispatch();
   const params = useParams();
-  const url = `http://www.youtube.com/embed/${params.videoId}`;
+  const url = `https://www.youtube.com/embed/${params.videoId}`;
   const video = useSelector((state) => state.video.currentVideo);
   const [isIframeLoaded, setIsIframeLoaded] = useState(false);
   useEffect(() => {
