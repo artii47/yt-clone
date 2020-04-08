@@ -5,31 +5,31 @@ export const comments = createSlice({
   name: "comments",
   initialState: {
     isLoading: false,
-    currentVideoComments: null
+    currentVideoComments: null,
   },
   reducers: {
-    fetchCommentsStart: state => {
+    fetchCommentsStart: (state) => {
       state.isLoading = true;
     },
     fetchCommentsSuccess: (state, action) => {
       state.currentVideoComments = action.payload;
       state.isLoading = false;
     },
-    fetchCommentsNextPageStart: state => {
+    fetchCommentsNextPageStart: (state) => {
       state.isLoading = true;
     },
     fetchCommentsNextPageSuccess: (state, action) => {
       state.currentVideoComments.nextPageToken = action.payload.nextPageToken;
       state.currentVideoComments.items = [
         ...state.currentVideoComments.items,
-        ...action.payload.items
+        ...action.payload.items,
       ];
       state.isLoading = false;
     },
-    resetComments: state => {
+    resetComments: (state) => {
       state.currentVideoComments = null;
-    }
-  }
+    },
+  },
 });
 
 const {
@@ -37,13 +37,13 @@ const {
   fetchCommentsSuccess,
   fetchCommentsNextPageStart,
   fetchCommentsNextPageSuccess,
-  resetComments
+  resetComments,
 } = comments.actions;
 
-export const fetchCommentsAsync = (videoId, sortBy) => async dispatch => {
+export const fetchCommentsAsync = (videoId, sortBy) => async (dispatch) => {
   dispatch(fetchCommentsStart());
   const response = await youtube.get(
-    `/commentThreads?part=snippet&order=${sortBy}&videoId=${videoId}&maxResults=6&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/commentThreads?part=snippet&order=${sortBy}&videoId=${videoId}&maxResults=6&key=${process.env.REACT_APP_API_KEY}`
   );
   dispatch(fetchCommentsSuccess(response.data));
 };
@@ -52,10 +52,10 @@ export const fetchCommentsNextPageAsync = (
   pageToken,
   videoId,
   sortBy
-) => async dispatch => {
+) => async (dispatch) => {
   dispatch(fetchCommentsNextPageStart());
   const response = await youtube.get(
-    `/commentThreads?part=snippet&order=${sortBy}&pageToken=${pageToken}&videoId=${videoId}&maxResults=6&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/commentThreads?part=snippet&order=${sortBy}&pageToken=${pageToken}&videoId=${videoId}&maxResults=6&key=${process.env.REACT_APP_API_KEY}`
   );
   dispatch(fetchCommentsNextPageSuccess(response.data));
 };

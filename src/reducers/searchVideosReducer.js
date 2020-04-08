@@ -35,11 +35,11 @@ export const {
 
 export const fetchSearchVideosAsync = (searchTerm) => async (dispatch) => {
   const response = await youtube.get(
-    `/search?part=snippet&maxResults=8&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/search?part=snippet&maxResults=8&q=${searchTerm}%20&key=${process.env.REACT_APP_API_KEY}`
   );
   const videoIds = getVideoIds(response.data.items);
   const responseWithStats = await youtube.get(
-    `/videos?part=snippet,statistics&id=${videoIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&id=${videoIds}&key=${process.env.REACT_APP_API_KEY}`
   );
   const result = {
     nextPageToken: response.data.nextPageToken,
@@ -54,11 +54,11 @@ export const fetchSearchVideosNextPageAsync = (
 ) => async (dispatch) => {
   dispatch(fetchSearchVideosNextPageStart());
   const response = await youtube.get(
-    `/search?part=snippet&pageToken=${nextPageToken}&maxResults=8&q=${searchTerm}%20&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/search?part=snippet&pageToken=${nextPageToken}&maxResults=8&q=${searchTerm}%20&key=${process.env.REACT_APP_API_KEY}`
   );
   const videoIds = getVideoIds(response.data.items);
   const responseWithStats = await youtube.get(
-    `/videos?part=snippet,statistics&id=${videoIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&id=${videoIds}&key=${process.env.REACT_APP_API_KEY}`
   );
   const result = {
     nextPageToken: response.data.nextPageToken,

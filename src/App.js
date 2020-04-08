@@ -3,12 +3,16 @@ import Header from "./components/header/header";
 import Sidebar from "./components/sidebar/sidebar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as Styled from "./App.styles";
-import VideoDetails from "./components/video-details/video-details";
-import CommentsContainer from "./components/comments/commentsContainer";
-import VideosPopularList from "./components/videos-popular-list/videos-popular-list";
-import VideosSearchList from "./components/videos-search-list/videos-search-list";
-import VideosRelatedList from "./components/videos-related-list/videos-related-list";
 import { useMediaQuery } from "react-responsive";
+import VideosPopularList from "./components/videos-popular-list/videos-popular-list";
+import VideoDetails from "./components/video-details/video-details";
+
+import CommentsContainer from "./components/comments/commentsContainer";
+
+import VideosSearchList from "./components/videos-search-list/videos-search-list";
+
+import VideosRelatedList from "./components/videos-related-list/videos-related-list";
+
 /*
 TODO
 sorting comments - DONE
@@ -22,7 +26,6 @@ fetching comments on scroll only once - DONE
 fetching more related videos on scroll only once - DONE
 fix fetching data when going back (previous page)
 provide error handling on fetching
-add react lazy loading
 add items next to like/dislike bar
 add api key to environment file
 divide sidebar files

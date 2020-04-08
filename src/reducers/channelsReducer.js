@@ -4,20 +4,22 @@ import { createSlice } from "@reduxjs/toolkit";
 export const channels = createSlice({
   name: "channels",
   initialState: {
-    currentVideoChannel: null
+    currentVideoChannel: null,
   },
   reducers: {
     fetchCurrentVideoChannel: (state, action) => {
       state.currentVideoChannel = action.payload;
-    }
-  }
+    },
+  },
 });
 
 const { fetchCurrentVideoChannel } = channels.actions;
 
-export const fetchCurrentVideoChannelAsync = channelId => async dispatch => {
+export const fetchCurrentVideoChannelAsync = (channelId) => async (
+  dispatch
+) => {
   const response = await youtube.get(
-    `/channels?part=snippet%2C%20statistics&id=${channelId}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/channels?part=snippet%2C%20statistics&id=${channelId}&key=${process.env.REACT_APP_API_KEY}`
   );
   dispatch(fetchCurrentVideoChannel(response.data.items[0]));
 };

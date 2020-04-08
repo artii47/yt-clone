@@ -41,11 +41,11 @@ const {
 export const fetchPopularVideosAsync = () => async (dispatch) => {
   dispatch(fetchPopularVideosStart());
   const response = await youtube.get(
-    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&key=${process.env.REACT_APP_API_KEY}`
   );
   const channelIds = getChannelIds(response.data.items);
   const reponseWithChannels = await youtube.get(
-    `/channels?part=snippet&id=${channelIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/channels?part=snippet&id=${channelIds}&key=${process.env.REACT_APP_API_KEY}`
   );
 
   const result = response.data.items.map((item) => {
@@ -72,11 +72,11 @@ export const fetchPopularVideosNextPageAsync = (nextPageToken) => async (
 ) => {
   dispatch(fetchPopularVideosNextPageStart());
   const response = await youtube.get(
-    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=8&pageToken=${nextPageToken}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=8&pageToken=${nextPageToken}&key=${process.env.REACT_APP_API_KEY}`
   );
   const channelIds = getChannelIds(response.data.items);
   const reponseWithChannels = await youtube.get(
-    `/channels?part=snippet&id=${channelIds}&key=AIzaSyAP9SSWUPchFl90rFMhUupkYYGmxwJqwtY`
+    `/channels?part=snippet&id=${channelIds}&key=${process.env.REACT_APP_API_KEY}`
   );
   const result = response.data.items.map((item, index) => {
     let channelImgUrl = "";
