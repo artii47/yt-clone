@@ -7,6 +7,7 @@
 A Youtube clone made with React and Redux.
 Based on YouTube Data API v3.
 Project built not only to show my ability to code but also to show that I can create a functioning app from a template.
+Still working on this app.
 
 ## Possibilites
 
