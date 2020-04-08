@@ -4,7 +4,8 @@ export const VideosRelated = styled.div`
   justify-content: flex-start;
   padding-right: 2.5rem;
   padding-top: 2.4rem;
-  @media only screen and (max-width: 1000px) {
+  min-width: 40rem;
+  @media only screen and (max-width: 62.5em) {
     padding: 2.4rem 0;
   }
 `;

@@ -11,6 +11,7 @@ export const YouTubeLogo = styled(LogoSVG)`
   width: 8rem !important;
   height: 2.4rem !important;
   margin-left: 2rem;
+  cursor: pointer;
   @media only screen and (max-width: 50em) {
     position: absolute;
     left: 0.1rem;

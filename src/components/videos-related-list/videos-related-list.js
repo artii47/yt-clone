@@ -5,22 +5,22 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchRelatedToVideosAsync,
-  resetCurrentRelatedVideos,
+  resetCurrentVideos,
   fetchRelatedToVideosNextPageAsync,
-} from "../../reducers/videosReducer";
+} from "../../reducers/relatedVideosReducer";
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
 import CustomButton from "../custom-button/custom-button";
 
 const VideosRelatedList = (props) => {
   const dispatch = useDispatch();
-  const videos = useSelector((state) => state.videos.relatedToVideos);
-  const isLoading = useSelector((state) => state.videos.isLoading);
+  const videos = useSelector((state) => state.relatedVideos.videos);
+  const isLoading = useSelector((state) => state.relatedVideos.isLoading);
   const params = useParams();
   useEffect(() => {
     dispatch(fetchRelatedToVideosAsync(params.videoId));
     return () => {
-      dispatch(resetCurrentRelatedVideos());
+      dispatch(resetCurrentVideos());
     };
   }, [params.videoId, dispatch]);
   useScrollEvent(

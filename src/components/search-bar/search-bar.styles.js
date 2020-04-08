@@ -13,6 +13,9 @@ export const SearchBar = styled.form`
   @media only screen and (max-width: 75em) {
     width: 70%;
   }
+  @media only screen and (max-width: 56.25em) {
+    width: 60%;
+  }
 `;
 
 export const SearchBarInput = styled.input`

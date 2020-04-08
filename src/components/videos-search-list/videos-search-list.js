@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   fetchSearchVideosAsync,
-  resetVideos,
+  resetCurrentVideos,
   fetchSearchVideosNextPageAsync,
-} from "../../reducers/videosReducer";
+} from "../../reducers/searchVideosReducer";
 import * as Styled from "./videos-search-list.styles";
 import VideoSearchItem from "../video-search-item/video-search-item";
 import useScrollEvent from "../../hooks/useScrollEvent";
@@ -13,13 +13,13 @@ import Spinner from "../spinner/spinner";
 
 const VideosSearchList = () => {
   const dispatch = useDispatch();
-  const videos = useSelector((state) => state.videos.videos);
-  const isLoading = useSelector((state) => state.videos.isLoading);
+  const videos = useSelector((state) => state.searchVideos.videos);
+  const isLoading = useSelector((state) => state.searchVideos.isLoading);
   const params = useParams();
 
   useEffect(() => {
     dispatch(fetchSearchVideosAsync(params.searchTerm));
-    return () => dispatch(resetVideos());
+    return () => dispatch(resetCurrentVideos());
   }, [params.searchTerm, dispatch]);
   useScrollEvent(
     true,
@@ -30,7 +30,7 @@ const VideosSearchList = () => {
   );
   const renderVideos = () => {
     if (!videos.items) {
-      return "";
+      return <Spinner />;
     }
 
     return videos.items.map((video) => {

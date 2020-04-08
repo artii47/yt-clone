@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchPopularVideosAsync,
-  resetVideos,
+  resetCurrentVideos,
   fetchPopularVideosNextPageAsync,
-} from "../../reducers/videosReducer";
+} from "../../reducers/popularVideosReducer";
 import * as Styled from "./videos-popular-list.styles";
 import VideoPopularItem from "../video-popular-item/video-popular-item";
 import useScrollEvent from "../../hooks/useScrollEvent";
@@ -12,11 +12,11 @@ import Spinner from "../spinner/spinner";
 
 const VideosPopularList = () => {
   const dispatch = useDispatch();
-  const videos = useSelector((state) => state.videos.videos);
-  const isLoading = useSelector((state) => state.videos.isLoading);
+  const videos = useSelector((state) => state.popularVideos.videos);
+  const isLoading = useSelector((state) => state.popularVideos.isLoading);
   useEffect(() => {
     dispatch(fetchPopularVideosAsync());
-    return () => dispatch(resetVideos());
+    return () => dispatch(resetCurrentVideos());
   }, [dispatch]);
   useScrollEvent(
     true,

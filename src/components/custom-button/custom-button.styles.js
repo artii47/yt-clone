@@ -9,6 +9,8 @@ export const CustomButton = styled.a`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  color: #065fd4;
+  font-size: 1.5rem;
 
   ${(props) =>
     props.wideButton &&
