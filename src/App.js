@@ -16,11 +16,17 @@ proper fetching - DONE
 fix fetching needed data only once - DONE
 possibility to show more/show less video details description - DONE
 add statistics for searched videos - DONE
-fix fetching data when going back (previous page)
-showing some kind of spinner when elements loading
+showing some kind of spinner when elements loading - DONE
 add dynamic like/dislike bar - DONE
 fetching comments on scroll only once - DONE
-fetching more related videos on scroll only once
+fetching more related videos on scroll only once - DONE
+fix fetching data when going back (previous page)
+provide error handling on fetching
+add react lazy loading
+add items next to like/dislike bar
+add api key to environment file
+divide sidebar files
+fetch more videos/comments when page is zoomed out
 */
 function App() {
   const isMediumSize = useMediaQuery({ query: `(max-device-width: 1000px)` });

@@ -30,25 +30,24 @@ const VideosRelatedList = (props) => {
     fetchRelatedToVideosNextPageAsync,
     params.videoId
   );
-  if (!videos.items) {
-    return "";
-  }
   return (
     <Styled.VideosRelated id="videos-realted">
       <Styled.VideosRelatedText>Related videos</Styled.VideosRelatedText>
-      {videos.items.map((video) => {
-        return (
-          <VideoRelatedItem
-            isRelated
-            id={video.id}
-            title={video.snippet.title}
-            imgUrl={video.snippet.thumbnails.medium.url}
-            channelTitle={video.snippet.channelTitle}
-            viewsCount={video.statistics.viewCount}
-            publishDate={video.snippet.publishedAt}
-          />
-        );
-      })}
+      {videos.items
+        ? videos.items.map((video) => {
+            return (
+              <VideoRelatedItem
+                isRelated
+                id={video.id}
+                title={video.snippet.title}
+                imgUrl={video.snippet.thumbnails.medium.url}
+                channelTitle={video.snippet.channelTitle}
+                viewsCount={video.statistics.viewCount}
+                publishDate={video.snippet.publishedAt}
+              />
+            );
+          })
+        : ""}
       {!props.enableScrollEvent ? (
         <CustomButton
           onClick={() =>

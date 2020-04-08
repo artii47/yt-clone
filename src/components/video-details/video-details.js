@@ -14,6 +14,7 @@ const VideoDetails = () => {
   const video = useSelector((state) => state.video.currentVideo);
   const [isIframeLoaded, setIsIframeLoaded] = useState(false);
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchVideoAsync(params.videoId));
   }, [params.videoId, dispatch]);
   useEffect(() => {

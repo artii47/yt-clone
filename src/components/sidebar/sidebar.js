@@ -13,10 +13,9 @@ const Sidebar = () => {
   const isBiggerSize = useMediaQuery({
     query: "(max-device-width: 1200px)",
   });
-  const con = true;
   return (
     <>
-      {isSmallerSize && con && (
+      {isSmallerSize && (
         <Styled.Sidebar>
           <>
             <SidebarMainItems />
