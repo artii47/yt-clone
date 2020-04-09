@@ -13,16 +13,24 @@ const SidebarMoreFromYtItems = () => {
     <>
       <Styled.SidebarItemsPrimaryWrapper>
         <Styled.SidebarItemsText>More from youtube</Styled.SidebarItemsText>
-        {primaryItems.map((item) => {
+        {primaryItems.map((item, index) => {
           return (
-            <SidebarItem active={location.pathname === item.path} item={item} />
+            <SidebarItem
+              key={item.name + index}
+              active={location.pathname === item.path}
+              item={item}
+            />
           );
         })}
       </Styled.SidebarItemsPrimaryWrapper>
       <Styled.SidebarItemsSecondaryWrapper>
-        {secondaryItems.map((item) => {
+        {secondaryItems.map((item, index) => {
           return (
-            <SidebarItem active={location.pathname === item.path} item={item} />
+            <SidebarItem
+              key={item.name + index}
+              active={location.pathname === item.path}
+              item={item}
+            />
           );
         })}
       </Styled.SidebarItemsSecondaryWrapper>

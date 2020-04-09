@@ -10,6 +10,7 @@ const HeaderRightItems = () => {
       {primaryItems.map((item) => {
         return (
           <item.Svg
+            key={item.name}
             style={{
               width: "2.4rem",
               height: "2.4rem",

@@ -36,6 +36,7 @@ const VideosSearchList = () => {
     return videos.items.map((video) => {
       return (
         <VideoSearchItem
+          key={video.id}
           title={video.snippet.title}
           imgUrl={video.snippet.thumbnails.medium.url}
           channelTitle={video.snippet.channelTitle}

@@ -7,6 +7,7 @@ export const popularVideos = createSlice({
   initialState: {
     isLoading: false,
     videos: [],
+    hasError: null,
   },
   reducers: {
     fetchPopularVideosStart: (state) => {
@@ -27,6 +28,9 @@ export const popularVideos = createSlice({
     resetVideos: (state) => {
       state.videos = [];
     },
+    setErrorMessage: (state) => {
+      state.hasError = "ERROR OCCURED";
+    },
   },
 });
 
@@ -36,21 +40,29 @@ const {
   fetchPopularVideosNextPageStart,
   fetchPopularVideosNextPageSuccess,
   resetVideos,
+  setErrorMessage,
 } = popularVideos.actions;
 
 export const fetchPopularVideosAsync = () => async (dispatch) => {
   dispatch(fetchPopularVideosStart());
-  const response = await youtube.get(
-    `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&key=${process.env.REACT_APP_API_KEY}`
-  );
-  const channelIds = getChannelIds(response.data.items);
-  const reponseWithChannels = await youtube.get(
-    `/channels?part=snippet&id=${channelIds}&key=${process.env.REACT_APP_API_KEY}`
-  );
+  let response;
+  let responseWithChannels;
+  try {
+    response = await youtube.get(
+      `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&key=${process.env.REACT_APP_API_KEY}`
+    );
+    const channelIds = getChannelIds(response.data.items);
+    responseWithChannels = await youtube.get(
+      `/channels?part=snippet&id=${channelIds}&key=${process.env.REACT_APP_API_KEY}`
+    );
+  } catch (err) {
+    console.log("err", err);
+    dispatch(setErrorMessage());
+  }
 
   const result = response.data.items.map((item) => {
     let channelImgUrl = "";
-    for (let channelItem of reponseWithChannels.data.items) {
+    for (let channelItem of responseWithChannels.data.items) {
       if (channelItem.id === item.snippet.channelId) {
         channelImgUrl = channelItem.snippet.thumbnails.medium.url;
       }

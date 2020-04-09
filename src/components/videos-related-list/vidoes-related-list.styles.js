@@ -5,6 +5,7 @@ export const VideosRelated = styled.div`
   padding-right: 2.5rem;
   padding-top: 2.4rem;
   min-width: 40rem;
+  height: 100%;
   @media only screen and (max-width: 62.5em) {
     padding: 2.4rem 0;
   }

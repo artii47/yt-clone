@@ -14,6 +14,7 @@ const CommentList = () => {
         const comm = comment.snippet.topLevelComment.snippet;
         return (
           <CommentItem
+            key={comment.id}
             id={comment.id}
             authorName={comm.authorDisplayName}
             authorChannelImage={comm.authorProfileImageUrl}

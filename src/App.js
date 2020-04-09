@@ -27,7 +27,7 @@ fetching more related videos on scroll only once - DONE
 fix fetching data when going back (previous page)
 provide error handling on fetching
 add items next to like/dislike bar
-add api key to environment file
+add api key to environment file - DONE
 divide sidebar files
 fetch more videos/comments when page is zoomed out
 */

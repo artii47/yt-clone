@@ -38,6 +38,7 @@ const VideosRelatedList = (props) => {
             return (
               <VideoRelatedItem
                 isRelated
+                key={video.id}
                 id={video.id}
                 title={video.snippet.title}
                 imgUrl={video.snippet.thumbnails.medium.url}
