@@ -47,14 +47,12 @@ const VideosRelatedList = (props) => {
       </CustomButton>
     );
   };
-  return (
-    <Styled.VideosRelated
-      enableScrollEvent={props.enableScrollEvent}
-      id="videos-realted"
-    >
-      <Styled.VideosRelatedText>Related videos</Styled.VideosRelatedText>
-      {videos.items
-        ? videos.items.map((video) => {
+  const renderList = () => {
+    if (videos.items) {
+      return (
+        <>
+          <Styled.VideosRelatedText>Related videos</Styled.VideosRelatedText>
+          {videos.items.map((video) => {
             return (
               <VideoRelatedItem
                 isRelated
@@ -67,8 +65,17 @@ const VideosRelatedList = (props) => {
                 publishDate={video.snippet.publishedAt}
               />
             );
-          })
-        : ""}
+          })}
+        </>
+      );
+    }
+  };
+  return (
+    <Styled.VideosRelated
+      enableScrollEvent={props.enableScrollEvent}
+      id="videos-realted"
+    >
+      {renderList()}
       {!props.enableScrollEvent ? renderButton() : ""}
       {isLoading ? <Spinner /> : ""}
     </Styled.VideosRelated>
