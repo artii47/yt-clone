@@ -6,11 +6,8 @@ import * as Styled from "./App.styles";
 import { useMediaQuery } from "react-responsive";
 import VideosPopularList from "./components/videos-popular-list/videos-popular-list";
 import VideoDetails from "./components/video-details/video-details";
-
 import CommentsContainer from "./components/comments/commentsContainer";
-
 import VideosSearchList from "./components/videos-search-list/videos-search-list";
-
 import VideosRelatedList from "./components/videos-related-list/videos-related-list";
 
 /*

@@ -30,8 +30,28 @@ const VideosRelatedList = (props) => {
     fetchRelatedToVideosNextPageAsync,
     params.videoId
   );
+  const renderButton = () => {
+    return (
+      <CustomButton
+        onClick={() =>
+          dispatch(
+            fetchRelatedToVideosNextPageAsync(
+              videos.nextPageToken,
+              params.videoId
+            )
+          )
+        }
+        wideButton
+      >
+        SHOW MORE VIDEOS
+      </CustomButton>
+    );
+  };
   return (
-    <Styled.VideosRelated id="videos-realted">
+    <Styled.VideosRelated
+      enableScrollEvent={props.enableScrollEvent}
+      id="videos-realted"
+    >
       <Styled.VideosRelatedText>Related videos</Styled.VideosRelatedText>
       {videos.items
         ? videos.items.map((video) => {
@@ -49,24 +69,7 @@ const VideosRelatedList = (props) => {
             );
           })
         : ""}
-      {!props.enableScrollEvent ? (
-        <CustomButton
-          onClick={() =>
-            dispatch(
-              fetchRelatedToVideosNextPageAsync(
-                videos.nextPageToken,
-                params.videoId
-              )
-            )
-          }
-          wideButton
-        >
-          SHOW MORE VIDEOS
-        </CustomButton>
-      ) : (
-        ""
-      )}
-
+      {!props.enableScrollEvent ? renderButton() : ""}
       {isLoading ? <Spinner /> : ""}
     </Styled.VideosRelated>
   );
