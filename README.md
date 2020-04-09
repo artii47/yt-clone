@@ -18,6 +18,7 @@ Still working on this app.
 - fetch more popular,searched,realted videos and comments when scrolled to bottom of the page
 - view videos statitics (views, likes, dislikes, publish time)
 - view comments statistics (likes, publish time)
+- sort comments
 
 ## Technologies used
 
