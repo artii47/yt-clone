@@ -11,6 +11,7 @@ export const VideoDetailsDescFlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 1.5rem;
+  margin-right: auto;
 `;
 
 export const VideoDetailsDescChannelImg = styled.img`
@@ -34,7 +35,7 @@ export const VideoDetailsDescChannelSubs = styled.p`
 export const VideoDetailsDescChannelBox = styled.div`
   display: flex;
   align-items: center;
-  width: 5rem;
+  width: 100%;
   height: 5rem;
   border-radius: 50%;
 `;

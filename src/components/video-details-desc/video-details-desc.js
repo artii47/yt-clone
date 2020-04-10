@@ -4,10 +4,11 @@ import { numberConverter } from "../../helpers/numConverter";
 import { useSelector } from "react-redux";
 import { renderVideoDetailsDescContent } from "./renderVideoDetailsDescription";
 import { renderButton } from "./renderButton";
+import { CustomButton } from "../custom-button/custom-button.styles";
 
-const VideoDetailsDesc = props => {
+const VideoDetailsDesc = (props) => {
   const [showMore, setShowMore] = useState(false);
-  const channel = useSelector(state => state.channels.currentVideoChannel);
+  const channel = useSelector((state) => state.channels.currentVideoChannel);
   if (!channel) {
     return "";
   }
@@ -28,6 +29,7 @@ const VideoDetailsDesc = props => {
               " subscribers"}
           </Styled.VideoDetailsDescChannelSubs>
         </Styled.VideoDetailsDescFlexWrapper>
+        <CustomButton subscribe>SUBSCRIBE</CustomButton>
       </Styled.VideoDetailsDescChannelBox>
       <Styled.VideoDetailsDescContent>
         {!showMore
