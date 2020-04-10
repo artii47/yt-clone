@@ -21,11 +21,10 @@ showing some kind of spinner when elements loading - DONE
 add dynamic like/dislike bar - DONE
 fetching comments on scroll only once - DONE
 fetching more related videos on scroll only once - DONE
-fix fetching data when going back (previous page)
-provide error handling on fetching
-add items next to like/dislike bar
 add api key to environment file - DONE
-divide sidebar files
+provide error handling on fetching - DONE
+fix fetching data when going back (previous page)
+add items next to like/dislike bar
 fetch more videos/comments when page is zoomed out
 */
 function App() {

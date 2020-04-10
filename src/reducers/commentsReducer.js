@@ -6,6 +6,7 @@ export const comments = createSlice({
   initialState: {
     isLoading: false,
     currentVideoComments: null,
+    hasError: null,
   },
   reducers: {
     fetchCommentsStart: (state) => {
@@ -29,6 +30,9 @@ export const comments = createSlice({
     resetComments: (state) => {
       state.currentVideoComments = null;
     },
+    setErrorMessage: (state, action) => {
+      state.hasError = action.payload;
+    },
   },
 });
 
@@ -38,14 +42,20 @@ const {
   fetchCommentsNextPageStart,
   fetchCommentsNextPageSuccess,
   resetComments,
+  setErrorMessage,
 } = comments.actions;
 
 export const fetchCommentsAsync = (videoId, sortBy) => async (dispatch) => {
-  dispatch(fetchCommentsStart());
-  const response = await youtube.get(
-    `/commentThreads?part=snippet&order=${sortBy}&videoId=${videoId}&maxResults=6&key=${process.env.REACT_APP_API_KEY}`
-  );
-  dispatch(fetchCommentsSuccess(response.data));
+  try {
+    dispatch(fetchCommentsStart());
+    const response = await youtube.get(
+      `/commentThreads?part=snippet&order=${sortBy}&videoId=${videoId}&maxResults=6&key=${process.env.REACT_APP_API_KEY}`
+    );
+    dispatch(fetchCommentsSuccess(response.data));
+  } catch (err) {
+    console.log("err", err);
+    dispatch(setErrorMessage(err));
+  }
 };
 
 export const fetchCommentsNextPageAsync = (
@@ -53,11 +63,16 @@ export const fetchCommentsNextPageAsync = (
   videoId,
   sortBy
 ) => async (dispatch) => {
-  dispatch(fetchCommentsNextPageStart());
-  const response = await youtube.get(
-    `/commentThreads?part=snippet&order=${sortBy}&pageToken=${pageToken}&videoId=${videoId}&maxResults=6&key=${process.env.REACT_APP_API_KEY}`
-  );
-  dispatch(fetchCommentsNextPageSuccess(response.data));
+  try {
+    dispatch(fetchCommentsNextPageStart());
+    const response = await youtube.get(
+      `/commentThreads?part=snippet&order=${sortBy}&pageToken=${pageToken}&videoId=${videoId}&maxResults=6&key=${process.env.REACT_APP_API_KEY}`
+    );
+    dispatch(fetchCommentsNextPageSuccess(response.data));
+  } catch (err) {
+    console.log("err", err);
+    dispatch(setErrorMessage(err));
+  }
 };
 
 export const resetCurrentComments = () => {

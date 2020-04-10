@@ -7,6 +7,7 @@ export const searchVideos = createSlice({
   initialState: {
     isLoading: false,
     videos: [],
+    hasError: null,
   },
   reducers: {
     fetchSearchVideos: (state, action) => {
@@ -23,6 +24,9 @@ export const searchVideos = createSlice({
     resetVideos: (state) => {
       state.videos = [];
     },
+    setErrorMessage: (state, action) => {
+      state.hasError = action.payload;
+    },
   },
 });
 
@@ -31,40 +35,51 @@ export const {
   fetchSearchVideosNextPageStart,
   fetchSearchVideosNextPageSuccess,
   resetVideos,
+  setErrorMessage,
 } = searchVideos.actions;
 
 export const fetchSearchVideosAsync = (searchTerm) => async (dispatch) => {
-  const response = await youtube.get(
-    `/search?part=snippet&maxResults=8&q=${searchTerm}%20&key=${process.env.REACT_APP_API_KEY}`
-  );
-  const videoIds = getVideoIds(response.data.items);
-  const responseWithStats = await youtube.get(
-    `/videos?part=snippet,statistics&id=${videoIds}&key=${process.env.REACT_APP_API_KEY}`
-  );
-  const result = {
-    nextPageToken: response.data.nextPageToken,
-    items: responseWithStats.data.items,
-  };
-  dispatch(fetchSearchVideos(result));
+  try {
+    const response = await youtube.get(
+      `/search?part=snippet&maxResults=8&q=${searchTerm}%20&key=${process.env.REACT_APP_API_KEY}`
+    );
+    const videoIds = getVideoIds(response.data.items);
+    const responseWithStats = await youtube.get(
+      `/videos?part=snippet,statistics&id=${videoIds}&key=${process.env.REACT_APP_API_KEY}`
+    );
+    const result = {
+      nextPageToken: response.data.nextPageToken,
+      items: responseWithStats.data.items,
+    };
+    dispatch(fetchSearchVideos(result));
+  } catch (err) {
+    console.log("err", err);
+    dispatch(setErrorMessage(err));
+  }
 };
 
 export const fetchSearchVideosNextPageAsync = (
   nextPageToken,
   searchTerm
 ) => async (dispatch) => {
-  dispatch(fetchSearchVideosNextPageStart());
-  const response = await youtube.get(
-    `/search?part=snippet&pageToken=${nextPageToken}&maxResults=8&q=${searchTerm}%20&key=${process.env.REACT_APP_API_KEY}`
-  );
-  const videoIds = getVideoIds(response.data.items);
-  const responseWithStats = await youtube.get(
-    `/videos?part=snippet,statistics&id=${videoIds}&key=${process.env.REACT_APP_API_KEY}`
-  );
-  const result = {
-    nextPageToken: response.data.nextPageToken,
-    items: responseWithStats.data.items,
-  };
-  dispatch(fetchSearchVideosNextPageSuccess(result));
+  try {
+    dispatch(fetchSearchVideosNextPageStart());
+    const response = await youtube.get(
+      `/search?part=snippet&pageToken=${nextPageToken}&maxResults=8&q=${searchTerm}%20&key=${process.env.REACT_APP_API_KEY}`
+    );
+    const videoIds = getVideoIds(response.data.items);
+    const responseWithStats = await youtube.get(
+      `/videos?part=snippet,statistics&id=${videoIds}&key=${process.env.REACT_APP_API_KEY}`
+    );
+    const result = {
+      nextPageToken: response.data.nextPageToken,
+      items: responseWithStats.data.items,
+    };
+    dispatch(fetchSearchVideosNextPageSuccess(result));
+  } catch (err) {
+    console.log("err", err);
+    dispatch(setErrorMessage(err));
+  }
 };
 
 export const resetCurrentVideos = () => {

@@ -3,8 +3,8 @@ import * as Styled from "./sidebar-item-normal.styles";
 import styled from "styled-components";
 
 const SidebarItemNormal = ({ item, active }) => {
-  const { img } = item;
-  const SvgIcon = styled(item.Svg)`
+  const { img, Svg } = item;
+  const SvgIcon = styled(Svg)`
     width: 2.4rem !important;
     height: 100% !important;
     margin-right: 2.4rem;
