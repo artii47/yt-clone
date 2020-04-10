@@ -4,8 +4,9 @@ import { fetchCurrentVideoChannelAsync } from "../../reducers/channelsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as Styled from "./video-details.styles";
-import { numberWithCommas, numberConverter } from "../../helpers/numConverter";
+import { numberWithCommas } from "../../helpers/numConverter";
 import VideoDetailsDesc from "../video-details-desc/video-details-desc";
+import VideoDetailsActionsWithRatings from "./video-details-actions-with-ratings";
 
 const VideoDetails = () => {
   const dispatch = useDispatch();
@@ -25,11 +26,7 @@ const VideoDetails = () => {
   if (!video) {
     return "";
   }
-  const ratingsSum =
-    Number(video.statistics.likeCount) + Number(video.statistics.dislikeCount);
-  const likePercentage = Math.floor(
-    (video.statistics.likeCount / ratingsSum) * 100
-  );
+
   return (
     <Styled.VideoDetails>
       <Styled.VideoDetailsIframe
@@ -47,16 +44,7 @@ const VideoDetails = () => {
           {numberWithCommas(video.statistics.viewCount) + " views "}
           &bull; {video.snippet.publishedAt.slice(0, 10)}
         </Styled.VideoDetailsPublishDate>
-        <Styled.VideoDetailsLikeBox likePercentage={likePercentage}>
-          <Styled.VideoDetailsLikeDislikeBox>
-            <Styled.VideoDetailsLike />
-            {numberConverter(video.statistics.likeCount)}
-          </Styled.VideoDetailsLikeDislikeBox>
-          <Styled.VideoDetailsLikeDislikeBox>
-            <Styled.VideoDetailsDislike />
-            {numberConverter(video.statistics.dislikeCount)}
-          </Styled.VideoDetailsLikeDislikeBox>
-        </Styled.VideoDetailsLikeBox>
+        {<VideoDetailsActionsWithRatings video={video} />}
       </Styled.VideoDetailsFlexWrapper>
       {<VideoDetailsDesc videoDesc={video.snippet.description} />}
     </Styled.VideoDetails>

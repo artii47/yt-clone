@@ -1,6 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ReactComponent as Like } from "../../assets/icons/like.svg";
 import { ReactComponent as Dislike } from "../../assets/icons/dislike.svg";
+import { ReactComponent as Settings } from "../../assets/icons/settings-video-details.svg";
+import { ReactComponent as Save } from "../../assets/icons/save.svg";
+import { ReactComponent as Share } from "../../assets/icons/share-video.svg";
 
 export const VideoDetails = styled.div``;
 
@@ -69,6 +72,11 @@ export const VideoDetailsFlexWrapper = styled.div`
   align-items: center;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid #e0e0e0;
+  @media only screen and (max-width: 31.25em) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 `;
 
 export const VideoDetailsDislike = styled(Dislike)`
@@ -85,4 +93,44 @@ export const VideoDetailsLikeDislikeBox = styled.div`
   display: flex;
   align-items: center;
   margin: 0 1.5rem;
+`;
+
+const iconStyles = css`
+  height: 2rem !important;
+  width: 2rem !important;
+  fill: #909090;
+  margin-right: 1rem;
+`;
+
+export const VideoDetailsActionBox = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0 1.5rem;
+  color: #606060;
+  @media only screen and (max-width: 43.75em) {
+    margin: 0 1rem;
+  }
+  @media only screen and (max-width: 31.25em) {
+    margin: 0 0.5rem;
+    font-size: 1.1rem;
+  }
+  :last-child {
+    margin-right: 0;
+  }
+`;
+
+export const VideoDetailsShare = styled(Share)`
+  ${iconStyles}
+`;
+export const VideoDetailsSettings = styled(Settings)`
+  ${iconStyles}
+`;
+export const VideoDetailsSave = styled(Save)`
+  ${iconStyles}
+`;
+
+export const VideoDetailsFlex = styled.div`
+  display: flex;
 `;
