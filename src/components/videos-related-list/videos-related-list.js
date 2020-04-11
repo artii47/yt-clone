@@ -76,7 +76,7 @@ const VideosRelatedList = (props) => {
       id="videos-realted"
     >
       {renderList()}
-      {!props.enableScrollEvent ? renderButton() : ""}
+      {!props.enableScrollEvent && videos.items ? renderButton() : ""}
       {isLoading ? <Spinner /> : ""}
     </Styled.VideosRelated>
   );

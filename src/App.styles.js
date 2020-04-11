@@ -7,8 +7,8 @@ export const App = styled.main`
   width: 100%;
   height: 100%;
   position: relative;
-  @media only screen and (max-width: 75em) {
-    grid-template-columns: 7.5rem 1fr;
+  @media only screen and (max-width: 62.5em) {
+    grid-template-columns: 100vw;
   }
 `;
 
@@ -27,9 +27,9 @@ export const VideoDetailsAndCommentsWrapper = styled.div`
   padding-right: 2.4rem;
   padding-top: 2.4rem;
   margin-left: 2rem;
-  @media only screen and (max-width: 34.375em) {
-    padding-right: 2rem;
-    padding-top: 2rem;
-    margin-left: 2rem;
+  @media only screen and (max-width: 25em) {
+    padding-right: 1rem;
+    padding-top: 1rem;
+    margin-left: 1rem;
   }
 `;

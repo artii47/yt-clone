@@ -18,6 +18,9 @@ export const VideoDetailsIframe = styled.iframe`
   @media only screen and (max-width: 50em) {
     height: 55vw;
   }
+  @media only screen and (max-width: 31.25em) {
+    width: 100%;
+  }
 `;
 
 export const VideoDetailsTitle = styled.p`
@@ -133,4 +136,9 @@ export const VideoDetailsSave = styled(Save)`
 
 export const VideoDetailsFlex = styled.div`
   display: flex;
+  @media only screen and (max-width: 31.25rem) {
+    margin-top: 1.5rem;
+    width: 100%;
+    justify-content: space-between;
+  }
 `;
