@@ -7,7 +7,7 @@ export const App = styled.main`
   width: 100%;
   height: 100%;
   position: relative;
-  @media only screen and (max-width: 62.5em) {
+  @media only screen and (max-width: 75em) {
     grid-template-columns: 7.5rem 1fr;
   }
 `;

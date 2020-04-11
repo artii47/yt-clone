@@ -10,4 +10,21 @@ export const Sidebar = styled.div`
   background-color: #fff;
   overflow-y: scroll;
   overflow-x: hidden;
+  :hover {
+    ::-webkit-scrollbar {
+      width: 0.9rem;
+    }
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+    background-color: #f5f5f5;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #cfcfcf;
+  }
 `;

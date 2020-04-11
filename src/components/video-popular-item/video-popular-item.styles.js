@@ -2,25 +2,44 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const VideoPopularItem = styled(Link)`
-  width: 36rem;
+  width: 23%;
+  min-width: 22rem;
+  max-width: 36rem;
   background-color: transparent;
   cursor: pointer;
   text-decoration: none;
   margin-right: 0.8rem;
   margin-left: 0.8rem;
   margin-bottom: 4rem;
-  @media only screen and (max-width: 34.375em) {
-    flex-grow: 1;
+  @media only screen and (max-width: 75em) {
+    min-width: 22rem;
   }
+  @media only screen and (max-width: 62.5em) {
+    min-width: 30%;
+  }
+  @media only screen and (max-width: 43.75em) {
+    min-width: 30rem;
+  }
+  @media only screen and (max-width: 34.375em) {
+    min-width: 90%;
+  }
+  /* @media only screen and (max-width: 34.375em) {
+    flex-grow: 1;
+  } */
 `;
 
 export const VideoPopularItemImg = styled.img`
   width: 100%;
-  height: 20rem;
+  max-height: 20rem;
+  min-height: 15rem;
   background-color: ${(props) =>
     !props.isLoaded ? "rgba(0,0,0,0.1)" : "transparent"};
+  @media only screen and (max-width: 75em) {
+    height: 17rem;
+  }
   @media only screen and (max-width: 34.375em) {
-    height: 30rem;
+    min-height: 25rem;
+    max-height: 30rem;
   }
 `;
 
