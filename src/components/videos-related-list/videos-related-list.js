@@ -48,27 +48,28 @@ const VideosRelatedList = (props) => {
     );
   };
   const renderList = () => {
-    if (videos.items) {
-      return (
-        <>
-          <Styled.VideosRelatedText>Related videos</Styled.VideosRelatedText>
-          {videos.items.map((video) => {
-            return (
-              <VideoRelatedItem
-                isRelated
-                key={video.id}
-                id={video.id}
-                title={video.snippet.title}
-                imgUrl={video.snippet.thumbnails.medium.url}
-                channelTitle={video.snippet.channelTitle}
-                viewsCount={video.statistics.viewCount}
-                publishDate={video.snippet.publishedAt}
-              />
-            );
-          })}
-        </>
-      );
+    if (!videos.items) {
+      return <Spinner />;
     }
+    return (
+      <>
+        <Styled.VideosRelatedText>Related videos</Styled.VideosRelatedText>
+        {videos.items.map((video) => {
+          return (
+            <VideoRelatedItem
+              isRelated
+              key={video.id}
+              id={video.id}
+              title={video.snippet.title}
+              imgUrl={video.snippet.thumbnails.medium.url}
+              channelTitle={video.snippet.channelTitle}
+              viewsCount={video.statistics.viewCount}
+              publishDate={video.snippet.publishedAt}
+            />
+          );
+        })}
+      </>
+    );
   };
   return (
     <Styled.VideosRelated
