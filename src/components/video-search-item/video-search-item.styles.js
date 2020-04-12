@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 
 export const VideoSearchItem = styled(Link)`
   display: flex;
-  height: 14rem;
   cursor: pointer;
-  margin: 1rem 1rem;
+  margin: 1rem 0;
+  margin-right: 1rem;
   max-width: 86rem;
   height: 100%;
   text-decoration: none;
+  :first-of-type {
+    margin-top: 2rem;
+  }
   @media only screen and (max-width: 75em) {
     margin: 1rem 0;
   }
@@ -27,7 +30,7 @@ export const VideoSearchItemImg = styled.img`
   }
   @media only screen and (max-width: 34.375em) {
     width: 100%;
-    height: 25rem;
+    height: 100%;
   }
 `;
 
@@ -61,7 +64,7 @@ export const VideoSearchItemPublishDate = styled.p`
   font-size: 1.3rem;
 `;
 
-export const VideoSearchItemFlexWrapper = styled.p`
+export const VideoSearchItemFlexWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: -0.8rem;
@@ -77,7 +80,7 @@ export const VideoSearchItemDescriptionContent = styled.p`
   margin-top: 1rem;
   font-weight: 400;
   color: #707070;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   @media only screen and (max-width: 50em) {
     font-size: 1.3rem;
   }

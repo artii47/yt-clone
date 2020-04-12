@@ -8,6 +8,7 @@ export const searchVideos = createSlice({
     isLoading: false,
     videos: [],
     hasError: null,
+    channel: null,
   },
   reducers: {
     fetchSearchVideos: (state, action) => {
@@ -27,6 +28,12 @@ export const searchVideos = createSlice({
     setErrorMessage: (state, action) => {
       state.hasError = action.payload;
     },
+    setChannel: (state, action) => {
+      state.channel = action.payload;
+    },
+    resetChannel: (state) => {
+      state.channel = null;
+    },
   },
 });
 
@@ -36,6 +43,8 @@ export const {
   fetchSearchVideosNextPageSuccess,
   resetVideos,
   setErrorMessage,
+  setChannel,
+  resetChannel,
 } = searchVideos.actions;
 
 export const fetchSearchVideosAsync = (searchTerm) => async (dispatch) => {
@@ -51,6 +60,11 @@ export const fetchSearchVideosAsync = (searchTerm) => async (dispatch) => {
       nextPageToken: response.data.nextPageToken,
       items: responseWithStats.data.items,
     };
+    for (let item of response.data.items) {
+      if (item.id.kind === "youtube#channel") {
+        dispatch(setChannel(item));
+      }
+    }
     dispatch(fetchSearchVideos(result));
   } catch (err) {
     console.log("err", err);
@@ -84,6 +98,10 @@ export const fetchSearchVideosNextPageAsync = (
 
 export const resetCurrentVideos = () => {
   return resetVideos();
+};
+
+export const resetCurrentChannel = () => {
+  return resetChannel();
 };
 
 export default searchVideos.reducer;

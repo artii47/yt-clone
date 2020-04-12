@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReactComponent as Filter } from "../../assets/icons/filter.svg";
 
 export const VideosSearchList = styled.div`
   grid-row: 2/-1;
@@ -18,10 +19,28 @@ export const VideosSearchList = styled.div`
 `;
 
 export const Container = styled.div`
-  max-width: 131.5rem;
+  max-width: 128rem;
   height: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+`;
+
+export const Filters = styled.div`
+  border-bottom: 1px solid #e5e5e5;
+  max-width: 86rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #616161;
+  padding-bottom: 0.8rem;
+`;
+
+export const FilterSVG = styled(Filter)`
+  width: 2.4rem !important;
+  height: 2.4rem !important;
+  fill: #606060;
+  margin-right: 1rem;
 `;

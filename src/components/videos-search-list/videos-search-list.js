@@ -5,21 +5,27 @@ import {
   fetchSearchVideosAsync,
   resetCurrentVideos,
   fetchSearchVideosNextPageAsync,
+  resetChannel,
 } from "../../reducers/searchVideosReducer";
 import * as Styled from "./videos-search-list.styles";
 import VideoSearchItem from "../video-search-item/video-search-item";
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
+import SearchedChannelItem from "../searched-channel-item/searched-channel-item";
 
 const VideosSearchList = () => {
   const dispatch = useDispatch();
   const videos = useSelector((state) => state.searchVideos.videos);
   const isLoading = useSelector((state) => state.searchVideos.isLoading);
+  const channel = useSelector((state) => state.searchVideos.channel);
   const params = useParams();
 
   useEffect(() => {
     dispatch(fetchSearchVideosAsync(params.searchTerm));
-    return () => dispatch(resetCurrentVideos());
+    return () => {
+      dispatch(resetCurrentVideos());
+      dispatch(resetChannel());
+    };
   }, [params.searchTerm, dispatch]);
   useScrollEvent(
     true,
@@ -52,6 +58,11 @@ const VideosSearchList = () => {
     <>
       <Styled.VideosSearchList id="video-list">
         <Styled.Container>
+          <Styled.Filters>
+            <Styled.FilterSVG />
+            FILTER
+          </Styled.Filters>
+          {channel ? <SearchedChannelItem channel={channel} /> : ""}
           {renderVideos()}
           {isLoading ? <Spinner /> : ""}
         </Styled.Container>
