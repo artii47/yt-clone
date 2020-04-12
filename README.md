@@ -2,6 +2,8 @@
 
 #### My simple youtube clone
 
+Live : https://youtube-clone-live.herokuapp.com/
+
 #### by Artur Gorzelany
 
 A Youtube clone made with React and Redux.
