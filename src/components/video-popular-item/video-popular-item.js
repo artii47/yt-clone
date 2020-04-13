@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { numberConverter } from "../../helpers/numConverter";
 import { dateConverter } from "../../helpers/dateConverter";
 
-const VideoPopularItem = props => {
+const VideoPopularItem = (props) => {
   const params = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
   const renderVideoItem = () => {
@@ -30,7 +30,6 @@ const VideoPopularItem = props => {
                   : props.title
                 : props.title}
             </Styled.VideoPopularItemTitle>
-            <br />
             <Styled.VideoPopularItemChannelTitle>
               {props.channelTitle}
             </Styled.VideoPopularItemChannelTitle>

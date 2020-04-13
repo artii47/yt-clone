@@ -29,20 +29,24 @@ const VideosPopularList = () => {
     if (!videos.items) {
       return "";
     }
-    return videos.items.map((video) => {
-      return (
-        <VideoPopularItem
-          key={video.id}
-          title={video.snippet.title}
-          imgUrl={video.snippet.thumbnails.medium.url}
-          channelTitle={video.snippet.channelTitle}
-          id={video.id}
-          viewsCount={video.statistics ? video.statistics.viewCount : ""}
-          publishDate={video.snippet.publishedAt}
-          channelImgUrl={video.channelImgUrl}
-        />
-      );
-    });
+    return (
+      <>
+        {videos.items.map((video) => {
+          return (
+            <VideoPopularItem
+              key={video.id}
+              title={video.snippet.title}
+              imgUrl={video.snippet.thumbnails.medium.url}
+              channelTitle={video.snippet.channelTitle}
+              id={video.id}
+              viewsCount={video.statistics ? video.statistics.viewCount : ""}
+              publishDate={video.snippet.publishedAt}
+              channelImgUrl={video.channelImgUrl}
+            />
+          );
+        })}
+      </>
+    );
   };
   return (
     <Styled.VideosPopularListWrapper>

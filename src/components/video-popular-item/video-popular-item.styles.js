@@ -12,7 +12,7 @@ export const VideoPopularItem = styled(Link)`
   margin-left: 0.8rem;
   margin-bottom: 4rem;
   @media only screen and (max-width: 75em) {
-    min-width: 22rem;
+    min-width: 24rem;
   }
   @media only screen and (max-width: 62.5em) {
     min-width: 30%;
@@ -23,9 +23,6 @@ export const VideoPopularItem = styled(Link)`
   @media only screen and (max-width: 34.375em) {
     min-width: 90%;
   }
-  /* @media only screen and (max-width: 34.375em) {
-    flex-grow: 1;
-  } */
 `;
 
 export const VideoPopularItemImg = styled.img`
@@ -34,9 +31,6 @@ export const VideoPopularItemImg = styled.img`
   min-height: 15rem;
   background-color: ${(props) =>
     !props.isLoaded ? "rgba(0,0,0,0.1)" : "transparent"};
-  @media only screen and (max-width: 75em) {
-    height: 17rem;
-  }
   @media only screen and (max-width: 34.375em) {
     min-height: 25rem;
     max-height: 30rem;
@@ -54,6 +48,7 @@ export const VideoPopularItemTitle = styled.p`
   font-weight: 500;
   line-height: 2.2rem;
   margin-top: 1.3rem;
+  margin-bottom: 0.5rem;
 `;
 export const VideoPopularItemChannelTitle = styled.p`
   font-weight: 400;

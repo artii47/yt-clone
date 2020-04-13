@@ -16,6 +16,7 @@ export const SearchedChannelItemImg = styled.img`
   height: 13.6rem;
   margin: 0 5rem;
   border-radius: 50%;
+  margin-right: 8rem;
   @media only screen and (max-width: 34.375em) {
     margin: 0 3rem;
   }
