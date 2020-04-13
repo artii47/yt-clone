@@ -11,8 +11,12 @@ export const searchVideos = createSlice({
     channel: null,
   },
   reducers: {
-    fetchSearchVideos: (state, action) => {
+    fetchSearchVideosStart: (state) => {
+      state.isLoading = true;
+    },
+    fetchSearchVideosSuccess: (state, action) => {
       state.videos = action.payload;
+      state.isLoading = false;
     },
     fetchSearchVideosNextPageStart: (state) => {
       state.isLoading = true;
@@ -46,9 +50,12 @@ export const {
   setErrorMessage,
   setChannel,
   resetChannel,
+  fetchSearchVideosStart,
+  fetchSearchVideosSuccess,
 } = searchVideos.actions;
 
 export const fetchSearchVideosAsync = (searchTerm) => async (dispatch) => {
+  dispatch(fetchSearchVideosStart());
   try {
     const response = await youtube.get(
       `/search?part=snippet&maxResults=8&q=${searchTerm}%20&key=${process.env.REACT_APP_API_KEY}`
@@ -66,7 +73,7 @@ export const fetchSearchVideosAsync = (searchTerm) => async (dispatch) => {
         dispatch(setChannel(item));
       }
     }
-    dispatch(fetchSearchVideos(result));
+    dispatch(fetchSearchVideosSuccess(result));
   } catch (err) {
     console.log("err", err);
     dispatch(setErrorMessage(err));

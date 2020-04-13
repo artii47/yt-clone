@@ -34,9 +34,17 @@ const VideosSearchList = () => {
     fetchSearchVideosNextPageAsync,
     params.searchTerm
   );
+  const renderNotFound = () => {
+    return (
+      <Styled.VideosSearchListNotFound>
+        <Styled.VideosSearchListNotFoundSvg />
+        No Results found
+      </Styled.VideosSearchListNotFound>
+    );
+  };
   const renderVideos = () => {
     if (!videos.items) {
-      return <Spinner />;
+      return "";
     }
 
     return videos.items.map((video) => {
@@ -65,6 +73,7 @@ const VideosSearchList = () => {
           {channel ? <SearchedChannelItem channel={channel} /> : ""}
           {renderVideos()}
           {isLoading ? <Spinner /> : ""}
+          {!isLoading && !videos.items?.length ? renderNotFound() : ""}
         </Styled.Container>
       </Styled.VideosSearchList>
     </>

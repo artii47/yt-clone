@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as Filter } from "../../assets/icons/filter.svg";
+import { ReactComponent as NotFoundSVG } from "../../assets/icons/not-found.svg";
 
 export const VideosSearchList = styled.div`
   grid-row: 2/-1;
@@ -43,4 +44,20 @@ export const FilterSVG = styled(Filter)`
   height: 2.4rem !important;
   fill: #606060;
   margin-right: 1rem;
+`;
+
+export const VideosSearchListNotFound = styled.div`
+  max-width: 86rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10rem;
+  font-size: 2.5rem;
+`;
+
+export const VideosSearchListNotFoundSvg = styled(NotFoundSVG)`
+  width: 100% !important;
+  height: 100% !important;
+  margin-bottom: 1rem;
 `;
