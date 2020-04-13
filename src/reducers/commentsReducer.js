@@ -32,6 +32,7 @@ export const comments = createSlice({
     },
     setErrorMessage: (state, action) => {
       state.hasError = action.payload;
+      state.isLoading = false;
     },
   },
 });

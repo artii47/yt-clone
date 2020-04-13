@@ -27,6 +27,7 @@ export const searchVideos = createSlice({
     },
     setErrorMessage: (state, action) => {
       state.hasError = action.payload;
+      state.isLoading = false;
     },
     setChannel: (state, action) => {
       state.channel = action.payload;

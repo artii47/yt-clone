@@ -26,6 +26,7 @@ export const relatedVideos = createSlice({
     },
     setErrorMessage: (state, action) => {
       state.hasError = action.payload;
+      state.isLoading = false;
     },
   },
 });
