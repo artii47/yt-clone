@@ -1,12 +1,12 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import * as Styled from "./video-details-desc.styles";
 import { numberConverter } from "../../helpers/numConverter";
-import { useSelector } from "react-redux";
 import { renderVideoDetailsDescContent } from "./renderVideoDetailsDescription";
 import { renderButton } from "./renderButton";
 import { CustomButton } from "../custom-button/custom-button.styles";
 
-const VideoDetailsDesc = (props) => {
+const VideoDetailsDesc = ({ videoDesc }) => {
   const [showMore, setShowMore] = useState(false);
   const channel = useSelector((state) => state.channels.currentVideoChannel);
   if (!channel) {
@@ -25,18 +25,17 @@ const VideoDetailsDesc = (props) => {
             {channel.snippet.title}
           </Styled.VideoDetailsDescChannelTitle>
           <Styled.VideoDetailsDescChannelSubs>
-            {numberConverter(channel.statistics.subscriberCount) +
-              " subscribers"}
+            {`${numberConverter(
+              channel.statistics.subscriberCount
+            )} subscribers`}
           </Styled.VideoDetailsDescChannelSubs>
         </Styled.VideoDetailsDescFlexWrapper>
         <CustomButton subscribe>SUBSCRIBE</CustomButton>
       </Styled.VideoDetailsDescChannelBox>
       <Styled.VideoDetailsDescContent>
-        {!showMore
-          ? renderVideoDetailsDescContent(props.videoDesc)
-          : props.videoDesc}
+        {!showMore ? renderVideoDetailsDescContent(videoDesc) : videoDesc}
         <br />
-        {renderButton(props.videoDesc, showMore, setShowMore)}
+        {renderButton(videoDesc, showMore, setShowMore)}
       </Styled.VideoDetailsDescContent>
     </Styled.VideoDetailsDesc>
   );

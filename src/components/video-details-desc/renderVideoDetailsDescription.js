@@ -1,4 +1,4 @@
-export const renderVideoDetailsDescContent = desc => {
+export const renderVideoDetailsDescContent = (desc) => {
   const wordsArr = desc.split(" ");
   if (wordsArr.length < 40) {
     return desc;

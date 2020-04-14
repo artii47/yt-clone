@@ -1,7 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import * as Styled from "./comment-list.styles";
 import CommentItem from "../comment-item/comment-item";
-import { useSelector } from "react-redux";
 import Spinner from "../spinner/spinner";
 
 const CommentList = () => {

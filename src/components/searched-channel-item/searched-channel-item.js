@@ -2,7 +2,6 @@ import React from "react";
 import * as Styled from "./searched-channel-item.styles";
 
 const SearchedChannelItem = ({ channel }) => {
-  console.log("channel", channel);
   return (
     <Styled.SearchedChannelItem>
       <Styled.SearchedChannelItemImg

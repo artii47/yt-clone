@@ -12,50 +12,50 @@ export const primaryItems = [
     name: "Music",
     path: "/music",
     img: musicImg,
-    Svg: ""
+    Svg: "",
   },
   {
     name: "Sports",
-    path: "/trending",
+    path: "/sports",
     img: sportsImg,
-    Svg: ""
+    Svg: "",
   },
   {
     name: "Gaming",
-    path: "/subscriptions",
+    path: "/gaming",
     img: gamingImg,
-    Svg: ""
+    Svg: "",
   },
   {
     name: "Movies",
-    path: "/subscriptions",
+    path: "/movies",
     img: moviesImg,
-    Svg: ""
+    Svg: "",
   },
   {
     name: "News",
-    path: "/subscriptions",
+    path: "/news",
     img: newsImg,
-    Svg: ""
+    Svg: "",
   },
   {
     name: "Live",
-    path: "/subscriptions",
+    path: "/live",
     img: liveImg,
-    Svg: ""
+    Svg: "",
   },
   {
     name: "360 Video",
-    path: "/subscriptions",
+    path: "/360video",
     img: video360Img,
-    Svg: ""
-  }
+    Svg: "",
+  },
 ];
 
 export const secondaryItems = [
   {
     name: "Browse channels",
-    path: "/library",
-    Svg: BrowseSVG
-  }
+    path: "/channels",
+    Svg: BrowseSVG,
+  },
 ];

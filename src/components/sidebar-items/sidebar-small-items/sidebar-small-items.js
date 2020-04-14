@@ -1,7 +1,7 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { primaryItems } from "./sidebar-small-items.data";
 import SidebarSmallItem from "../../sidebar-item/sidebar-item-small/sidebar-item-small";
-import { useLocation } from "react-router-dom";
 
 const SidebarSmallItems = () => {
   const location = useLocation();
@@ -10,6 +10,7 @@ const SidebarSmallItems = () => {
       {primaryItems.map((item) => {
         return (
           <SidebarSmallItem
+            key={item.name}
             active={location.pathname === item.path}
             item={item}
           />

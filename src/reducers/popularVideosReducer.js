@@ -58,14 +58,15 @@ export const fetchPopularVideosAsync = () => async (dispatch) => {
     );
     const result = response.data.items.map((item) => {
       let channelImgUrl = "";
-      for (let channelItem of responseWithChannels.data.items) {
+      responseWithChannels.data.items.map((channelItem) => {
         if (channelItem.id === item.snippet.channelId) {
           channelImgUrl = channelItem.snippet.thumbnails.medium.url;
         }
-      }
+        return null;
+      });
       return {
         ...item,
-        channelImgUrl: channelImgUrl,
+        channelImgUrl,
       };
     });
     const resultFinal = {
@@ -85,22 +86,23 @@ export const fetchPopularVideosNextPageAsync = (nextPageToken) => async (
   try {
     dispatch(fetchPopularVideosNextPageStart());
     const response = await youtube.get(
-      `/videos?part=snippet,statistics&chart=mostPopular&maxResults=8&pageToken=${nextPageToken}&key=${process.env.REACT_APP_API_KEY}`
+      `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&pageToken=${nextPageToken}&key=${process.env.REACT_APP_API_KEY}`
     );
     const channelIds = getChannelIds(response.data.items);
-    const reponseWithChannels = await youtube.get(
+    const responseWithChannels = await youtube.get(
       `/channels?part=snippet&id=${channelIds}&key=${process.env.REACT_APP_API_KEY}`
     );
-    const result = response.data.items.map((item, index) => {
+    const result = response.data.items.map((item) => {
       let channelImgUrl = "";
-      for (let channelItem of reponseWithChannels.data.items) {
+      responseWithChannels.data.items.map((channelItem) => {
         if (channelItem.id === item.snippet.channelId) {
           channelImgUrl = channelItem.snippet.thumbnails.medium.url;
         }
-      }
+        return null;
+      });
       return {
         ...item,
-        channelImgUrl: channelImgUrl,
+        channelImgUrl,
       };
     });
     const resultFinal = {

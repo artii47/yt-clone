@@ -1,11 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import * as Styled from "../sidebar-items.styles";
 import {
   primaryItems,
   secondaryItems,
 } from "./sidebar-more-from-yt-items.data";
 import SidebarItem from "../../sidebar-item/sidebar-item-normal/sidebar-item-normal";
-import { useLocation } from "react-router-dom";
 
 const SidebarMoreFromYtItems = () => {
   const location = useLocation();
@@ -13,10 +13,10 @@ const SidebarMoreFromYtItems = () => {
     <>
       <Styled.SidebarItemsPrimaryWrapper>
         <Styled.SidebarItemsText>More from youtube</Styled.SidebarItemsText>
-        {primaryItems.map((item, index) => {
+        {primaryItems.map((item) => {
           return (
             <SidebarItem
-              key={item.name + index}
+              key={item.name}
               active={location.pathname === item.path}
               item={item}
             />
@@ -24,10 +24,10 @@ const SidebarMoreFromYtItems = () => {
         })}
       </Styled.SidebarItemsPrimaryWrapper>
       <Styled.SidebarItemsSecondaryWrapper>
-        {secondaryItems.map((item, index) => {
+        {secondaryItems.map((item) => {
           return (
             <SidebarItem
-              key={item.name + index}
+              key={item.name}
               active={location.pathname === item.path}
               item={item}
             />

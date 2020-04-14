@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import * as Styled from "./vidoes-related-list.styles";
-import VideoRelatedItem from "../video-related-item/video-related-item";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import * as Styled from "./vidoes-related-list.styles";
+import VideoRelatedItem from "../video-related-item/video-related-item";
 import {
   fetchRelatedToVideosAsync,
   resetCurrentVideos,
@@ -12,7 +12,7 @@ import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
 import CustomButton from "../custom-button/custom-button";
 
-const VideosRelatedList = (props) => {
+const VideosRelatedList = ({ enableScrollEvent }) => {
   const dispatch = useDispatch();
   const videos = useSelector((state) => state.relatedVideos.videos);
   const isLoading = useSelector((state) => state.relatedVideos.isLoading);
@@ -24,7 +24,7 @@ const VideosRelatedList = (props) => {
     };
   }, [params.videoId, dispatch]);
   useScrollEvent(
-    props.enableScrollEvent,
+    enableScrollEvent,
     videos,
     "videos-realted",
     fetchRelatedToVideosNextPageAsync,
@@ -57,7 +57,6 @@ const VideosRelatedList = (props) => {
         {videos.items.map((video) => {
           return (
             <VideoRelatedItem
-              isRelated
               key={video.id}
               id={video.id}
               title={video.snippet.title}
@@ -73,11 +72,11 @@ const VideosRelatedList = (props) => {
   };
   return (
     <Styled.VideosRelated
-      enableScrollEvent={props.enableScrollEvent}
+      enableScrollEvent={enableScrollEvent}
       id="videos-realted"
     >
       {renderList()}
-      {!props.enableScrollEvent && videos.items ? renderButton() : ""}
+      {!enableScrollEvent && videos.items ? renderButton() : ""}
       {isLoading ? <Spinner /> : ""}
     </Styled.VideosRelated>
   );

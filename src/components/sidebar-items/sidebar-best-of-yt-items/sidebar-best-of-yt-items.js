@@ -1,7 +1,7 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import SidebarItem from "../../sidebar-item/sidebar-item-normal/sidebar-item-normal";
 import { primaryItems, secondaryItems } from "./sidebar-best-of-yt-items.data";
-import { useLocation } from "react-router-dom";
 import * as Styled from "../sidebar-items.styles";
 
 const SidebarBestOfYtItems = () => {
@@ -10,10 +10,10 @@ const SidebarBestOfYtItems = () => {
     <>
       <Styled.SidebarItemsPrimaryWrapper>
         <Styled.SidebarItemsText>Best of youtube</Styled.SidebarItemsText>
-        {primaryItems.map((item, index) => {
+        {primaryItems.map((item) => {
           return (
             <SidebarItem
-              key={item.name + index}
+              key={item.name}
               active={location.pathname === item.path}
               item={item}
             />
@@ -21,10 +21,10 @@ const SidebarBestOfYtItems = () => {
         })}
       </Styled.SidebarItemsPrimaryWrapper>
       <Styled.SidebarItemsSecondaryWrapper>
-        {secondaryItems.map((item, index) => {
+        {secondaryItems.map((item) => {
           return (
             <SidebarItem
-              key={item.name + index}
+              key={item.name}
               active={location.pathname === item.path}
               item={item}
             />

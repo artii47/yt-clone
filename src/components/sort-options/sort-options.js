@@ -6,7 +6,8 @@ const SortOptions = ({ sortBy, setSortBy }) => {
   return (
     <Styled.SortOptions onClick={() => setShowOptions(!showOptions)}>
       <Styled.SortOptionsFlexWrapper>
-        <Styled.SortIcon /> SORT BY
+        <Styled.SortIcon />
+        SORT BY
       </Styled.SortOptionsFlexWrapper>
       {showOptions ? (
         <Styled.SortOptionsBox>

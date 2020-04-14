@@ -1,5 +1,5 @@
-import { youtube } from "../api/youtube";
 import { createSlice } from "@reduxjs/toolkit";
+import { youtube } from "../api/youtube";
 
 export const channels = createSlice({
   name: "channels",

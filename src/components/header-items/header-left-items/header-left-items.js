@@ -1,6 +1,6 @@
 import React from "react";
-import * as Styled from "./header-left-items.styles";
 import { useHistory } from "react-router-dom";
+import * as Styled from "./header-left-items.styles";
 
 const HeaderLeftItems = () => {
   const history = useHistory();

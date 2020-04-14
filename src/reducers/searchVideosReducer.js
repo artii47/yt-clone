@@ -68,11 +68,12 @@ export const fetchSearchVideosAsync = (searchTerm) => async (dispatch) => {
       nextPageToken: response.data.nextPageToken,
       items: responseWithStats.data.items,
     };
-    for (let item of response.data.items) {
+    response.data.items.map((item) => {
       if (item.id.kind === "youtube#channel") {
         dispatch(setChannel(item));
       }
-    }
+      return null;
+    });
     dispatch(fetchSearchVideosSuccess(result));
   } catch (err) {
     console.log("err", err);

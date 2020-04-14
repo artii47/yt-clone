@@ -1,9 +1,9 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import Header from "./components/header/header";
 import Sidebar from "./components/sidebar/sidebar";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as Styled from "./App.styles";
-import { useMediaQuery } from "react-responsive";
 import VideosPopularList from "./components/videos-popular-list/videos-popular-list";
 import VideoDetails from "./components/video-details/video-details";
 import CommentsContainer from "./components/comments/commentsContainer";
@@ -41,7 +41,7 @@ function App() {
           <Sidebar />
           <VideosSearchList />
         </Route>
-        <Route exact path={"/watch/:videoId"}>
+        <Route exact path="/watch/:videoId">
           <Styled.Container>
             <Styled.FlexWrapper>
               <Styled.VideoDetailsAndCommentsWrapper>

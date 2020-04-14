@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { fetchVideoAsync } from "../../reducers/videoReducer";
-import { fetchCurrentVideoChannelAsync } from "../../reducers/channelsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { fetchVideoAsync } from "../../reducers/videoReducer";
+import { fetchCurrentVideoChannelAsync } from "../../reducers/channelsReducer";
 import * as Styled from "./video-details.styles";
 import { numberWithCommas } from "../../helpers/numConverter";
 import VideoDetailsDesc from "../video-details-desc/video-details-desc";
@@ -41,12 +41,13 @@ const VideoDetails = () => {
       <Styled.VideoDetailsTitle>{video.snippet.title}</Styled.VideoDetailsTitle>
       <Styled.VideoDetailsFlexWrapper>
         <Styled.VideoDetailsPublishDate>
-          {numberWithCommas(video.statistics.viewCount) + " views "}
-          &bull; {video.snippet.publishedAt.slice(0, 10)}
+          {`${numberWithCommas(video.statistics.viewCount)} views `}
+          &bull;
+          {video.snippet.publishedAt.slice(0, 10)}
         </Styled.VideoDetailsPublishDate>
-        {<VideoDetailsActionsWithRatings video={video} />}
+        <VideoDetailsActionsWithRatings video={video} />
       </Styled.VideoDetailsFlexWrapper>
-      {<VideoDetailsDesc videoDesc={video.snippet.description} />}
+      <VideoDetailsDesc videoDesc={video.snippet.description} />
     </Styled.VideoDetails>
   );
 };

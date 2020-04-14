@@ -22,12 +22,12 @@ export const primaryItems = [
   },
   {
     name: "Library",
-    path: "/subscriptions",
+    path: "/library",
     Svg: LibrarySVG,
   },
   {
     name: "History",
-    path: "/subscriptions",
+    path: "/history",
     Svg: HistorySVG,
   },
 ];

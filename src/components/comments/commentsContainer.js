@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import {
   fetchCommentsAsync,
   fetchCommentsNextPageAsync,
 } from "../../reducers/commentsReducer";
 import Comments from "./comments";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import useScrollEvent from "../../hooks/useScrollEvent";
 
 const CommentsContainer = () => {

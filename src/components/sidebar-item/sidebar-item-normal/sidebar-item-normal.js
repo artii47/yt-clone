@@ -1,6 +1,6 @@
 import React from "react";
-import * as Styled from "./sidebar-item-normal.styles";
 import styled from "styled-components";
+import * as Styled from "./sidebar-item-normal.styles";
 
 const SidebarItemNormal = ({ item, active }) => {
   const { img, Svg } = item;
