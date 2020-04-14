@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import * as Styled from "./video-popular-item.styles";
 import { numberConverter } from "../../helpers/numConverter";
 import { dateConverter } from "../../helpers/dateConverter";
+import { renderTitle } from "../../helpers/renderTitle";
 
 const VideoPopularItem = ({
   id,
@@ -30,11 +31,7 @@ const VideoPopularItem = ({
           />
           <Styled.VideoPopularItemDescription>
             <Styled.VideoPopularItemTitle>
-              {params.videoId
-                ? title.length > 50
-                  ? title.slice(0, 50) + "..."
-                  : title
-                : title}
+              {renderTitle(params.videoId, title)}
             </Styled.VideoPopularItemTitle>
             <Styled.VideoPopularItemChannelTitle>
               {channelTitle}

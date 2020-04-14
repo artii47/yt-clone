@@ -1,7 +1,8 @@
-export const getChannelIds = videos => {
+export const getChannelIds = (videos) => {
   let stringIds = "";
-  for (let video of videos) {
-    stringIds = stringIds + video.snippet.channelId + ",";
-  }
+  videos.map((video) => {
+    stringIds = `${stringIds}${video.snippet.channelId},`;
+    return null;
+  });
   return stringIds;
 };

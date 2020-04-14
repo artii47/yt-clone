@@ -1,19 +1,20 @@
-export const numberConverter = x => {
+export const numberConverter = (x) => {
   if (isNaN(x)) return x;
   if (x < 999) {
     return x;
   }
   if (x < 1000000) {
-    return Math.round(x / 1000) + "K";
+    return `${Math.round(x / 1000)}K`;
   }
   if (x < 10000000) {
-    return (x / 1000000).toFixed(2) + "M";
+    return `${(x / 1000000).toFixed(2)}M`;
   }
   if (x < 1000000000) {
-    return Math.round(x / 1000000) + "M";
+    return `${Math.round(x / 1000000)}M`;
   }
+  return null;
 };
 
-export const numberWithCommas = x => {
+export const numberWithCommas = (x) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };

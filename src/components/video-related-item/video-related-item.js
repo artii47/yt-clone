@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import * as Styled from "./video-related-item.styles";
 import { numberConverter } from "../../helpers/numConverter";
 import { dateConverter } from "../../helpers/dateConverter";
+import { renderTitle } from "../../helpers/renderTitle";
 
 const VideoRelatedItem = ({
   id,
@@ -25,11 +26,7 @@ const VideoRelatedItem = ({
         />
         <Styled.VideoRelatedItemDescription>
           <Styled.VideoRelatedItemTitle>
-            {params.videoId
-              ? title.length > 50
-                ? title.slice(0, 50) + "..."
-                : title
-              : title}
+            {renderTitle(params.videoId, title)}
           </Styled.VideoRelatedItemTitle>
           <br />
           <Styled.VideoRelatedItemChannelTitle>

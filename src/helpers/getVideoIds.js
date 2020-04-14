@@ -1,7 +1,8 @@
-export const getVideoIds = videos => {
+export const getVideoIds = (videos) => {
   let stringIds = "";
-  for (let video of videos) {
-    stringIds = stringIds + video.id.videoId + ",";
-  }
+  videos.map((video) => {
+    stringIds = `${stringIds} ${video.id.videoId} ,`;
+    return null;
+  });
   return stringIds;
 };
