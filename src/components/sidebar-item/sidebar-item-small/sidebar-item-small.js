@@ -1,17 +1,16 @@
 import React from "react";
-import styled from "styled-components";
 import * as Styled from "./sidebar-item-small.styles";
 
 const SidebarItemSmall = ({ item, active }) => {
-  const SvgIcon = styled(item.Svg)`
-    width: 2.4rem !important;
-    height: 2.4rem !important;
-    margin-bottom: 0.6rem;
-    fill: ${active ? "red" : "#606060"};
-  `;
+  const styles = {
+    fill: `${active ? "red" : "#606060"}`,
+    marginRight: "0",
+    width: "2.4rem",
+    height: "2.4rem",
+  };
   return (
     <Styled.SidebarItemSmall active={active}>
-      <SvgIcon />
+      <item.Svg style={styles} />
       <Styled.SidebarItemSmallText>{item.name}</Styled.SidebarItemSmallText>
     </Styled.SidebarItemSmall>
   );

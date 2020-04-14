@@ -7,10 +7,10 @@ import SignInButton from "../../sign-in-button/sign-in-button";
 const HeaderRightItems = () => {
   return (
     <Styled.HeaderItems>
-      {primaryItems.map((item) => {
+      {primaryItems.map(({ Svg, name }) => {
         return (
-          <item.Svg
-            key={item.name}
+          <Svg
+            key={name}
             style={{
               width: "2.4rem",
               height: "2.4rem",

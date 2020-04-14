@@ -28,7 +28,7 @@ add items next to like/dislike bar
 fetch more videos/comments when page is zoomed out
 */
 function App() {
-  const isMediumSize = useMediaQuery({ query: `(max-device-width: 1000px)` });
+  const isMediumSize = useMediaQuery({ query: `(max-width: 1000px)` });
   return (
     <Styled.App>
       <Router>
