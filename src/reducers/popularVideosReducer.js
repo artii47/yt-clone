@@ -76,7 +76,7 @@ export const fetchPopularVideosAsync = () => async (dispatch) => {
     dispatch(fetchPopularVideosSuccess(resultFinal));
   } catch (err) {
     console.log("err", err);
-    dispatch(setErrorMessage(err));
+    dispatch(setErrorMessage(err.response));
   }
 };
 
@@ -112,7 +112,7 @@ export const fetchPopularVideosNextPageAsync = (nextPageToken) => async (
     dispatch(fetchPopularVideosNextPageSuccess(resultFinal));
   } catch (err) {
     console.log("err", err);
-    dispatch(setErrorMessage(err));
+    dispatch(setErrorMessage(err.response));
   }
 };
 

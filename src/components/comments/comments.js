@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import * as Styled from "./comments.styles";
 import CommentList from "../comment-list/comment-list";
 import { numberWithCommas } from "../../helpers/numConverter";
@@ -24,3 +25,13 @@ const Comments = ({ sortBy, setSortBy, video }) => {
 };
 
 export default Comments;
+
+Comments.propTypes = {
+  sortBy: PropTypes.string.isRequired,
+  setSortBy: PropTypes.func.isRequired,
+  video: PropTypes.shape({
+    statistics: PropTypes.shape({
+      commentCount: PropTypes.string,
+    }),
+  }).isRequired,
+};

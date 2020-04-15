@@ -29,7 +29,7 @@ export const fetchCurrentVideoChannelAsync = (channelId) => async (
     dispatch(fetchCurrentVideoChannel(response.data.items[0]));
   } catch (err) {
     console.log("err", err);
-    dispatch(setErrorMessage(err));
+    dispatch(setErrorMessage(err.response));
   }
 };
 

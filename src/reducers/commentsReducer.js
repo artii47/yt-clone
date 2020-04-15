@@ -73,7 +73,7 @@ export const fetchCommentsNextPageAsync = (
     dispatch(fetchCommentsNextPageSuccess(response.data));
   } catch (err) {
     console.log("err", err);
-    dispatch(setErrorMessage(err));
+    dispatch(setErrorMessage(err.response));
   }
 };
 

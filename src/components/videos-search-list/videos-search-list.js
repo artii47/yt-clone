@@ -70,7 +70,7 @@ const VideosSearchList = () => {
             <Styled.FilterSVG />
             FILTER
           </Styled.Filters>
-          {channel ? <SearchedChannelItem channel={channel} /> : ""}
+          {channel ? <SearchedChannelItem channel={channel.snippet} /> : ""}
           {renderVideos()}
           {isLoading ? <Spinner /> : ""}
           {!isLoading && !videos.items?.length ? renderNotFound() : ""}

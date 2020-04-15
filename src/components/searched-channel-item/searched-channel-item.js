@@ -1,21 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
 import * as Styled from "./searched-channel-item.styles";
 
-const SearchedChannelItem = ({ channel }) => {
+const SearchedChannelItem = ({ snippet }) => {
   return (
     <Styled.SearchedChannelItem>
-      <Styled.SearchedChannelItemImg
-        src={channel.snippet.thumbnails.medium.url}
-      />
+      <Styled.SearchedChannelItemImg src={snippet.thumbnails.medium.url} />
       <Styled.SearchedChannelItemDescription>
         <Styled.SearchedChannelItemTitle>
-          {channel.snippet.title}
+          {snippet.title}
         </Styled.SearchedChannelItemTitle>
         <Styled.SearchedChannelItemStats>
           423.3 subs &bull; 523 videos
         </Styled.SearchedChannelItemStats>
         <Styled.SearchedChannelItemAbout>
-          {channel.snippet.description}
+          {snippet.description}
         </Styled.SearchedChannelItemAbout>
       </Styled.SearchedChannelItemDescription>
       <Styled.SearchedChannelItemButton subscribe>
@@ -26,3 +25,15 @@ const SearchedChannelItem = ({ channel }) => {
 };
 
 export default SearchedChannelItem;
+
+SearchedChannelItem.propTypes = {
+  snippet: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    thumbnails: PropTypes.shape({
+      medium: PropTypes.shape({
+        url: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+};

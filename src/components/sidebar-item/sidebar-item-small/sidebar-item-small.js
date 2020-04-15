@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import * as Styled from "./sidebar-item-small.styles";
 
 const SidebarItemSmall = ({ item, active }) => {
@@ -17,3 +18,10 @@ const SidebarItemSmall = ({ item, active }) => {
 };
 
 export default SidebarItemSmall;
+
+SidebarItemSmall.propTypes = {
+  item: PropTypes.shape({
+    name: PropTypes.string,
+  }).isRequired,
+  active: PropTypes.bool.isRequired,
+};

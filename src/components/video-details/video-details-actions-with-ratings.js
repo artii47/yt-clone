@@ -1,23 +1,22 @@
 import React from "react";
+import PropTypes from "prop-types";
 import * as Styled from "./video-details.styles";
 import { numberConverter } from "../../helpers/numConverter";
 
-const VideoDetailsActionsWithRatings = ({ video }) => {
+const VideoDetailsActionsWithRatings = ({ video: { statistics } }) => {
   const ratingsSum =
-    Number(video.statistics.likeCount) + Number(video.statistics.dislikeCount);
-  const likePercentage = Math.floor(
-    (video.statistics.likeCount / ratingsSum) * 100
-  );
+    Number(statistics.likeCount) + Number(statistics.dislikeCount);
+  const likePercentage = Math.floor((statistics.likeCount / ratingsSum) * 100);
   return (
     <Styled.VideoDetailsFlex>
       <Styled.VideoDetailsLikeBox likePercentage={likePercentage}>
         <Styled.VideoDetailsLikeDislikeBox>
           <Styled.VideoDetailsLike />
-          {numberConverter(video.statistics.likeCount)}
+          {numberConverter(statistics.likeCount)}
         </Styled.VideoDetailsLikeDislikeBox>
         <Styled.VideoDetailsLikeDislikeBox>
           <Styled.VideoDetailsDislike />
-          {numberConverter(video.statistics.dislikeCount)}
+          {numberConverter(statistics.dislikeCount)}
         </Styled.VideoDetailsLikeDislikeBox>
       </Styled.VideoDetailsLikeBox>
       <Styled.VideoDetailsActionBox>
@@ -36,3 +35,12 @@ const VideoDetailsActionsWithRatings = ({ video }) => {
 };
 
 export default VideoDetailsActionsWithRatings;
+
+VideoDetailsActionsWithRatings.propTypes = {
+  video: PropTypes.shape({
+    statistics: PropTypes.shape({
+      likeCount: PropTypes.string.isRequired,
+      dislikeCount: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};

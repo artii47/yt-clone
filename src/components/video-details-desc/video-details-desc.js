@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import * as Styled from "./video-details-desc.styles";
 import { numberConverter } from "../../helpers/numConverter";
@@ -42,3 +43,7 @@ const VideoDetailsDesc = ({ videoDesc }) => {
 };
 
 export default VideoDetailsDesc;
+
+VideoDetailsDesc.propTypes = {
+  videoDesc: PropTypes.string.isRequired,
+};

@@ -55,7 +55,7 @@ export const fetchRelatedToVideosAsync = (videoId) => async (dispatch) => {
     dispatch(fetchRelatedToVideos(result));
   } catch (err) {
     console.log("err", err);
-    dispatch(setErrorMessage(err));
+    dispatch(setErrorMessage(err.response));
   }
 };
 
@@ -79,7 +79,7 @@ export const fetchRelatedToVideosNextPageAsync = (
     dispatch(fetchRelatedToVideosNextPageSuccess(result));
   } catch (err) {
     console.log("err", err);
-    dispatch(setErrorMessage(err));
+    dispatch(setErrorMessage(err.response));
   }
 };
 

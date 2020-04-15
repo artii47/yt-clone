@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import * as Styled from "./video-related-item.styles";
 import { numberConverter } from "../../helpers/numConverter";
@@ -45,3 +46,12 @@ const VideoRelatedItem = ({
 };
 
 export default VideoRelatedItem;
+
+VideoRelatedItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  channelTitle: PropTypes.string.isRequired,
+  publishDate: PropTypes.string.isRequired,
+  viewsCount: PropTypes.string.isRequired,
+};

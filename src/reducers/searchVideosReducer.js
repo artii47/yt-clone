@@ -77,7 +77,7 @@ export const fetchSearchVideosAsync = (searchTerm) => async (dispatch) => {
     dispatch(fetchSearchVideosSuccess(result));
   } catch (err) {
     console.log("err", err);
-    dispatch(setErrorMessage(err));
+    dispatch(setErrorMessage(err.response));
   }
 };
 

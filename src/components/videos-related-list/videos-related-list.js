@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import * as Styled from "./vidoes-related-list.styles";
@@ -30,7 +31,7 @@ const VideosRelatedList = ({ enableScrollEvent }) => {
     fetchRelatedToVideosNextPageAsync,
     params.videoId
   );
-  const renderButton = () => {
+  const renderMoreVideosButton = () => {
     return (
       <CustomButton
         onClick={() =>
@@ -76,10 +77,14 @@ const VideosRelatedList = ({ enableScrollEvent }) => {
       id="videos-realted"
     >
       {renderList()}
-      {!enableScrollEvent && videos.items ? renderButton() : ""}
+      {!enableScrollEvent && videos.items ? renderMoreVideosButton() : ""}
       {isLoading ? <Spinner /> : ""}
     </Styled.VideosRelated>
   );
 };
 
 export default VideosRelatedList;
+
+VideosRelatedList.propTypes = {
+  enableScrollEvent: PropTypes.bool.isRequired,
+};

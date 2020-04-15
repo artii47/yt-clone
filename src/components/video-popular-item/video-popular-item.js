@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import * as Styled from "./video-popular-item.styles";
 import { numberConverter } from "../../helpers/numConverter";
 import { dateConverter } from "../../helpers/dateConverter";
@@ -50,3 +51,13 @@ const VideoPopularItem = ({
 };
 
 export default VideoPopularItem;
+
+VideoPopularItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  channelTitle: PropTypes.string.isRequired,
+  publishDate: PropTypes.string.isRequired,
+  channelImgUrl: PropTypes.string.isRequired,
+  viewsCount: PropTypes.string.isRequired,
+};

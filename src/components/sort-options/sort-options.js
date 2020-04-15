@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import * as Styled from "./sort-options.styles";
 
 const SortOptions = ({ sortBy, setSortBy }) => {
@@ -32,3 +33,8 @@ const SortOptions = ({ sortBy, setSortBy }) => {
 };
 
 export default SortOptions;
+
+SortOptions.propTypes = {
+  sortBy: PropTypes.string.isRequired,
+  setSortBy: PropTypes.func.isRequired,
+};
