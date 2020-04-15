@@ -11,6 +11,9 @@ export const SidebarSmall = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
   z-index: 20;
+  ::-webkit-scrollbar {
+    width: 0;
+  }
   @media only screen and (max-width: 50em) {
     position: fixed;
     top: unset;

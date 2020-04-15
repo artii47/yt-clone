@@ -29,9 +29,7 @@ export const VideoPopularItem = styled(Link)`
 export const VideoPopularItemImg = styled.img`
   width: 100%;
   max-height: 23rem;
-  min-height: ${(props) => (!props.isLoaded ? "16rem" : "13rem")};
-  background-color: ${(props) =>
-    !props.isLoaded ? "rgba(0,0,0,0.1)" : "transparent"};
+  min-height: 13rem;
 `;
 
 export const VideoPopularItemDescription = styled.div`

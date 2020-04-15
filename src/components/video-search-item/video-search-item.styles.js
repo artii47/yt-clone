@@ -22,7 +22,7 @@ export const VideoSearchItem = styled(Link)`
 `;
 
 export const VideoSearchItemImg = styled.img`
-  min-width: 24rem;
+  min-width: 24.6rem;
   height: 14rem;
   @media only screen and (max-width: 50em) {
     width: 24rem;

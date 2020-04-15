@@ -24,7 +24,6 @@ const CommentList = () => {
           />
         );
       })}
-
       {isLoading && comments.nextPageToken ? <Spinner /> : ""}
       {!comments.nextPageToken ? "" : ""}
     </Styled.CommentList>

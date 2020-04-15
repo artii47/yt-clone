@@ -29,6 +29,7 @@ export const comments = createSlice({
     },
     resetComments: (state) => {
       state.currentVideoComments = null;
+      state.hasError = null;
     },
     setErrorMessage: (state, action) => {
       state.hasError = action.payload;
@@ -55,7 +56,7 @@ export const fetchCommentsAsync = (videoId, sortBy) => async (dispatch) => {
     dispatch(fetchCommentsSuccess(response.data));
   } catch (err) {
     console.log("err", err);
-    dispatch(setErrorMessage(err));
+    dispatch(setErrorMessage(err.response));
   }
 };
 

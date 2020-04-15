@@ -42,7 +42,7 @@ const {
 export const fetchRelatedToVideosAsync = (videoId) => async (dispatch) => {
   try {
     const response = await youtube.get(
-      `/search?part=snippet&relatedToVideoId=${videoId}&maxResults=12&&type=video&key=${process.env.REACT_APP_API_KEY}`
+      `/search?part=snippet&relatedToVideoId=${videoId}&maxResults=15&&type=video&key=${process.env.REACT_APP_API_KEY}`
     );
     const videoIds = getVideoIds(response.data.items);
     const responseWithStats = await youtube.get(

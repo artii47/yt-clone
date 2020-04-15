@@ -11,7 +11,7 @@ const Comments = ({ sortBy, setSortBy, video }) => {
         <Styled.CommentsFlexWrapper>
           <Styled.CommentsCount>
             {video
-              ? `${numberWithCommas(video.statistics.commentCount)} Comments"`
+              ? `${numberWithCommas(video.statistics.commentCount)} Comments`
               : ""}
           </Styled.CommentsCount>
           <SortOptions sortBy={sortBy} setSortBy={setSortBy} />

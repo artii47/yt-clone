@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import {
   fetchCommentsAsync,
   fetchCommentsNextPageAsync,
+  resetCurrentComments,
 } from "../../reducers/commentsReducer";
 import Comments from "./comments";
 import useScrollEvent from "../../hooks/useScrollEvent";
@@ -12,20 +13,35 @@ const CommentsContainer = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const [sortBy, setSortBy] = useState("relevance");
-  const comments = useSelector((state) => state.comments.currentVideoComments);
+  const comments = useSelector((state) => state.comments);
   const video = useSelector((state) => state.video.currentVideo);
   useEffect(() => {
     dispatch(fetchCommentsAsync(params.videoId, sortBy));
+    return () => {
+      dispatch(resetCurrentComments());
+    };
   }, [sortBy, params.videoId, dispatch]);
   useScrollEvent(
     true,
-    comments,
+    comments.currentVideoComments,
     "comments",
     fetchCommentsNextPageAsync,
     params.videoId,
     sortBy
   );
-  if (!comments) {
+  if (!comments.currentVideoComments) {
+    if (
+      video &&
+      comments.hasError?.data?.error?.errors[0].reason === "commentsDisabled"
+    ) {
+      return (
+        <p
+          style={{ textAlign: "center", fontSize: "1.4rem", padding: "3rem 0" }}
+        >
+          Comments are turned off
+        </p>
+      );
+    }
     return "";
   }
 
