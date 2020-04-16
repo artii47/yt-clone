@@ -52,19 +52,14 @@ export const VideoPopularItemTitle = styled.p`
 export const VideoPopularItemChannelTitle = styled.p`
   font-weight: 400;
   color: #707070;
-  font-size: 1.5rem;
-  @media only screen and (max-width: 87.5em) {
-    font-size: 1.4rem;
-  }
+  font-size: 1.4rem;
+  margin-bottom: 2px;
 `;
 
 export const VideoPopularItemViews = styled.p`
   font-weight: 400;
   color: #707070;
-  font-size: 1.5rem;
-  @media only screen and (max-width: 87.5em) {
-    font-size: 1.4rem;
-  }
+  font-size: 1.4rem;
 `;
 
 export const VideoPopularItemFlexWrapper = styled.div`
