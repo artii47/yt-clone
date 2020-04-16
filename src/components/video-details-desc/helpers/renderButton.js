@@ -1,5 +1,5 @@
 import React from "react";
-import * as Styled from "./video-details-desc.styles";
+import * as Styled from "../video-details-desc.styles";
 
 export const renderButton = (videoDesc, showMore, setShowMore) => {
   if (videoDesc.split(" ").length > 40) {

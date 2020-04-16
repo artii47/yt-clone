@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import * as Styled from "./video-details-desc.styles";
 import { numberConverter } from "../../helpers/numConverter";
-import { renderVideoDetailsDescContent } from "./renderVideoDetailsDescription";
-import { renderButton } from "./renderButton";
+import { renderVideoDetailsDescContent } from "./helpers/renderVideoDetailsDescription";
+import { renderButton } from "./helpers/renderButton";
 import { CustomButton } from "../custom-button/custom-button.styles";
 
 const VideoDetailsDesc = ({ videoDesc }) => {
