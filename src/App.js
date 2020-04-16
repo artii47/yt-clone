@@ -43,16 +43,12 @@ function App() {
         </Route>
         <Route exact path="/watch/:videoId">
           <Styled.Container>
-            <Styled.FlexWrapper>
-              <Styled.VideoDetailsAndCommentsWrapper>
-                <VideoDetails />
-                {isMediumSize && (
-                  <VideosRelatedList enableScrollEvent={false} />
-                )}
-                <CommentsContainer />
-              </Styled.VideoDetailsAndCommentsWrapper>
-              {!isMediumSize ? <VideosRelatedList enableScrollEvent /> : ""}
-            </Styled.FlexWrapper>
+            <Styled.VideoDetailsAndCommentsWrapper>
+              <VideoDetails />
+              {isMediumSize && <VideosRelatedList enableScrollEvent={false} />}
+              <CommentsContainer />
+            </Styled.VideoDetailsAndCommentsWrapper>
+            {!isMediumSize ? <VideosRelatedList enableScrollEvent /> : ""}
           </Styled.Container>
         </Route>
       </Router>

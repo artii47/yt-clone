@@ -6,7 +6,7 @@ export const VideosSearchList = styled.div`
   grid-row: 2/-1;
   grid-column: 2/-1;
   width: 100%;
-  padding: 1.6rem 2.4rem;
+  padding: 2.3rem 2.4rem;
   @media only screen and (max-width: 75em) {
     grid-column: 1/-1;
     margin-left: 7.5rem;
@@ -36,7 +36,7 @@ export const Filters = styled.div`
   font-size: 1.4rem;
   font-weight: 500;
   color: #616161;
-  padding-bottom: 0.8rem;
+  padding-bottom: 0.7rem;
 `;
 
 export const FilterSVG = styled(Filter)`

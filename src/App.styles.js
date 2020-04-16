@@ -12,14 +12,11 @@ export const App = styled.main`
   }
 `;
 
-export const FlexWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
 export const Container = styled.div`
   grid-row: 2/-1;
   grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
 `;
 
 export const VideoDetailsAndCommentsWrapper = styled.div`

@@ -12,6 +12,21 @@ export const VideoPopularItem = styled(Link)`
   margin-right: 0.8rem;
   margin-left: 0.8rem;
   margin-bottom: 4rem;
+  :first-of-type {
+    ::before {
+      content: "Recommended";
+      position: absolute;
+      top: -4rem;
+      left: 0.4rem;
+      width: 100%;
+      height: 1rem;
+      padding-bottom: 1rem;
+      font-size: 2rem;
+      color: #000;
+      font-weight: 500;
+      pointer-events: none;
+    }
+  }
   @media only screen and (max-width: 62.5em) {
     min-width: 30%;
   }

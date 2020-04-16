@@ -21,6 +21,11 @@ const CommentsContainer = () => {
       dispatch(resetCurrentComments());
     };
   }, [sortBy, params.videoId, dispatch]);
+  useEffect(() => {
+    return () => {
+      setSortBy("relevance");
+    };
+  }, [params.videoId]);
   useScrollEvent(
     true,
     comments.currentVideoComments,

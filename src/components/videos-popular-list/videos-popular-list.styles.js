@@ -4,7 +4,7 @@ export const VideosPopularListWrapper = styled.div`
   grid-row: 2/-1;
   grid-column: 2/-1;
   justify-content: center;
-  margin: 5rem 0;
+  margin: 8rem 0;
   flex-grow: 1;
   @media only screen and (max-width: 75em) {
     grid-column: 1/-1;
@@ -14,7 +14,7 @@ export const VideosPopularListWrapper = styled.div`
   @media only screen and (max-width: 50em) {
     margin-top: 5rem;
     margin: 0 0;
-    margin-top: 3rem;
+    margin-top: 6rem;
   }
 `;
 export const VideosPopularList = styled.div`
