@@ -5,7 +5,7 @@ export const VideosRelated = styled.div`
   padding-right: 2.5rem;
   padding-top: 2.4rem;
   min-width: 40rem;
-  height: ${(props) => (props.enableScrollEvent ? "100%" : "auto")};
+  min-height: ${(props) => (props.enableScrollEvent ? "100vh" : "auto")};
   @media only screen and (max-width: 62.5em) {
     padding: 2.4rem 0;
   }

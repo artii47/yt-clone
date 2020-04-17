@@ -101,7 +101,7 @@ export const fetchSearchVideosNextPageAsync = (
     dispatch(fetchSearchVideosNextPageSuccess(result));
   } catch (err) {
     console.log("err", err);
-    dispatch(setErrorMessage(err));
+    dispatch(setErrorMessage(err.response));
   }
 };
 

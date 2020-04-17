@@ -9,6 +9,7 @@ import * as Styled from "./videos-popular-list.styles";
 import VideoPopularItem from "../video-popular-item/video-popular-item";
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
+import withError from "../../hocs/withError";
 
 const VideosPopularList = () => {
   const dispatch = useDispatch();
@@ -58,4 +59,4 @@ const VideosPopularList = () => {
   );
 };
 
-export default VideosPopularList;
+export default withError(VideosPopularList, "popularVideos");

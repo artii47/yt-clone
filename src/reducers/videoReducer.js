@@ -27,7 +27,7 @@ export const fetchVideoAsync = (videoId) => async (dispatch) => {
     dispatch(fetchVideo(response.data.items[0]));
   } catch (err) {
     console.log("err", err);
-    dispatch(setErrorMessage(err));
+    dispatch(setErrorMessage(err.response));
   }
 };
 

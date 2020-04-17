@@ -12,6 +12,7 @@ import VideoSearchItem from "../video-search-item/video-search-item";
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
 import SearchedChannelItem from "../searched-channel-item/searched-channel-item";
+import withError from "../../hocs/withError";
 
 const VideosSearchList = () => {
   const dispatch = useDispatch();
@@ -84,4 +85,4 @@ const VideosSearchList = () => {
   );
 };
 
-export default VideosSearchList;
+export default withError(VideosSearchList, "searchVideos");

@@ -8,6 +8,7 @@ import {
 } from "../../reducers/commentsReducer";
 import Comments from "./comments";
 import useScrollEvent from "../../hooks/useScrollEvent";
+import withError from "../../hocs/withError";
 
 const CommentsContainer = () => {
   const dispatch = useDispatch();
@@ -35,17 +36,22 @@ const CommentsContainer = () => {
     sortBy
   );
   if (!comments.currentVideoComments) {
-    if (
-      video &&
-      comments.hasError?.data?.error?.errors[0].reason === "commentsDisabled"
-    ) {
-      return (
-        <p
-          style={{ textAlign: "center", fontSize: "1.4rem", padding: "3rem 0" }}
-        >
-          Comments are turned off
-        </p>
-      );
+    if (video) {
+      if (
+        comments.hasError?.data?.error?.errors[0]?.reason === "commentsDisabled"
+      ) {
+        return (
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "1.7rem",
+              padding: "3rem 0",
+            }}
+          >
+            Comments are turned off
+          </p>
+        );
+      }
     }
     return "";
   }
@@ -53,4 +59,4 @@ const CommentsContainer = () => {
   return <Comments video={video} sortBy={sortBy} setSortBy={setSortBy} />;
 };
 
-export default CommentsContainer;
+export default withError(CommentsContainer, "comments");

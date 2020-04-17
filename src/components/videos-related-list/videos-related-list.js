@@ -12,6 +12,7 @@ import {
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
 import CustomButton from "../custom-button/custom-button";
+import withError from "../../hocs/withError";
 
 const VideosRelatedList = ({ enableScrollEvent }) => {
   const dispatch = useDispatch();
@@ -83,7 +84,7 @@ const VideosRelatedList = ({ enableScrollEvent }) => {
   );
 };
 
-export default VideosRelatedList;
+export default withError(VideosRelatedList, "relatedVideos");
 
 VideosRelatedList.propTypes = {
   enableScrollEvent: PropTypes.bool.isRequired,

@@ -78,7 +78,6 @@ export const fetchRelatedToVideosNextPageAsync = (
     };
     dispatch(fetchRelatedToVideosNextPageSuccess(result));
   } catch (err) {
-    console.log("err", err);
     dispatch(setErrorMessage(err.response));
   }
 };
