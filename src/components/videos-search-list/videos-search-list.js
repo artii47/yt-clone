@@ -12,13 +12,18 @@ import VideoSearchItem from "../video-search-item/video-search-item";
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
 import SearchedChannelItem from "../searched-channel-item/searched-channel-item";
+import {
+  selectVideoItems,
+  selectIsLoading,
+  selectChannelItem,
+} from "../../selectors/searchVideos.selector";
 import withError from "../../hocs/withError";
 
 const VideosSearchList = () => {
   const dispatch = useDispatch();
-  const videos = useSelector((state) => state.searchVideos.videos);
-  const isLoading = useSelector((state) => state.searchVideos.isLoading);
-  const channel = useSelector((state) => state.searchVideos.channel);
+  const videos = useSelector(selectVideoItems);
+  const isLoading = useSelector(selectIsLoading);
+  const channel = useSelector(selectChannelItem);
   const params = useParams();
 
   useEffect(() => {

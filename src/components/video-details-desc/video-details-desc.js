@@ -5,11 +5,12 @@ import * as Styled from "./video-details-desc.styles";
 import { numberConverter } from "../../helpers/numConverter";
 import { renderVideoDetailsDescContent } from "./helpers/renderVideoDetailsDescription";
 import { renderButton } from "./helpers/renderButton";
+import { selectChannelItem } from "../../selectors/channel.selector";
 import { CustomButton } from "../custom-button/custom-button.styles";
 
 const VideoDetailsDesc = ({ videoDesc }) => {
   const [showMore, setShowMore] = useState(false);
-  const channel = useSelector((state) => state.channels.currentVideoChannel);
+  const channel = useSelector(selectChannelItem);
   if (!channel) {
     return "";
   }

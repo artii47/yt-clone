@@ -9,12 +9,16 @@ import * as Styled from "./videos-popular-list.styles";
 import VideoPopularItem from "../video-popular-item/video-popular-item";
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
+import {
+  selectIsLoading,
+  selectVideoItems,
+} from "../../selectors/popularVideos.selector";
 import withError from "../../hocs/withError";
 
 const VideosPopularList = () => {
   const dispatch = useDispatch();
-  const videos = useSelector((state) => state.popularVideos.videos);
-  const isLoading = useSelector((state) => state.popularVideos.isLoading);
+  const videos = useSelector(selectVideoItems);
+  const isLoading = useSelector(selectIsLoading);
   useEffect(() => {
     dispatch(fetchPopularVideosAsync());
     return () => dispatch(resetCurrentVideos());

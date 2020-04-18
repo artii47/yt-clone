@@ -6,14 +6,15 @@ import { fetchCurrentVideoChannelAsync } from "../../reducers/channelsReducer";
 import * as Styled from "./video-details.styles";
 import { numberWithCommas } from "../../helpers/numConverter";
 import VideoDetailsDesc from "../video-details-desc/video-details-desc";
+import { selectCurrentVideo } from "../../selectors/video.selector";
 import VideoDetailsActionsWithRatings from "./video-details-actions-with-ratings";
 
 const VideoDetails = () => {
+  const [isIframeLoaded, setIsIframeLoaded] = useState(false);
   const dispatch = useDispatch();
   const params = useParams();
   const url = `https://www.youtube.com/embed/${params.videoId}`;
-  const video = useSelector((state) => state.video.currentVideo);
-  const [isIframeLoaded, setIsIframeLoaded] = useState(false);
+  const video = useSelector(selectCurrentVideo);
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(fetchVideoAsync(params.videoId));

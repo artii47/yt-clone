@@ -3,10 +3,14 @@ import { useSelector } from "react-redux";
 import * as Styled from "./comment-list.styles";
 import CommentItem from "../comment-item/comment-item";
 import Spinner from "../spinner/spinner";
+import {
+  selectCommentsItems,
+  selectIsLoading,
+} from "../../selectors/comments.selector";
 
 const CommentList = () => {
-  const comments = useSelector((state) => state.comments.currentVideoComments);
-  const isLoading = useSelector((state) => state.comments.isLoading);
+  const comments = useSelector(selectCommentsItems);
+  const isLoading = useSelector(selectIsLoading);
 
   return (
     <Styled.CommentList>

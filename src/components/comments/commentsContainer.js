@@ -8,14 +8,16 @@ import {
 } from "../../reducers/commentsReducer";
 import Comments from "./comments";
 import useScrollEvent from "../../hooks/useScrollEvent";
+import { selectCurrentVideo } from "../../selectors/video.selector";
+import { selectComments } from "../../selectors/comments.selector";
 import withError from "../../hocs/withError";
 
 const CommentsContainer = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const [sortBy, setSortBy] = useState("relevance");
-  const comments = useSelector((state) => state.comments);
-  const video = useSelector((state) => state.video.currentVideo);
+  const comments = useSelector(selectComments);
+  const video = useSelector(selectCurrentVideo);
   useEffect(() => {
     dispatch(fetchCommentsAsync(params.videoId, sortBy));
     return () => {

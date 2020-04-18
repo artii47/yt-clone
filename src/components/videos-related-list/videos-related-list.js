@@ -12,12 +12,16 @@ import {
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
 import CustomButton from "../custom-button/custom-button";
+import {
+  selectIsLoading,
+  selectVideoItems,
+} from "../../selectors/relatedVideos.selector";
 import withError from "../../hocs/withError";
 
 const VideosRelatedList = ({ enableScrollEvent }) => {
   const dispatch = useDispatch();
-  const videos = useSelector((state) => state.relatedVideos.videos);
-  const isLoading = useSelector((state) => state.relatedVideos.isLoading);
+  const videos = useSelector(selectVideoItems);
+  const isLoading = useSelector(selectIsLoading);
   const params = useParams();
   useEffect(() => {
     dispatch(fetchRelatedToVideosAsync(params.videoId));
