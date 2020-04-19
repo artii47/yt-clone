@@ -44,7 +44,7 @@ const VideoDetails = () => {
         <Styled.VideoDetailsPublishDate>
           {`${numberWithCommas(video.statistics.viewCount)} views `}
           &bull;
-          {video.snippet.publishedAt.slice(0, 10)}
+          {` ${video.snippet.publishedAt.slice(0, 10)}`}
         </Styled.VideoDetailsPublishDate>
         <VideoDetailsActionsWithRatings video={video} />
       </Styled.VideoDetailsFlexWrapper>

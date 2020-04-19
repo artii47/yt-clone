@@ -32,7 +32,7 @@ const VideosRelatedList = ({ enableScrollEvent }) => {
   useScrollEvent(
     enableScrollEvent,
     videos,
-    "videos-realted",
+    "videos-related",
     fetchRelatedToVideosNextPageAsync,
     params.videoId
   );
@@ -79,7 +79,7 @@ const VideosRelatedList = ({ enableScrollEvent }) => {
   return (
     <Styled.VideosRelated
       enableScrollEvent={enableScrollEvent}
-      id="videos-realted"
+      id="videos-related"
     >
       {renderList()}
       {!enableScrollEvent && videos.items ? renderMoreVideosButton() : ""}

@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 const rotate = keyframes`
 from {
@@ -11,11 +11,19 @@ from {
 
 export const SpinnerOuter = styled.div`
   position: relative;
-  width: 6rem;
+  width: 100%;
   height: 6rem;
   margin: 0 auto;
   z-index: 10;
   padding-bottom: 10rem;
+  display: flex;
+  justify-content: center;
+  ${(props) =>
+    props.middle &&
+    css`
+      width: 100vw;
+      height: 100vh;
+    `}
 `;
 
 export const SpinnerInner = styled.div`
@@ -28,4 +36,11 @@ export const SpinnerInner = styled.div`
   animation: ${rotate} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: transparent #b5b5b5 #b5b5b5 #b5b5b5;
   z-index: 10;
+  ${(props) =>
+    props.middle &&
+    css`
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    `}
 `;

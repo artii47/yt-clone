@@ -18,6 +18,7 @@ const ErrorPage = () => {
         </Styled.ErrorMessage>
       );
     }
+    return <Styled.ErrorMessage>Something went wrong</Styled.ErrorMessage>;
   };
   return (
     <Styled.ErrorWrapper>

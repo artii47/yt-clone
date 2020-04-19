@@ -1,10 +1,10 @@
 import React from "react";
 import * as Styled from "./spinner.styles";
 
-const Spinner = () => {
+const Spinner = (props) => {
   return (
-    <Styled.SpinnerOuter>
-      <Styled.SpinnerInner />
+    <Styled.SpinnerOuter {...props}>
+      <Styled.SpinnerInner {...props} />
     </Styled.SpinnerOuter>
   );
 };

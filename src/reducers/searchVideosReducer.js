@@ -5,7 +5,7 @@ import { getVideoIds } from "../helpers/getVideoIds";
 export const searchVideos = createSlice({
   name: "searchVideos",
   initialState: {
-    isLoading: false,
+    isLoading: true,
     videos: [],
     hasError: null,
     channel: null,
