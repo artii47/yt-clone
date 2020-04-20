@@ -16,33 +16,30 @@ const VideoRelatedItem = ({
 }) => {
   const params = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
-  const renderVideoItem = () => {
-    return (
-      <Styled.VideoRelatedItem to={`/watch/${id.videoId ? id.videoId : id}`}>
-        <Styled.VideoRelatedItemImg
-          onLoad={() => setIsLoaded(true)}
-          referrerPolicy="no-referrer"
-          isLoaded={isLoaded}
-          src={imgUrl}
-        />
-        <Styled.VideoRelatedItemDescription>
-          <Styled.VideoRelatedItemTitle>
-            {renderTitle(params.videoId, title)}
-          </Styled.VideoRelatedItemTitle>
-          <br />
-          <Styled.VideoRelatedItemChannelTitle>
-            {channelTitle}
-          </Styled.VideoRelatedItemChannelTitle>
-          <Styled.VideoRelatedItemViews>
-            {viewsCount ? `${numberConverter(viewsCount)} views ` : ""}
-            &bull;
-            {publishDate ? ` ${dateConverter(publishDate)}` : ""}
-          </Styled.VideoRelatedItemViews>
-        </Styled.VideoRelatedItemDescription>
-      </Styled.VideoRelatedItem>
-    );
-  };
-  return renderVideoItem();
+  return (
+    <Styled.VideoRelatedItem to={`/watch/${id.videoId ? id.videoId : id}`}>
+      <Styled.VideoRelatedItemImg
+        onLoad={() => setIsLoaded(true)}
+        referrerPolicy="no-referrer"
+        isLoaded={isLoaded}
+        src={imgUrl}
+      />
+      <Styled.VideoRelatedItemDescription>
+        <Styled.VideoRelatedItemTitle>
+          {renderTitle(params.videoId, title)}
+        </Styled.VideoRelatedItemTitle>
+        <br />
+        <Styled.VideoRelatedItemChannelTitle>
+          {channelTitle}
+        </Styled.VideoRelatedItemChannelTitle>
+        <Styled.VideoRelatedItemViews>
+          {viewsCount ? `${numberConverter(viewsCount)} views ` : ""}
+          &bull;
+          {publishDate ? ` ${dateConverter(publishDate)}` : ""}
+        </Styled.VideoRelatedItemViews>
+      </Styled.VideoRelatedItemDescription>
+    </Styled.VideoRelatedItem>
+  );
 };
 
 export default VideoRelatedItem;
