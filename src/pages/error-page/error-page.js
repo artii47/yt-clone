@@ -4,7 +4,6 @@ import * as Styled from "./error-page.styles";
 
 const ErrorPage = () => {
   const params = useParams();
-  console.log("params", params);
   const renderErrorMessage = () => {
     if (
       params.errorMessage === "quotaExceeded" ||
