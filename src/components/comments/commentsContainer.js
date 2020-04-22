@@ -10,6 +10,7 @@ import Comments from "./comments";
 import useScrollEvent from "../../hooks/useScrollEvent";
 import { selectCurrentVideo } from "../../selectors/video.selector";
 import { selectComments } from "../../selectors/comments.selector";
+import * as Styled from "./comments.styles";
 import withError from "../../hocs/withError";
 
 const CommentsContainer = () => {
@@ -43,15 +44,9 @@ const CommentsContainer = () => {
         comments.hasError?.data?.error?.errors[0]?.reason === "commentsDisabled"
       ) {
         return (
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: "1.7rem",
-              padding: "3rem 0",
-            }}
-          >
+          <Styled.CommentsDisabledMessage>
             Comments are turned off
-          </p>
+          </Styled.CommentsDisabledMessage>
         );
       }
     }

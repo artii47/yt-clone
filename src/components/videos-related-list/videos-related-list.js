@@ -83,7 +83,7 @@ const VideosRelatedList = ({ enableScrollEvent }) => {
     >
       {renderList()}
       {!enableScrollEvent && videos.items ? renderMoreVideosButton() : ""}
-      {isLoading ? <Spinner /> : ""}
+      {isLoading && videos.items ? <Spinner /> : ""}
     </Styled.VideosRelated>
   );
 };

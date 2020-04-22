@@ -11,9 +11,10 @@ export const VideoDetails = styled.div`
 
 export const VideoDetailsIframeWrapper = styled.div`
   position: relative;
-  width: 100%;
   height: 35vw;
   max-height: 72rem;
+  width: 100%;
+  padding-bottom: 56.25%;
   @media only screen and (max-width: 62.5em) {
     height: 50vw;
   }
@@ -26,9 +27,12 @@ export const VideoDetailsIframeWrapper = styled.div`
 `;
 
 export const VideoDetailsIframe = styled.iframe`
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  position: relative;
+  height: 100%;
+  border: 0;
   background-color: ${(props) => (!props.isIframeLoaded ? "black" : "")};
 `;
 

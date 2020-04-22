@@ -12,3 +12,9 @@ export const CommentsFlexWrapper = styled.div`
 export const CommentsCount = styled.p`
   font-size: 1.8rem;
 `;
+
+export const CommentsDisabledMessage = styled.p`
+  text-align: center;
+  font-size: 1.7rem;
+  padding: 3rem 0;
+`;

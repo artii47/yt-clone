@@ -34,10 +34,7 @@ const VideoDetails = () => {
     <Styled.VideoDetails>
       <Styled.VideoDetailsIframeWrapper>
         <Styled.VideoDetailsIframe
-          id="player"
-          type="text/html"
           src={url}
-          frameBorder="0"
           allowFullScreen
           isIframeLoaded={isIframeLoaded}
           onLoad={() => setIsIframeLoaded(true)}

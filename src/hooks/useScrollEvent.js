@@ -11,6 +11,7 @@ const useScrollEvent = (enableScrolling, data, domElement, action, ...args) => {
       document.addEventListener("scroll", throttledFunction, { passive: true });
       return () => {
         document.removeEventListener("scroll", throttledFunction);
+        setElement(null);
       };
     }
   }, [data, domElement, element]);
