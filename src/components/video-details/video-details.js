@@ -23,6 +23,7 @@ const VideoDetails = () => {
   useEffect(() => {
     if (video) {
       dispatch(fetchCurrentVideoChannelAsync(video.snippet.channelId));
+      setIsIframeLoaded(false);
     }
   }, [video, dispatch]);
   if (!video) {
