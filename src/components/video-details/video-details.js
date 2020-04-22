@@ -8,6 +8,7 @@ import { numberWithCommas } from "../../helpers/numConverter";
 import VideoDetailsDesc from "../video-details-desc/video-details-desc";
 import { selectCurrentVideo } from "../../selectors/video.selector";
 import VideoDetailsActionsWithRatings from "./video-details-actions-with-ratings";
+import Spinner from "../spinner/spinner";
 
 const VideoDetails = () => {
   const [isIframeLoaded, setIsIframeLoaded] = useState(false);
@@ -30,15 +31,18 @@ const VideoDetails = () => {
 
   return (
     <Styled.VideoDetails>
-      <Styled.VideoDetailsIframe
-        id="player"
-        type="text/html"
-        src={url}
-        frameBorder="0"
-        allowFullScreen
-        isIframeLoaded={isIframeLoaded}
-        onLoad={() => setIsIframeLoaded(true)}
-      />
+      <Styled.VideoDetailsIframeWrapper>
+        <Styled.VideoDetailsIframe
+          id="player"
+          type="text/html"
+          src={url}
+          frameBorder="0"
+          allowFullScreen
+          isIframeLoaded={isIframeLoaded}
+          onLoad={() => setIsIframeLoaded(true)}
+        />
+        {!isIframeLoaded ? <Spinner iframe /> : ""}
+      </Styled.VideoDetailsIframeWrapper>
       <Styled.VideoDetailsTitle>{video.snippet.title}</Styled.VideoDetailsTitle>
       <Styled.VideoDetailsFlexWrapper>
         <Styled.VideoDetailsPublishDate>

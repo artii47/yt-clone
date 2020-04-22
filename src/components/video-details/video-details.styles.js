@@ -5,13 +5,15 @@ import { ReactComponent as Settings } from "../../assets/icons/settings-video-de
 import { ReactComponent as Save } from "../../assets/icons/save.svg";
 import { ReactComponent as Share } from "../../assets/icons/share-video.svg";
 
-export const VideoDetails = styled.div``;
+export const VideoDetails = styled.div`
+  position: relative;
+`;
 
-export const VideoDetailsIframe = styled.iframe`
+export const VideoDetailsIframeWrapper = styled.div`
+  position: relative;
   width: 100%;
   height: 35vw;
   max-height: 72rem;
-  background-color: ${(props) => (!props.isIframeLoaded ? "black" : "")};
   @media only screen and (max-width: 62.5em) {
     height: 50vw;
   }
@@ -21,6 +23,13 @@ export const VideoDetailsIframe = styled.iframe`
   @media only screen and (max-width: 31.25em) {
     width: 100%;
   }
+`;
+
+export const VideoDetailsIframe = styled.iframe`
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: ${(props) => (!props.isIframeLoaded ? "black" : "")};
 `;
 
 export const VideoDetailsTitle = styled.p`

@@ -24,6 +24,14 @@ export const SpinnerOuter = styled.div`
       width: 100vw;
       height: 100vh;
     `}
+
+  ${(props) =>
+    props.iframe &&
+    css`
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+    `}
 `;
 
 export const SpinnerInner = styled.div`
@@ -42,5 +50,11 @@ export const SpinnerInner = styled.div`
       position: absolute;
       top: 50%;
       left: 50%;
+    `}
+  ${(props) =>
+    props.iframe &&
+    css`
+      width: 8rem;
+      height: 8rem;
     `}
 `;
