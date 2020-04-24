@@ -11,7 +11,7 @@ import {
 } from "../../reducers/relatedVideosReducer";
 import useScrollEvent from "../../hooks/useScrollEvent";
 import Spinner from "../spinner/spinner";
-import CustomButton from "../custom-button/custom-button";
+import CustomButton from "../buttons/custom-button/custom-button";
 import {
   selectIsLoading,
   selectVideoItems,

@@ -6,7 +6,7 @@ import { numberConverter } from "../../helpers/numConverter";
 import { renderVideoDetailsDescContent } from "./helpers/renderVideoDetailsDescription";
 import { renderButton } from "./helpers/renderButton";
 import { selectChannelItem } from "../../selectors/channel.selector";
-import { CustomButton } from "../custom-button/custom-button.styles";
+import CustomButton from "../buttons/custom-button/custom-button";
 
 const VideoDetailsDesc = ({ videoDesc }) => {
   const [showMore, setShowMore] = useState(false);

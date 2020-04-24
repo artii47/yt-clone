@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as SignInSVG } from "../../assets/icons/sign-in.svg";
+import { ReactComponent as SignInSVG } from "../../../assets/icons/sign-in.svg";
 
 export const SignInButton = styled.a`
   width: 10.5rem;

@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import CustomButton from "../custom-button/custom-button";
+import CustomButton from "../buttons/custom-button/custom-button";
 
 export const SearchedChannelItem = styled.div`
   max-width: 86rem;
   display: block;
-  /* height: 14rem; */
   display: flex;
   align-items: center;
   padding: 2rem 0;

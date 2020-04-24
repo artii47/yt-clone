@@ -1,8 +1,7 @@
 import React from "react";
 import * as Styled from "../header-items.styles";
-
 import { primaryItems } from "./header-right-items.data";
-import SignInButton from "../../sign-in-button/sign-in-button";
+import SignInButton from "../../buttons/sign-in-button/sign-in-button";
 
 const HeaderRightItems = () => {
   return (

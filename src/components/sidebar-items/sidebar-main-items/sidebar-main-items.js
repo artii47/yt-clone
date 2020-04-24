@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import SidebarItem from "../../sidebar-item/sidebar-item-normal/sidebar-item-normal";
 import { primaryItems, secondaryItems } from "./sidebar-main-items.data";
 import * as Styled from "../sidebar-items.styles";
-import SignInButton from "../../sign-in-button/sign-in-button";
+import SignInButton from "../../buttons/sign-in-button/sign-in-button";
 
 const SidebarMainItems = () => {
   const location = useLocation();
