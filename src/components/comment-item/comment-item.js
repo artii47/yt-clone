@@ -29,7 +29,7 @@ const CommentItem = ({
       <Styled.CommentItemText>{text}</Styled.CommentItemText>
       <Styled.CommentItemFlexWrapper>
         <Styled.CommentItemLike />
-        <Styled.CommentItemLikeCount>
+        <Styled.CommentItemLikeCount data-testid="like-count">
           {likeCount === 0 ? "" : numberConverter(likeCount)}
         </Styled.CommentItemLikeCount>
         <Styled.CommentItemDislike />
