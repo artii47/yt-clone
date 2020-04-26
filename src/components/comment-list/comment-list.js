@@ -13,6 +13,9 @@ const CommentList = () => {
   const isLoading = useSelector(selectIsLoading);
 
   if (!comments?.items?.length) {
+    if (comments?.items?.length === 0) {
+      return "";
+    }
     return <Spinner />;
   }
   return (
