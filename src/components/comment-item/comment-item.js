@@ -26,7 +26,9 @@ const CommentItem = ({
           {dateConverter(publishedAt)}
         </Styled.CommentItemPublishDate>
       </Styled.CommentItemFlexWrapper>
-      <Styled.CommentItemText>{text}</Styled.CommentItemText>
+      <Styled.CommentItemText data-testid="comment">
+        {text}
+      </Styled.CommentItemText>
       <Styled.CommentItemFlexWrapper>
         <Styled.CommentItemLike />
         <Styled.CommentItemLikeCount data-testid="like-count">

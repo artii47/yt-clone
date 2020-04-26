@@ -24,6 +24,7 @@ const CommentList = () => {
         const comm = comment.snippet.topLevelComment.snippet;
         return (
           <CommentItem
+            data-testid="comment"
             key={comment.id}
             id={comment.id}
             authorName={comm.authorDisplayName}
