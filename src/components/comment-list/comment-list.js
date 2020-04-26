@@ -12,6 +12,9 @@ const CommentList = () => {
   const comments = useSelector(selectCommentsItems);
   const isLoading = useSelector(selectIsLoading);
 
+  if (!comments?.items?.length) {
+    return <Spinner />;
+  }
   return (
     <Styled.CommentList>
       {comments.items.map((comment) => {

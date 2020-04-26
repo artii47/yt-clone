@@ -26,6 +26,16 @@ export const VideoDetailsIframeWrapper = styled.div`
   }
 `;
 
+export const VideoDetailsBlackBox = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background-color: black;
+`;
+
 export const VideoDetailsIframe = styled.iframe`
   position: absolute;
   top: 0;

@@ -38,21 +38,15 @@ const CommentsContainer = () => {
     params.videoId,
     sortBy
   );
-  if (!comments.currentVideoComments) {
-    if (video) {
-      if (
-        comments.hasError?.data?.error?.errors[0]?.reason === "commentsDisabled"
-      ) {
-        return (
-          <Styled.CommentsDisabledMessage>
-            Comments are turned off
-          </Styled.CommentsDisabledMessage>
-        );
-      }
-    }
-    return "";
+  if (
+    comments.hasError?.data?.error?.errors[0]?.reason === "commentsDisabled"
+  ) {
+    return (
+      <Styled.CommentsDisabledMessage>
+        Comments are turned off
+      </Styled.CommentsDisabledMessage>
+    );
   }
-
   return <Comments video={video} sortBy={sortBy} setSortBy={setSortBy} />;
 };
 

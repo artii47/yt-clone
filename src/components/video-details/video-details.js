@@ -27,7 +27,14 @@ const VideoDetails = () => {
     }
   }, [video, dispatch]);
   if (!video) {
-    return "";
+    return (
+      <Styled.VideoDetails>
+        <Styled.VideoDetailsIframeWrapper>
+          <Styled.VideoDetailsBlackBox />
+          <Spinner iframe />
+        </Styled.VideoDetailsIframeWrapper>
+      </Styled.VideoDetails>
+    );
   }
 
   return (

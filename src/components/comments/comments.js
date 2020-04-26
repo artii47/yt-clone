@@ -1,11 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import * as Styled from "./comments.styles";
 import CommentList from "../comment-list/comment-list";
 import { numberWithCommas } from "../../helpers/numConverter";
 import SortOptions from "../sort-options/sort-options";
+import { selectChannelItem } from "../../selectors/channel.selector";
 
 const Comments = ({ sortBy, setSortBy, video }) => {
+  const currentVideoChannel = useSelector(selectChannelItem);
+  if (!currentVideoChannel) {
+    return "";
+  }
   return (
     <Styled.Comments id="comments">
       <Styled.CommentsFlexWrapper>
