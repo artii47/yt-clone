@@ -50,7 +50,7 @@ const VideosSearchList = () => {
   };
   const renderVideos = () => {
     if (!videos.items) {
-      return "";
+      return <Spinner />;
     }
 
     return videos.items.map((video) => {
@@ -82,7 +82,7 @@ const VideosSearchList = () => {
             ""
           )}
           {renderVideos()}
-          {isLoading ? <Spinner /> : ""}
+          {isLoading && videos.items ? <Spinner /> : ""}
           {!isLoading && !videos.items?.length ? renderNotFound() : ""}
         </Styled.Container>
       </Styled.VideosSearchList>

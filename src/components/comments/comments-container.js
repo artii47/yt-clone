@@ -42,7 +42,7 @@ const CommentsContainer = () => {
     comments.hasError?.data?.error?.errors[0]?.reason === "commentsDisabled"
   ) {
     return (
-      <Styled.CommentsDisabledMessage>
+      <Styled.CommentsDisabledMessage data-testid="comments-off-message">
         Comments are turned off
       </Styled.CommentsDisabledMessage>
     );

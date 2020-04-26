@@ -51,7 +51,7 @@ export const fetchCommentsAsync = (videoId, sortBy) => async (dispatch) => {
   try {
     dispatch(fetchCommentsStart());
     const response = await youtube.get(
-      `/commentThreads?part=snippet&order=${sortBy}&videoId=${videoId}&maxResults=6&key=${process.env.REACT_APP_API_KEY}`
+      `/commentThreads?part=snippet&order=${sortBy}&videoId=${videoId}&maxResults=8&key=${process.env.REACT_APP_API_KEY}`
     );
     dispatch(fetchCommentsSuccess(response.data));
   } catch (err) {
@@ -68,7 +68,7 @@ export const fetchCommentsNextPageAsync = (
   try {
     dispatch(fetchCommentsNextPageStart());
     const response = await youtube.get(
-      `/commentThreads?part=snippet&order=${sortBy}&pageToken=${pageToken}&videoId=${videoId}&maxResults=6&key=${process.env.REACT_APP_API_KEY}`
+      `/commentThreads?part=snippet&order=${sortBy}&pageToken=${pageToken}&videoId=${videoId}&maxResults=8&key=${process.env.REACT_APP_API_KEY}`
     );
     dispatch(fetchCommentsNextPageSuccess(response.data));
   } catch (err) {

@@ -6,15 +6,19 @@ const useScrollEvent = (enableScrolling, data, domElement, action, ...args) => {
   const dispatch = useDispatch();
   const [element, setElement] = useState(null);
   useEffect(() => {
+    setElement(document.getElementById(domElement));
+    return () => {
+      setElement(null);
+    };
+  }, [domElement]);
+  useEffect(() => {
     if (enableScrolling) {
-      setElement(document.getElementById(domElement));
       document.addEventListener("scroll", throttledFunction, { passive: true });
       return () => {
         document.removeEventListener("scroll", throttledFunction);
-        setElement(null);
       };
     }
-  }, [data, domElement, element]);
+  }, [data, element]);
   const trackScrolling = () => {
     if (isBottom(element)) {
       if (data.nextPageToken) {

@@ -9,21 +9,25 @@ import { selectChannelItem } from "../../selectors/channel.selector";
 
 const Comments = ({ sortBy, setSortBy, video }) => {
   const currentVideoChannel = useSelector(selectChannelItem);
-  if (!currentVideoChannel) {
-    return "";
-  }
+  const renderCommentsContent = () => {
+    if (currentVideoChannel) {
+      return (
+        <>
+          <Styled.CommentsFlexWrapper>
+            <Styled.CommentsCount>
+              {video
+                ? `${numberWithCommas(video.statistics.commentCount)} Comments`
+                : ""}
+            </Styled.CommentsCount>
+            <SortOptions sortBy={sortBy} setSortBy={setSortBy} />
+          </Styled.CommentsFlexWrapper>
+          <CommentList />
+        </>
+      );
+    }
+  };
   return (
-    <Styled.Comments id="comments">
-      <Styled.CommentsFlexWrapper>
-        <Styled.CommentsCount>
-          {video
-            ? `${numberWithCommas(video.statistics.commentCount)} Comments`
-            : ""}
-        </Styled.CommentsCount>
-        <SortOptions sortBy={sortBy} setSortBy={setSortBy} />
-      </Styled.CommentsFlexWrapper>
-      <CommentList />
-    </Styled.Comments>
+    <Styled.Comments id="comments">{renderCommentsContent()}</Styled.Comments>
   );
 };
 

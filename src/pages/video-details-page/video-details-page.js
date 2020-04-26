@@ -2,7 +2,7 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import * as Styled from "./video-details-page.styles";
 import VideoDetails from "../../components/video-details/video-details";
-import CommentsContainer from "../../components/comments/commentsContainer";
+import CommentsContainer from "../../components/comments/comments-container";
 import VideosRelatedList from "../../components/videos-related-list/videos-related-list";
 
 const VideoDetailsPage = () => {
