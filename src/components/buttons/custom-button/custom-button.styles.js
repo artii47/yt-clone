@@ -31,4 +31,19 @@ export const CustomButton = styled.a`
       color: #f7ffff;
       border-radius: 2px;
     `}
+
+    ${(props) =>
+      props.showMore &&
+      css`
+        font-size: 1.4rem;
+        margin-top: 0.5rem;
+        color: #606060;
+        font-weight: 500;
+        border: none;
+        display: inline-block;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+        justify-content: flex-start;
+      `}
 `;

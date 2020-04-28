@@ -10,7 +10,7 @@ export const CommentsFlexWrapper = styled.div`
 `;
 
 export const CommentsCount = styled.p`
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 `;
 
 export const CommentsDisabledMessage = styled.p`

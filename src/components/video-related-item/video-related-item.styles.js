@@ -35,18 +35,19 @@ export const VideoRelatedItemTitle = styled.p`
   color: #000;
   font-weight: 500;
   margin-top: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1.5rem;
+  margin-bottom: 0.4rem;
 `;
 export const VideoRelatedItemChannelTitle = styled.p`
   font-weight: 400;
   color: #707070;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 `;
 
 export const VideoRelatedItemViews = styled.p`
   font-weight: 400;
   color: #707070;
-  margin-top: 0.4rem;
-  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  font-size: 1.3rem;
 `;

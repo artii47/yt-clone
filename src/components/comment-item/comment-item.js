@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import * as Styled from "./comment-item.styles";
 import { numberConverter } from "../../helpers/numConverter";
 import { dateConverter } from "../../helpers/dateConverter";
+import { renderTextWithShowMoreButton } from "../../helpers/renderTextWithShowMoreButton";
 
 const CommentItem = ({
   authorChannelImage,
@@ -10,35 +11,38 @@ const CommentItem = ({
   publishedAt,
   text,
   likeCount,
-}) => (
-  <Styled.CommentItem>
-    <Styled.CommentItemImg
-      referrerPolicy="no-referrer"
-      src={authorChannelImage}
-    />
-    <Styled.CommentItemDescription>
-      <Styled.CommentItemFlexWrapper>
-        <Styled.CommentItemChannelTitle>
-          {authorName}
-          &nbsp;
-        </Styled.CommentItemChannelTitle>
-        <Styled.CommentItemPublishDate>
-          {dateConverter(publishedAt)}
-        </Styled.CommentItemPublishDate>
-      </Styled.CommentItemFlexWrapper>
-      <Styled.CommentItemText data-testid="comment">
-        {text}
-      </Styled.CommentItemText>
-      <Styled.CommentItemFlexWrapper>
-        <Styled.CommentItemLike />
-        <Styled.CommentItemLikeCount data-testid="like-count">
-          {likeCount === 0 ? "" : numberConverter(likeCount)}
-        </Styled.CommentItemLikeCount>
-        <Styled.CommentItemDislike />
-      </Styled.CommentItemFlexWrapper>
-    </Styled.CommentItemDescription>
-  </Styled.CommentItem>
-);
+}) => {
+  const [showMore, setShowMore] = useState(false);
+  return (
+    <Styled.CommentItem>
+      <Styled.CommentItemImg
+        referrerPolicy="no-referrer"
+        src={authorChannelImage}
+      />
+      <Styled.CommentItemContent>
+        <Styled.CommentItemFlexWrapper>
+          <Styled.CommentItemChannelTitle>
+            {authorName}
+            &nbsp;
+          </Styled.CommentItemChannelTitle>
+          <Styled.CommentItemPublishDate>
+            {dateConverter(publishedAt)}
+          </Styled.CommentItemPublishDate>
+        </Styled.CommentItemFlexWrapper>
+        <Styled.CommentItemText data-testid="comment">
+          {renderTextWithShowMoreButton(90, text, showMore, setShowMore)}
+        </Styled.CommentItemText>
+        <Styled.CommentItemFlexWrapper>
+          <Styled.CommentItemLike />
+          <Styled.CommentItemLikeCount data-testid="like-count">
+            {likeCount === 0 ? "" : numberConverter(likeCount)}
+          </Styled.CommentItemLikeCount>
+          <Styled.CommentItemDislike />
+        </Styled.CommentItemFlexWrapper>
+      </Styled.CommentItemContent>
+    </Styled.CommentItem>
+  );
+};
 
 export default CommentItem;
 

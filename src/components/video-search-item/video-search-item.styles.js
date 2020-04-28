@@ -44,7 +44,7 @@ export const VideoSearchItemDescription = styled.div`
 
 export const VideoSearchItemTitle = styled.p`
   color: #000;
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   font-weight: 500;
   margin-top: 0.5rem;
   font-weight: 400;
@@ -80,10 +80,7 @@ export const VideoSearchItemDescriptionContent = styled.p`
   margin-top: 1rem;
   font-weight: 400;
   color: #707070;
-  font-size: 1.35rem;
-  @media only screen and (max-width: 50em) {
-    font-size: 1.3rem;
-  }
+  font-size: 1.3rem;
   @media only screen and (max-width: 34.375em) {
     font-size: 1.2rem;
   }

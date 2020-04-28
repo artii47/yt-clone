@@ -29,6 +29,6 @@ export const SidebarItemsSignInTextWrapper = styled.div`
 `;
 
 export const SidebarItemsSignInText = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 2.1rem;
 `;

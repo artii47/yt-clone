@@ -28,7 +28,6 @@ const VideoRelatedItem = ({
         <Styled.VideoRelatedItemTitle>
           {renderTitle(params.videoId, title)}
         </Styled.VideoRelatedItemTitle>
-        <br />
         <Styled.VideoRelatedItemChannelTitle>
           {channelTitle}
         </Styled.VideoRelatedItemChannelTitle>

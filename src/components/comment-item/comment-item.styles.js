@@ -8,7 +8,7 @@ export const CommentItem = styled.div`
   margin: 1.5rem 0;
 `;
 
-export const CommentItemDescription = styled.div`
+export const CommentItemContent = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 1.5rem;
@@ -21,13 +21,14 @@ export const CommentItemImg = styled.img`
 `;
 
 export const CommentItemChannelTitle = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 500;
 `;
 
 export const CommentItemText = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 400;
+  line-height: 1.9rem;
   margin-top: 0.8rem;
   margin-bottom: 1rem;
 `;
@@ -55,7 +56,7 @@ export const CommentItemFlexWrapper = styled.div`
 `;
 
 export const CommentItemPublishDate = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: #707070;
   font-weight: 400;
 `;

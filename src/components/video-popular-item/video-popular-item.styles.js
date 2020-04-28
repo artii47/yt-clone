@@ -54,7 +54,7 @@ export const VideoPopularItemDescription = styled.div`
 
 export const VideoPopularItemTitle = styled.p`
   color: #000;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   font-weight: 500;
   line-height: 2.2rem;
   margin-top: 1.3rem;
