@@ -30,7 +30,7 @@ const CommentItem = ({
           </Styled.CommentItemPublishDate>
         </Styled.CommentItemFlexWrapper>
         <Styled.CommentItemText data-testid="comment">
-          {renderTextWithShowMoreButton(90, text, showMore, setShowMore)}
+          {renderTextWithShowMoreButton(90, text, showMore, setShowMore, 40)}
         </Styled.CommentItemText>
         <Styled.CommentItemFlexWrapper>
           <Styled.CommentItemLike />

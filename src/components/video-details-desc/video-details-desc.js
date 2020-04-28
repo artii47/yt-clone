@@ -34,7 +34,7 @@ const VideoDetailsDesc = ({ videoDesc }) => {
         <CustomButton subscribe>SUBSCRIBE</CustomButton>
       </Styled.VideoDetailsDescChannelBox>
       <Styled.VideoDetailsDescContent>
-        {renderTextWithShowMoreButton(40, videoDesc, showMore, setShowMore)}
+        {renderTextWithShowMoreButton(40, videoDesc, showMore, setShowMore, 0)}
       </Styled.VideoDetailsDescContent>
     </Styled.VideoDetailsDesc>
   );

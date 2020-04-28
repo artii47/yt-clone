@@ -5,13 +5,15 @@ export const renderTextWithShowMoreButton = (
   numbersOfWordsToShorten,
   text,
   showMore,
-  setShowMore
+  setShowMore,
+  wordsToSubtract
 ) => {
-  if (text.split(" ").length > numbersOfWordsToShorten) {
+  const arrOfWords = text.split(" ");
+  if (arrOfWords.length - wordsToSubtract > numbersOfWordsToShorten) {
     return (
       <>
         {!showMore
-          ? `${text.split(" ").slice(0, numbersOfWordsToShorten).join(" ")}...`
+          ? `${arrOfWords.slice(0, numbersOfWordsToShorten).join(" ")}...`
           : text}
         <br />
         <CustomButton showMore onClick={() => setShowMore(!showMore)}>
