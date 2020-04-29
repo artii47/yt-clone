@@ -7,6 +7,7 @@ export const comments = createSlice({
     isLoading: false,
     currentVideoComments: null,
     hasError: null,
+    areRepliesLoading: false,
   },
   reducers: {
     fetchCommentsStart: (state) => {
@@ -27,6 +28,14 @@ export const comments = createSlice({
       ];
       state.isLoading = false;
     },
+    fetchCommentsRepliesStart: (state) => {
+      state.areRepliesLoading = true;
+    },
+    fetchCommentsRepliesSuccess: (state, action) => {
+      state.currentVideoComments.items[action.payload.index].snippet.replies =
+        action.payload.items[0].replies.comments;
+      state.areRepliesLoading = false;
+    },
     resetComments: (state) => {
       state.currentVideoComments = null;
       state.hasError = null;
@@ -43,6 +52,8 @@ const {
   fetchCommentsSuccess,
   fetchCommentsNextPageStart,
   fetchCommentsNextPageSuccess,
+  fetchCommentsRepliesStart,
+  fetchCommentsRepliesSuccess,
   resetComments,
   setErrorMessage,
 } = comments.actions;
@@ -75,6 +86,16 @@ export const fetchCommentsNextPageAsync = (
     console.log("err", err);
     dispatch(setErrorMessage(err.response));
   }
+};
+
+export const fetchCommentsRepliesAsync = (commentId, index) => async (
+  dispatch
+) => {
+  dispatch(fetchCommentsRepliesStart());
+  const response = await youtube.get(
+    `https://www.googleapis.com/youtube/v3/commentThreads?part=replies&maxResults=20&id=${commentId}&key=${process.env.REACT_APP_API_KEY}`
+  );
+  dispatch(fetchCommentsRepliesSuccess({ ...response.data, index }));
 };
 
 export const resetCurrentComments = () => {

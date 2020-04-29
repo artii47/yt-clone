@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import * as Styled from "./comment-item.styles";
 import { numberConverter } from "../../helpers/numConverter";
 import { dateConverter } from "../../helpers/dateConverter";
 import { renderTextWithShowMoreButton } from "../../helpers/renderTextWithShowMoreButton";
+import { fetchCommentsRepliesAsync } from "../../reducers/commentsReducer";
+import Spinner from "../spinner/spinner";
 
 const CommentItem = ({
   authorChannelImage,
@@ -11,8 +14,38 @@ const CommentItem = ({
   publishedAt,
   text,
   likeCount,
+  commentId,
+  repliesCount,
+  index,
 }) => {
   const [showMore, setShowMore] = useState(false);
+  const [showReplies, setShowReplies] = useState(false);
+  const areRepliesLoading = useSelector(
+    (state) => state.comments.areRepliesLoading
+  );
+  const commentItem = useSelector(
+    (state) => state.comments.currentVideoComments.items[index]
+  );
+  const dispatch = useDispatch();
+  const renderReplies = () => {
+    if (areRepliesLoading && !commentItem?.snippet?.replies) {
+      return <Spinner />;
+    }
+    return commentItem.snippet.replies.map((item) => {
+      return (
+        <CommentItem
+          data-testid="comment"
+          key={item.id}
+          id={item.id}
+          authorName={item.snippet.authorDisplayName}
+          authorChannelImage={item.snippet.authorProfileImageUrl}
+          text={item.snippet.textOriginal}
+          likeCount={item.snippet.likeCount}
+          publishedAt={item.snippet.publishedAt}
+        />
+      );
+    });
+  };
   return (
     <Styled.CommentItem>
       <Styled.CommentItemImg
@@ -39,6 +72,23 @@ const CommentItem = ({
           </Styled.CommentItemLikeCount>
           <Styled.CommentItemDislike />
         </Styled.CommentItemFlexWrapper>
+        {repliesCount ? (
+          <Styled.CommentItemRepliesText
+            onClick={() => {
+              setShowReplies(!showReplies);
+              if (!commentItem?.snippet?.replies) {
+                dispatch(fetchCommentsRepliesAsync(commentId, index));
+              }
+            }}
+          >
+            {!showReplies
+              ? `View ${repliesCount} replies`
+              : `Hide ${repliesCount} replies`}
+          </Styled.CommentItemRepliesText>
+        ) : (
+          ""
+        )}
+        {showReplies ? renderReplies() : ""}
       </Styled.CommentItemContent>
     </Styled.CommentItem>
   );
@@ -52,4 +102,7 @@ CommentItem.propTypes = {
   publishedAt: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   likeCount: PropTypes.number.isRequired,
+  commentId: PropTypes.string.isRequired,
+  repliesCount: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
 };

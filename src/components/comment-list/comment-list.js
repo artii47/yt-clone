@@ -20,7 +20,7 @@ const CommentList = () => {
   }
   return (
     <Styled.CommentList>
-      {comments.items.map((comment) => {
+      {comments.items.map((comment, index) => {
         const comm = comment.snippet.topLevelComment.snippet;
         return (
           <CommentItem
@@ -32,6 +32,9 @@ const CommentList = () => {
             text={comm.textOriginal}
             likeCount={comm.likeCount}
             publishedAt={comm.publishedAt}
+            commentId={comment.snippet.topLevelComment.id}
+            repliesCount={comment.snippet.totalReplyCount}
+            index={index}
           />
         );
       })}
