@@ -67,7 +67,7 @@ export const CommentItemRepliesText = styled.p`
   color: #065fd4;
   font-weight: 500;
   cursor: pointer;
-  width: 11rem;
+  width: 12.5rem;
   display: flex;
   align-items: center;
   :before {
