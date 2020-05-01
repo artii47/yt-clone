@@ -6,7 +6,7 @@ import { numberConverter } from "../../helpers/numConverter";
 import { dateConverter } from "../../helpers/dateConverter";
 import { renderTextWithShowMoreButton } from "../../helpers/renderTextWithShowMoreButton";
 import { fetchCommentsRepliesAsync } from "../../reducers/commentsReducer";
-import Spinner from "../spinner/spinner";
+import CommentReplies from "../comment-replies/comment-replies";
 
 const CommentItem = ({
   authorChannelImage,
@@ -20,32 +20,10 @@ const CommentItem = ({
 }) => {
   const [showMore, setShowMore] = useState(false);
   const [showReplies, setShowReplies] = useState(false);
-  const areRepliesLoading = useSelector(
-    (state) => state.comments.areRepliesLoading
-  );
   const commentItem = useSelector(
     (state) => state.comments.currentVideoComments.items[index]
   );
   const dispatch = useDispatch();
-  const renderReplies = () => {
-    if (areRepliesLoading && !commentItem?.snippet?.replies) {
-      return <Spinner />;
-    }
-    return commentItem.snippet.replies.map((item) => {
-      return (
-        <CommentItem
-          data-testid="comment"
-          key={item.id}
-          id={item.id}
-          authorName={item.snippet.authorDisplayName}
-          authorChannelImage={item.snippet.authorProfileImageUrl}
-          text={item.snippet.textOriginal}
-          likeCount={item.snippet.likeCount}
-          publishedAt={item.snippet.publishedAt}
-        />
-      );
-    });
-  };
   return (
     <Styled.CommentItem>
       <Styled.CommentItemImg
@@ -88,7 +66,7 @@ const CommentItem = ({
         ) : (
           ""
         )}
-        {showReplies ? renderReplies() : ""}
+        {showReplies ? <CommentReplies index={index} /> : ""}
       </Styled.CommentItemContent>
     </Styled.CommentItem>
   );

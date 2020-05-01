@@ -32,6 +32,13 @@ export const SpinnerOuter = styled.div`
       top: 50%;
       transform: translate(0, -50%);
     `}
+
+    ${(props) =>
+      props.replies &&
+      css`
+        justify-content: left;
+        padding: 0;
+      `}
 `;
 
 export const SpinnerInner = styled.div`
