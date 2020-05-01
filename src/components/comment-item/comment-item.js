@@ -7,6 +7,7 @@ import { dateConverter } from "../../helpers/dateConverter";
 import { renderTextWithShowMoreButton } from "../../helpers/renderTextWithShowMoreButton";
 import { fetchCommentsRepliesAsync } from "../../reducers/commentsReducer";
 import CommentReplies from "../comment-replies/comment-replies";
+import { selectCommentItem } from "../../selectors/comments.selector";
 
 const CommentItem = ({
   authorChannelImage,
@@ -20,9 +21,7 @@ const CommentItem = ({
 }) => {
   const [showMore, setShowMore] = useState(false);
   const [showReplies, setShowReplies] = useState(false);
-  const commentItem = useSelector(
-    (state) => state.comments.currentVideoComments.items[index]
-  );
+  const commentItem = useSelector(selectCommentItem(index));
   const dispatch = useDispatch();
   return (
     <Styled.CommentItem>
@@ -55,7 +54,9 @@ const CommentItem = ({
             onClick={() => {
               setShowReplies(!showReplies);
               if (!commentItem?.snippet?.replies) {
-                dispatch(fetchCommentsRepliesAsync(commentId, index));
+                dispatch(
+                  fetchCommentsRepliesAsync(commentId, index, commentItem.id)
+                );
               }
             }}
           >

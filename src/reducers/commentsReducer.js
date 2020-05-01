@@ -32,14 +32,12 @@ export const comments = createSlice({
       state.areRepliesLoading = true;
     },
     fetchCommentsRepliesSuccess: (state, action) => {
-      console.log("ACTION", action);
-      state.currentVideoComments.items[action.payload.index].snippet.replies = {
+      const item = state.currentVideoComments.items[action.payload.index];
+      item.snippet.replies = {
         items: action.payload.items.reverse(),
       };
       if (action.payload.nextPageToken) {
-        state.currentVideoComments.items[
-          action.payload.index
-        ].snippet.replies.nextPageToken = action.payload.nextPageToken;
+        item.snippet.replies.nextPageToken = action.payload.nextPageToken;
       }
       state.areRepliesLoading = false;
     },
@@ -47,14 +45,10 @@ export const comments = createSlice({
       state.areRepliesLoading = true;
     },
     fetchCommentsRepliesNextPageSuccess: (state, action) => {
-      state.currentVideoComments.items[
-        action.payload.index
-      ].snippet.replies.nextPageToken = action.payload.nextPageToken;
-      state.currentVideoComments.items[
-        action.payload.index
-      ].snippet.replies.items = [
-        ...state.currentVideoComments.items[action.payload.index].snippet
-          .replies.items,
+      const item = state.currentVideoComments.items[action.payload.index];
+      item.snippet.replies.nextPageToken = action.payload.nextPageToken;
+      item.snippet.replies.items = [
+        ...item.snippet.replies.items,
         ...action.payload.items,
       ];
       state.areRepliesLoading = false;
@@ -116,12 +110,16 @@ export const fetchCommentsNextPageAsync = (
 export const fetchCommentsRepliesAsync = (commentId, index) => async (
   dispatch
 ) => {
-  dispatch(fetchCommentsRepliesStart());
-  const response = await youtube.get(
-    `https://www.googleapis.com/youtube/v3/comments?part=snippet&maxResults=10&parentId=${commentId}&key=${process.env.REACT_APP_API_KEY}`
-  );
-  console.log(response.data);
-  dispatch(fetchCommentsRepliesSuccess({ ...response.data, index }));
+  try {
+    dispatch(fetchCommentsRepliesStart());
+    const response = await youtube.get(
+      `https://www.googleapis.com/youtube/v3/comments?part=snippet&maxResults=10&parentId=${commentId}&key=${process.env.REACT_APP_API_KEY}`
+    );
+    dispatch(fetchCommentsRepliesSuccess({ ...response.data, index }));
+  } catch (err) {
+    console.log("err", err);
+    dispatch(setErrorMessage(err.response));
+  }
 };
 
 export const fetchCommentsRepliesNextPageAsync = (
@@ -129,12 +127,16 @@ export const fetchCommentsRepliesNextPageAsync = (
   commentId,
   index
 ) => async (dispatch) => {
-  dispatch(fetchCommentsRepliesNextPageStart());
-  const response = await youtube.get(
-    `https://www.googleapis.com/youtube/v3/comments?part=snippet&pageToken=${nextPageToken}&maxResults=10&parentId=${commentId}&key=${process.env.REACT_APP_API_KEY}`
-  );
-  console.log({ ...response.data, index });
-  dispatch(fetchCommentsRepliesNextPageSuccess({ ...response.data, index }));
+  try {
+    dispatch(fetchCommentsRepliesNextPageStart());
+    const response = await youtube.get(
+      `https://www.googleapis.com/youtube/v3/comments?part=snippet&pageToken=${nextPageToken}&maxResults=10&parentId=${commentId}&key=${process.env.REACT_APP_API_KEY}`
+    );
+    dispatch(fetchCommentsRepliesNextPageSuccess({ ...response.data, index }));
+  } catch (err) {
+    console.log("err", err);
+    dispatch(setErrorMessage(err.response));
+  }
 };
 
 export const resetCurrentComments = () => {

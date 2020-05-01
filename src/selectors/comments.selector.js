@@ -13,3 +13,14 @@ export const selectIsLoading = createSelector(
   [getComments],
   (data) => data.isLoading
 );
+
+export const selectAreRepliesLoading = createSelector(
+  [getComments],
+  (data) => data.areRepliesLoading
+);
+
+export const selectCommentItem = (index) =>
+  createSelector(
+    [getComments],
+    (data) => data.currentVideoComments.items[index]
+  );

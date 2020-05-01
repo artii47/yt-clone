@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import Spinner from "../spinner/spinner";
 import * as Styled from "./comment-replies.styles";
 import { fetchCommentsRepliesNextPageAsync } from "../../reducers/commentsReducer";
 import CommentItem from "../comment-item/comment-item";
+import {
+  selectAreRepliesLoading,
+  selectCommentItem,
+} from "../../selectors/comments.selector";
 
 const CommentReplies = ({ index }) => {
-  const areRepliesLoading = useSelector(
-    (state) => state.comments.areRepliesLoading
-  );
-  const commentItem = useSelector(
-    (state) => state.comments.currentVideoComments.items[index]
-  );
+  const areRepliesLoading = useSelector(selectAreRepliesLoading);
+  const commentItem = useSelector(selectCommentItem(index));
   const dispatch = useDispatch();
   if (areRepliesLoading && !commentItem?.snippet?.replies) {
     return <Spinner />;
@@ -39,15 +39,15 @@ const CommentReplies = ({ index }) => {
             <Spinner replies />
           ) : (
             <Styled.CommentItemShowMoreRepliesText
-              onClick={() =>
+              onClick={() => {
                 dispatch(
                   fetchCommentsRepliesNextPageAsync(
                     commentItem.snippet.replies.nextPageToken,
                     commentItem.id,
                     index
                   )
-                )
-              }
+                );
+              }}
             >
               Show more Replies
             </Styled.CommentItemShowMoreRepliesText>
