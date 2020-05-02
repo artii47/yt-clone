@@ -28,6 +28,7 @@ const CommentItem = ({
       <Styled.CommentItemImg
         referrerPolicy="no-referrer"
         src={authorChannelImage}
+        alt={authorName}
       />
       <Styled.CommentItemContent>
         <Styled.CommentItemFlexWrapper>
@@ -51,6 +52,7 @@ const CommentItem = ({
         </Styled.CommentItemFlexWrapper>
         {repliesCount ? (
           <Styled.CommentItemRepliesText
+            showReplies={showReplies}
             onClick={() => {
               setShowReplies(!showReplies);
               if (!commentItem?.snippet?.replies) {

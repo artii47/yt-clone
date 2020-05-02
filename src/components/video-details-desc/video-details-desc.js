@@ -20,6 +20,7 @@ const VideoDetailsDesc = ({ videoDesc }) => {
         <Styled.VideoDetailsDescChannelImg
           referrerPolicy="no-referrer"
           src={channel.snippet.thumbnails.medium.url}
+          alt={channel.snippet.title}
         />
         <Styled.VideoDetailsDescFlexWrapper>
           <Styled.VideoDetailsDescChannelTitle>

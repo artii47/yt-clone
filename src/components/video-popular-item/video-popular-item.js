@@ -24,11 +24,13 @@ const VideoPopularItem = ({
           onLoad={() => setIsLoaded(true)}
           isLoaded={isLoaded}
           src={imgUrl}
+          alt={channelTitle}
         />
         <Styled.VideoPopularItemFlexWrapper>
           <Styled.VideoPopularItemChannelImg
             referrerPolicy="no-referrer"
             src={channelImgUrl}
+            alt={channelTitle}
           />
           <Styled.VideoPopularItemDescription>
             <Styled.VideoPopularItemTitle>

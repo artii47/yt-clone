@@ -7,6 +7,7 @@ const SearchedChannelItem = ({ channelSnippet }) => {
     <Styled.SearchedChannelItem>
       <Styled.SearchedChannelItemImg
         src={channelSnippet.thumbnails.medium.url}
+        alt={channelSnippet.title}
       />
       <Styled.SearchedChannelItemDescription>
         <Styled.SearchedChannelItemTitle>

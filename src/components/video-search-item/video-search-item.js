@@ -17,7 +17,7 @@ const VideoSearchItem = ({
   const params = useParams();
   return (
     <Styled.VideoSearchItem to={`/watch/${id.videoId ? id.videoId : id}`}>
-      <Styled.VideoSearchItemImg src={imgUrl} />
+      <Styled.VideoSearchItemImg src={imgUrl} alt={channelTitle} />
       <Styled.VideoSearchItemDescription>
         <Styled.VideoSearchItemTitle>
           {params.videoId ? `${title.slice(0, 50)} ...` : title}

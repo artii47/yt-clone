@@ -6,7 +6,11 @@ const SidebarItemNormal = ({ item, active }) => {
   const { img, Svg } = item;
   return (
     <Styled.SidebarItemNormal active={active}>
-      {img ? <Styled.SidebarItemNormalImg src={img} /> : <Svg />}
+      {img ? (
+        <Styled.SidebarItemNormalImg src={img} alt={item.name} />
+      ) : (
+        <Svg />
+      )}
       <Styled.SidebarItemNormalName>{item.name}</Styled.SidebarItemNormalName>
     </Styled.SidebarItemNormal>
   );

@@ -21,8 +21,9 @@ const SearchBar = () => {
         onChange={onChange}
         value={searchTerm}
         placeholder="Search"
+        aria-label="search"
       />
-      <Styled.SearchBarButton>
+      <Styled.SearchBarButton title="Submit Button">
         <Styled.SearchBarSearchSVG />
       </Styled.SearchBarButton>
     </Styled.SearchBar>

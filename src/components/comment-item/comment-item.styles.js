@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ReactComponent as Like } from "../../assets/icons/like.svg";
 import { ReactComponent as Dislike } from "../../assets/icons/dislike.svg";
 
@@ -72,8 +72,13 @@ export const CommentItemRepliesText = styled.p`
   align-items: center;
   :before {
     display: inline-block;
-    content: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' preserveAspectRatio='xMidYMid meet' focusable='false' class='style-scope yt-icon' style='fill: rgb(6, 95, 212);'><g class='style-scope yt-icon'><path d='M7 10l5 5 5-5z' class='style-scope yt-icon'/></g></svg>");
+    content: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' preserveAspectRatio='xMidYMid meet' focusable='false' class='style-scope yt-icon' style='fill: rgb(6, 95, 212);'><g class='style-scope yt-icon'><path d='M7 14l5-5 5 5z' class='style-scope yt-icon'/></g></svg>");
     height: 2rem !important;
     width: 2rem !important;
+    ${(props) =>
+      !props.showReplies &&
+      css`
+        content: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' preserveAspectRatio='xMidYMid meet' focusable='false' class='style-scope yt-icon' style='fill: rgb(6, 95, 212);'><g class='style-scope yt-icon'><path d='M7 10l5 5 5-5z' class='style-scope yt-icon'/></g></svg>");
+      `}
   }
 `;

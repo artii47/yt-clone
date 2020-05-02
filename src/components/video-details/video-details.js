@@ -44,6 +44,7 @@ const VideoDetails = () => {
           src={url}
           allowFullScreen
           isIframeLoaded={isIframeLoaded}
+          title="yt-video"
           onLoad={() => setIsIframeLoaded(true)}
         />
         {!isIframeLoaded ? <Spinner iframe /> : ""}

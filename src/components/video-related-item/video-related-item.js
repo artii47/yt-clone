@@ -23,6 +23,7 @@ const VideoRelatedItem = ({
         referrerPolicy="no-referrer"
         isLoaded={isLoaded}
         src={imgUrl}
+        alt={channelTitle}
       />
       <Styled.VideoRelatedItemDescription>
         <Styled.VideoRelatedItemTitle>
