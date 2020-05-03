@@ -18,12 +18,6 @@ export const SpinnerOuter = styled.div`
   padding-bottom: 10rem;
   display: flex;
   justify-content: center;
-  ${(props) =>
-    props.middle &&
-    css`
-      width: 100vw;
-      height: 100vh;
-    `}
 
   ${(props) =>
     props.iframe &&
@@ -33,12 +27,12 @@ export const SpinnerOuter = styled.div`
       transform: translate(0, -50%);
     `}
 
-    ${(props) =>
-      props.replies &&
-      css`
-        justify-content: left;
-        padding: 0;
-      `}
+  ${(props) =>
+    props.replies &&
+    css`
+      justify-content: left;
+      padding: 0;
+    `}
 `;
 
 export const SpinnerInner = styled.div`
@@ -51,13 +45,6 @@ export const SpinnerInner = styled.div`
   animation: ${rotate} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: transparent #b5b5b5 #b5b5b5 #b5b5b5;
   z-index: 10;
-  ${(props) =>
-    props.middle &&
-    css`
-      position: absolute;
-      top: 50%;
-      left: 50%;
-    `}
   ${(props) =>
     props.iframe &&
     css`

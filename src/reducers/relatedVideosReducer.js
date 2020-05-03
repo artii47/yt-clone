@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { youtube } from "../api/youtube";
-import { getVideoIds } from "../helpers/getVideoIds";
+import { getVideoIds } from "../helpers/getIds";
 
 export const relatedVideos = createSlice({
   name: "relatedVideos",

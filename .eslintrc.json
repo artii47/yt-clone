@@ -27,6 +27,10 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/prefer-default-export": "off",
     "no-param-reassign": 0,
+    "import/no-cycle": 0,
+    "react/jsx-curly-newline": 0,
+    "consistent-return": 0,
+    "radix": 0,
     "react/jsx-props-no-spreading": [
       1,
       {

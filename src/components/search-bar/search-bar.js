@@ -23,7 +23,7 @@ const SearchBar = () => {
         placeholder="Search"
         aria-label="search"
       />
-      <Styled.SearchBarButton title="Submit Button">
+      <Styled.SearchBarButton title="Submit">
         <Styled.SearchBarSearchSVG />
       </Styled.SearchBarButton>
     </Styled.SearchBar>

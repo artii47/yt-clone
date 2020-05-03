@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import * as Styled from "./error-boundary.styles";
 
 export default class ErrorBoundary extends Component {
-  state = { hasError: false };
+  constructor() {
+    super();
+    this.state = { hasError: false };
+  }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 
   componentDidCatch(error, info) {
-    console.log(error);
+    console.log(error, info);
   }
 
   render() {

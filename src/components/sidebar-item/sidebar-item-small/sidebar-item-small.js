@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import * as Styled from "./sidebar-item-small.styles";
 
-const SidebarItemSmall = ({ item, active }) => {
+const SidebarItemSmall = ({ item: { Svg, name }, active }) => {
   const styles = {
     fill: `${active ? "red" : "#606060"}`,
     marginRight: "0",
@@ -11,8 +11,8 @@ const SidebarItemSmall = ({ item, active }) => {
   };
   return (
     <Styled.SidebarItemSmall active={active}>
-      <item.Svg style={styles} />
-      <Styled.SidebarItemSmallText>{item.name}</Styled.SidebarItemSmallText>
+      <Svg style={styles} />
+      <Styled.SidebarItemSmallText>{name}</Styled.SidebarItemSmallText>
     </Styled.SidebarItemSmall>
   );
 };
@@ -22,6 +22,7 @@ export default SidebarItemSmall;
 SidebarItemSmall.propTypes = {
   item: PropTypes.shape({
     name: PropTypes.string,
+    Svg: PropTypes.elementType,
   }).isRequired,
   active: PropTypes.bool.isRequired,
 };

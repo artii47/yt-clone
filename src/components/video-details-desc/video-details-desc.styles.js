@@ -11,6 +11,7 @@ export const VideoDetailsDescFlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 1.5rem;
+  width: 50%;
   margin-right: auto;
 `;
 
@@ -23,7 +24,7 @@ export const VideoDetailsDescChannelImg = styled.img`
 export const VideoDetailsDescChannelTitle = styled.p`
   font-size: 1.4rem;
   font-weight: 500;
-  width: 15rem;
+  width: 50%;
 `;
 
 export const VideoDetailsDescChannelSubs = styled.p`
@@ -37,7 +38,6 @@ export const VideoDetailsDescChannelBox = styled.div`
   align-items: center;
   width: 100%;
   height: 5rem;
-  border-radius: 50%;
 `;
 
 export const VideoDetailsDescContent = styled.div`
@@ -45,19 +45,9 @@ export const VideoDetailsDescContent = styled.div`
   font-size: 1.4rem;
   margin-left: 6.5rem;
   line-height: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1.7rem;
   @media only screen and (max-width: 50em) {
     width: 80%;
   }
-`;
-
-export const VideoDetailsDescButton = styled.button`
-  font-size: 1.3rem;
-  margin-top: 1.5rem;
-  color: #606060;
-  font-weight: 600;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
 `;

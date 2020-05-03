@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { youtube } from "../api/youtube";
-import { getChannelIds } from "../helpers/getChannelIds";
+import { getChannelIds } from "../helpers/getIds";
 
 export const popularVideos = createSlice({
   name: "popularVideos",

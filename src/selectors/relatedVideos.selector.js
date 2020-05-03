@@ -7,6 +7,7 @@ export const selectVideo = createSelector([getVideos], (data) => {
 });
 
 export const selectVideoItems = createSelector([getVideos], (data) => {
+  // getting rid of duplicates
   if (data.videos.items) {
     return [...new Set(data.videos.items.map((video) => video.id))].map(
       (id) => {
