@@ -14,13 +14,15 @@ import Spinner from "../spinner/spinner";
 import CustomButton from "../buttons/custom-button/custom-button";
 import {
   selectIsLoading,
+  selectVideo,
   selectVideoItems,
 } from "../../selectors/relatedVideos.selector";
 import withError from "../../hocs/withError";
 
 const VideosRelatedList = ({ enableScrollEvent }) => {
   const dispatch = useDispatch();
-  const videos = useSelector(selectVideoItems);
+  const videos = useSelector(selectVideo);
+  const videoItems = useSelector(selectVideoItems);
   const isLoading = useSelector(selectIsLoading);
   const params = useParams();
   useEffect(() => {
@@ -54,13 +56,13 @@ const VideosRelatedList = ({ enableScrollEvent }) => {
     );
   };
   const renderList = () => {
-    if (!videos.items) {
+    if (!videoItems) {
       return <Spinner />;
     }
     return (
       <>
         <Styled.VideosRelatedText>Related videos</Styled.VideosRelatedText>
-        {videos.items.map((video) => {
+        {videoItems.map((video) => {
           return (
             <VideoRelatedItem
               key={video.id}

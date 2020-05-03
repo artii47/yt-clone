@@ -77,13 +77,19 @@ const CommentItem = ({
 
 export default CommentItem;
 
+CommentItem.defaultProps = {
+  commentId: null,
+  repliesCount: null,
+  index: null,
+};
+
 CommentItem.propTypes = {
   authorChannelImage: PropTypes.string.isRequired,
   authorName: PropTypes.string.isRequired,
   publishedAt: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   likeCount: PropTypes.number.isRequired,
-  commentId: PropTypes.string.isRequired,
-  repliesCount: PropTypes.number.isRequired,
-  index: PropTypes.number.isRequired,
+  commentId: PropTypes.string,
+  repliesCount: PropTypes.number,
+  index: PropTypes.number,
 };

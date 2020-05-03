@@ -24,3 +24,10 @@ export const selectCommentItem = (index) =>
     [getComments],
     (data) => data.currentVideoComments.items[index]
   );
+
+export const selectAreMoreRepliesLoading = (index) =>
+  createSelector(
+    [getComments],
+    (data) =>
+      data.currentVideoComments.items[index]?.snippet?.replies?.isLoading
+  );

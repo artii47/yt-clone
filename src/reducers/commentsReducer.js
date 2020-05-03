@@ -41,8 +41,9 @@ export const comments = createSlice({
       }
       state.areRepliesLoading = false;
     },
-    fetchCommentsRepliesNextPageStart: (state) => {
-      state.areRepliesLoading = true;
+    fetchCommentsRepliesNextPageStart: (state, action) => {
+      const item = state.currentVideoComments.items[action.payload.index];
+      item.snippet.replies.isLoading = true;
     },
     fetchCommentsRepliesNextPageSuccess: (state, action) => {
       const item = state.currentVideoComments.items[action.payload.index];
@@ -51,7 +52,7 @@ export const comments = createSlice({
         ...item.snippet.replies.items,
         ...action.payload.items,
       ];
-      state.areRepliesLoading = false;
+      item.snippet.replies.isLoading = false;
     },
     resetComments: (state) => {
       state.currentVideoComments = null;
@@ -128,7 +129,7 @@ export const fetchCommentsRepliesNextPageAsync = (
   index
 ) => async (dispatch) => {
   try {
-    dispatch(fetchCommentsRepliesNextPageStart());
+    dispatch(fetchCommentsRepliesNextPageStart({ index }));
     const response = await youtube.get(
       `https://www.googleapis.com/youtube/v3/comments?part=snippet&pageToken=${nextPageToken}&maxResults=10&parentId=${commentId}&key=${process.env.REACT_APP_API_KEY}`
     );

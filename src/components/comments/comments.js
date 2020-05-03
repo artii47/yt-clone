@@ -33,6 +33,10 @@ const Comments = ({ sortBy, setSortBy, video }) => {
 
 export default Comments;
 
+Comments.defaultProps = {
+  video: null,
+};
+
 Comments.propTypes = {
   sortBy: PropTypes.string.isRequired,
   setSortBy: PropTypes.func.isRequired,
@@ -40,5 +44,5 @@ Comments.propTypes = {
     statistics: PropTypes.shape({
       commentCount: PropTypes.string,
     }),
-  }).isRequired,
+  }),
 };
