@@ -21,6 +21,7 @@ Still working on this app.
 - view videos statitics (views, likes, dislikes, publish time)
 - view comments statistics (likes, publish time)
 - sort comments
+- view comments replies
 
 ## Technologies used
 
