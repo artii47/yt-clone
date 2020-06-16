@@ -72,6 +72,7 @@ const VideosRelatedList = ({ enableScrollEvent }) => {
               channelTitle={video.snippet.channelTitle}
               viewsCount={video.statistics.viewCount}
               publishDate={video.snippet.publishedAt}
+              duration={video.contentDetails.duration}
             />
           );
         })}

@@ -5,6 +5,7 @@ import * as Styled from "./video-popular-item.styles";
 import { numberConverter } from "../../helpers/numConverter";
 import { dateConverter } from "../../helpers/dateConverter";
 import { renderTitle } from "../../helpers/renderTitle";
+import { durationConverter } from "../../helpers/durationConverter";
 
 const VideoPopularItem = ({
   id,
@@ -14,17 +15,23 @@ const VideoPopularItem = ({
   channelTitle,
   publishDate,
   viewsCount,
+  duration,
 }) => {
   const params = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
   return (
     <Styled.VideoPopularItem to={`/watch/${id.videoId ? id.videoId : id}`}>
-      <Styled.VideoPopularItemImg
-        onLoad={() => setIsLoaded(true)}
-        isLoaded={isLoaded}
-        src={imgUrl}
-        alt={channelTitle}
-      />
+      <Styled.VideoPopularItemImgWrapper>
+        <Styled.VideoPopularItemImg
+          onLoad={() => setIsLoaded(true)}
+          isLoaded={isLoaded}
+          src={imgUrl}
+          alt={channelTitle}
+        />
+        <Styled.VideoPopularItemDurationBox>
+          {durationConverter(duration)}
+        </Styled.VideoPopularItemDurationBox>
+      </Styled.VideoPopularItemImgWrapper>
       <Styled.VideoPopularItemFlexWrapper>
         <Styled.VideoPopularItemChannelImg
           referrerPolicy="no-referrer"
@@ -59,4 +66,5 @@ VideoPopularItem.propTypes = {
   publishDate: PropTypes.string.isRequired,
   channelImgUrl: PropTypes.string.isRequired,
   viewsCount: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired,
 };

@@ -50,7 +50,7 @@ export const fetchPopularVideosAsync = () => async (dispatch) => {
   let responseWithChannels;
   try {
     response = await youtube.get(
-      `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&key=${process.env.REACT_APP_API_KEY}`
+      `/videos?part=snippet,contentDetails,statistics&chart=mostPopular&maxResults=12&key=${process.env.REACT_APP_API_KEY}`
     );
     const channelIds = getChannelIds(response.data.items);
     responseWithChannels = await youtube.get(
@@ -86,7 +86,7 @@ export const fetchPopularVideosNextPageAsync = (nextPageToken) => async (
   try {
     dispatch(fetchPopularVideosNextPageStart());
     const response = await youtube.get(
-      `/videos?part=snippet,statistics&chart=mostPopular&maxResults=12&pageToken=${nextPageToken}&key=${process.env.REACT_APP_API_KEY}`
+      `/videos?part=snippet,contentDetails,statistics&chart=mostPopular&maxResults=12&pageToken=${nextPageToken}&key=${process.env.REACT_APP_API_KEY}`
     );
     const channelIds = getChannelIds(response.data.items);
     const responseWithChannels = await youtube.get(

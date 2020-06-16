@@ -47,6 +47,7 @@ const VideosPopularList = () => {
               viewsCount={video.statistics ? video.statistics.viewCount : ""}
               publishDate={video.snippet.publishedAt}
               channelImgUrl={video.channelImgUrl}
+              duration={video.contentDetails.duration}
             />
           );
         })}

@@ -41,6 +41,10 @@ export const VideoPopularItem = styled(Link)`
   }
 `;
 
+export const VideoPopularItemImgWrapper = styled.div`
+  position: relative;
+`;
+
 export const VideoPopularItemImg = styled.img`
   width: 100%;
   max-height: 23rem;
@@ -87,4 +91,20 @@ export const VideoPopularItemChannelImg = styled.img`
   margin-top: 1.5rem;
   margin-right: 1.5rem;
   border-radius: 50%;
+`;
+
+export const VideoPopularItemDurationBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-width: 4rem; */
+  padding: 0 0.5rem;
+  height: 1.6rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
 `;

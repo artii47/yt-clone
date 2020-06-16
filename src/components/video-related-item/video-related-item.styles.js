@@ -16,6 +16,10 @@ export const VideoRelatedItem = styled(Link)`
   }
 `;
 
+export const VideoRelatedItemImgWrapper = styled.div`
+  position: relative;
+`;
+
 export const VideoRelatedItemImg = styled.img`
   width: 16.4rem;
   height: 100%;

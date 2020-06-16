@@ -46,7 +46,7 @@ export const fetchRelatedToVideosAsync = (videoId) => async (dispatch) => {
     );
     const videoIds = getVideoIds(response.data.items);
     const responseWithStats = await youtube.get(
-      `/videos?part=snippet,statistics&id=${videoIds}&key=${process.env.REACT_APP_API_KEY}`
+      `/videos?part=snippet,contentDetails,statistics&id=${videoIds}&key=${process.env.REACT_APP_API_KEY}`
     );
     const result = {
       nextPageToken: response.data.nextPageToken,
@@ -70,7 +70,7 @@ export const fetchRelatedToVideosNextPageAsync = (
     );
     const videoIds = getVideoIds(response.data.items);
     const responseWithStats = await youtube.get(
-      `/videos?part=snippet,statistics&id=${videoIds}&key=${process.env.REACT_APP_API_KEY}`
+      `/videos?part=snippet,contentDetails,statistics&id=${videoIds}&key=${process.env.REACT_APP_API_KEY}`
     );
     const result = {
       nextPageToken: response.data.nextPageToken,
