@@ -14,7 +14,7 @@ const VideoDetails = () => {
   const [isIframeLoaded, setIsIframeLoaded] = useState(false);
   const dispatch = useDispatch();
   const params = useParams();
-  const url = `https://www.youtube.com/embed/${params.videoId}`;
+  const url = `//www.youtube.com/embed/${params.videoId}?autoplay=1`;
   const video = useSelector(selectCurrentVideo);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,11 +43,11 @@ const VideoDetails = () => {
         <Styled.VideoDetailsIframe
           src={url}
           allowFullScreen
+          allow="autoplay; encrypted-media"
           isIframeLoaded={isIframeLoaded}
           title="yt-video"
           onLoad={() => setIsIframeLoaded(true)}
         />
-        {!isIframeLoaded ? <Spinner iframe /> : ""}
       </Styled.VideoDetailsIframeWrapper>
       <Styled.VideoDetailsTitle>{video.snippet.title}</Styled.VideoDetailsTitle>
       <Styled.VideoDetailsFlexWrapper>
