@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
 export const VideoPopularItem = styled(Link)`
@@ -11,7 +11,7 @@ export const VideoPopularItem = styled(Link)`
   text-decoration: none;
   margin-right: 0.8rem;
   margin-left: 0.8rem;
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
   :first-of-type {
     ::before {
       content: "Recommended";
@@ -30,9 +30,6 @@ export const VideoPopularItem = styled(Link)`
   @media only screen and (max-width: 62.5em) {
     min-width: 30%;
   }
-  @media only screen and (max-width: 43.75em) {
-    min-width: 30%;
-  }
   @media only screen and (max-width: 40.625em) {
     min-width: 45%;
   }
@@ -49,6 +46,12 @@ export const VideoPopularItemImg = styled.img`
   width: 100%;
   max-height: 23rem;
   min-height: 13rem;
+  ${({ isLoaded }) =>
+    !isLoaded &&
+    css`
+      background-color: transparent;
+      min-height: 20.5rem;
+    `}
 `;
 
 export const VideoPopularItemDescription = styled.div`
