@@ -1,8 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 import * as Styled from "./searched-channel-item.styles";
+import { selectChannelFromSearchedVideosStatistics } from "../../selectors/channel.selector";
 
 const SearchedChannelItem = ({ channelSnippet }) => {
+  const channelStatitics = useSelector(
+    selectChannelFromSearchedVideosStatistics
+  );
+  const renderChannelStats = () => {
+    if (channelStatitics) {
+      return (
+        <>
+          {`${channelStatitics.subscriberCount} subscribers`}
+          &nbsp; &bull; &nbsp;
+          {`${channelStatitics.videoCount} videos`}
+        </>
+      );
+    }
+  };
   return (
     <Styled.SearchedChannelItem>
       <Styled.SearchedChannelItemImg
@@ -14,7 +30,7 @@ const SearchedChannelItem = ({ channelSnippet }) => {
           {channelSnippet.title}
         </Styled.SearchedChannelItemTitle>
         <Styled.SearchedChannelItemStats>
-          123.123 subs &bull; 123 videos
+          {renderChannelStats()}
         </Styled.SearchedChannelItemStats>
         <Styled.SearchedChannelItemAbout>
           {channelSnippet.description}

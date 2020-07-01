@@ -36,6 +36,9 @@ export const searchVideos = createSlice({
     setChannel: (state, action) => {
       state.channel = action.payload;
     },
+    updateChannelWithStats: (state, action) => {
+      state.channel.statistics = action.payload.statistics;
+    },
     resetChannel: (state) => {
       state.channel = null;
     },
@@ -52,6 +55,7 @@ export const {
   resetChannel,
   fetchSearchVideosStart,
   fetchSearchVideosSuccess,
+  updateChannelWithStats,
 } = searchVideos.actions;
 
 export const fetchSearchVideosAsync = (searchTerm) => async (dispatch) => {
@@ -68,9 +72,15 @@ export const fetchSearchVideosAsync = (searchTerm) => async (dispatch) => {
       nextPageToken: response.data.nextPageToken,
       items: responseWithStats.data.items,
     };
-    response.data.items.map((item) => {
-      if (item.id.kind === "youtube#channel") {
-        dispatch(setChannel(item));
+    response.data.items.map(async (currentItem) => {
+      if (currentItem.id.kind === "youtube#channel") {
+        dispatch(setChannel(currentItem)); //fetching only basic channel data
+        const responseWithChannelStats = await youtube.get(
+          `/channels?part=snippet%2C%20statistics&id=${currentItem.id.channelId}&key=${process.env.REACT_APP_API_KEY}`
+        );
+        dispatch(
+          updateChannelWithStats(responseWithChannelStats.data.items[0]) // fetching statistics for channel
+        );
       }
       return null;
     });
