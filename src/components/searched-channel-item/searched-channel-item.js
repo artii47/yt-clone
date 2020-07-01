@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import * as Styled from "./searched-channel-item.styles";
 import { selectChannelFromSearchedVideosStatistics } from "../../selectors/channel.selector";
+import { numberConverter } from "../../helpers/numConverter";
 
 const SearchedChannelItem = ({ channelSnippet }) => {
   const channelStatitics = useSelector(
@@ -12,7 +13,7 @@ const SearchedChannelItem = ({ channelSnippet }) => {
     if (channelStatitics) {
       return (
         <>
-          {`${channelStatitics.subscriberCount} subscribers`}
+          {`${numberConverter(channelStatitics.subscriberCount)} subscribers`}
           &nbsp; &bull; &nbsp;
           {`${channelStatitics.videoCount} videos`}
         </>
